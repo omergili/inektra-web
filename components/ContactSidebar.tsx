@@ -56,12 +56,12 @@ export default function ContactSidebar() {
 
   return (
     <>
-      {/* Toggle Button (Mobile) */}
+      {/* Toggle Button (Mobile) - ORANGE & PROMINENT */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 bg-primary-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-primary-700 transition-all font-medium"
+        className="lg:hidden fixed bottom-6 right-6 z-50 bg-accent-500 text-white px-6 py-4 rounded-full shadow-xl hover:bg-accent-600 transition-all font-bold text-lg hover:scale-110"
       >
-        {isOpen ? '✕ Schließen' : '📝 Anfrage'}
+        {isOpen ? '✕ Schließen' : '✉️ Anfrage'}
       </button>
 
       {/* Sidebar */}
@@ -192,14 +192,20 @@ export default function ContactSidebar() {
               </label>
             </div>
 
-            {/* Submit */}
+            {/* Submit Button - PROMINENT & ORANGE */}
             <button
               type="submit"
               disabled={isSubmitting || !formData.dataPrivacy}
-              className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-accent-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:bg-accent-600 transition-all shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100"
             >
-              {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
+              {isSubmitting ? '⏳ Wird gesendet...' : '✉️ Anfrage senden'}
             </button>
+            
+            {!formData.dataPrivacy && (
+              <p className="text-xs text-red-600 -mt-2">
+                ⚠️ Bitte Datenschutzerklärung akzeptieren
+              </p>
+            )}
 
             {submitStatus === 'success' && (
               <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">

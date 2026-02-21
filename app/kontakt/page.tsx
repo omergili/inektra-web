@@ -48,7 +48,7 @@ export default function KontaktPage() {
                       >
                         {siteConfig.contact.phone}
                       </a>
-                      <p className="text-sm text-neutral-500 mt-1">Mo-Fr: 8:00 - 17:00 Uhr</p>
+                      <p className="text-sm text-neutral-500 mt-1">Mo-Fr: 8:00 - 16:30 Uhr</p>
                     </div>
                   </div>
 
@@ -150,7 +150,7 @@ export default function KontaktPage() {
                 <div className="space-y-2 text-sm text-neutral-600">
                   <div className="flex justify-between">
                     <span>Montag - Freitag:</span>
-                    <span className="font-medium">8:00 - 17:00 Uhr</span>
+                    <span className="font-medium">8:00 - 16:30 Uhr</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Samstag - Sonntag:</span>

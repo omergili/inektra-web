@@ -53,13 +53,13 @@ export default function HomePage() {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
-              <span className="text-accent-400 text-sm font-medium">Werkskalibrierung nach ISO-Normen</span>
+            <div className="inline-flex items-center bg-accent-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-accent-500/40">
+              <span className="text-accent-200 text-sm font-medium">✓ Werkskalibrierung nach ISO-Normen</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Präzisions-Werkskalibrierung<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-accent-500 to-accent-600">
                 für höchste Ansprüche
               </span>
             </h1>
@@ -72,7 +72,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/kontakt"
-                className="group bg-white text-neutral-900 px-8 py-4 rounded-xl font-semibold hover:bg-neutral-100 transition-all shadow-soft-lg hover:shadow-xl hover:scale-105"
+                className="group bg-accent-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-accent-600 transition-all shadow-soft-lg hover:shadow-xl hover:scale-105"
               >
                 Jetzt Angebot anfragen
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
@@ -121,8 +121,8 @@ export default function HomePage() {
                 </div>
                 
                 {/* Outline Icon statt Emoji */}
-                <div className="w-14 h-14 mb-4 rounded-xl bg-primary-50 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 mb-4 rounded-xl bg-accent-50 flex items-center justify-center ring-2 ring-accent-200">
+                  <svg className="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -195,9 +195,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 p-10 rounded-3xl text-white shadow-soft-lg">
+            <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 p-10 rounded-3xl text-white shadow-soft-lg border-2 border-accent-500/20">
               <div className="inline-flex items-center bg-accent-500/20 rounded-full px-4 py-2 mb-6">
-                <span className="text-accent-400 text-sm font-medium">📍 Standort</span>
+                <span className="text-accent-300 text-sm font-medium">📍 Standort</span>
               </div>
               <h3 className="text-2xl font-bold mb-2">{siteConfig.brandName}</h3>
               <p className="text-neutral-400 text-sm mb-4">{siteConfig.contact.address.subtitle}</p>
