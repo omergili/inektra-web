@@ -37,7 +37,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Leistungen</h4>
+            <h2 className="text-white font-semibold mb-4 text-base">Leistungen</h2>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/kalibrierservice" className="hover:text-white transition-colors">
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Unternehmen</h4>
+            <h2 className="text-white font-semibold mb-4 text-base">Unternehmen</h2>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/ueber-uns" className="hover:text-white transition-colors">

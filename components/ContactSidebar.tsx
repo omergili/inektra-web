@@ -188,7 +188,7 @@ export default function ContactSidebar() {
                 className="mt-1 mr-2 w-4 h-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
               />
               <label htmlFor="quick-privacy" className="text-xs text-neutral-600">
-                Ich habe die <a href="/datenschutz" target="_blank" className="text-primary-600 hover:underline">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. *
+                Ich habe die <a href="/datenschutz" target="_blank" className="text-accent-600 hover:underline font-medium">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. *
               </label>
             </div>
 

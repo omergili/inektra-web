@@ -27,17 +27,17 @@
   --color-primary-900: #0c4a6e;
   --color-primary-950: #082f49;
   
-  /* ── Accent Colors (ORANGE aus Logo!) ────────────────────────────────── */
+  /* ── Accent Colors (ORANGE aus Logo, WCAG-konform!) ──────────────────── */
   --color-accent-50: #fff7ed;
   --color-accent-100: #ffedd5;
   --color-accent-200: #fed7aa;
   --color-accent-300: #fdba74;
   --color-accent-400: #fb923c;
-  --color-accent-500: #f97316;  /* HAUPT-ORANGE */
-  --color-accent-600: #ea580c;
-  --color-accent-700: #c2410c;
-  --color-accent-800: #9a3412;
-  --color-accent-900: #7c2d12;
+  --color-accent-500: #ea580c;  /* HAUPT-ORANGE (dunkler für Kontrast 4.5:1) */
+  --color-accent-600: #c2410c;  /* Noch dunkler für Text auf Weiß */
+  --color-accent-700: #9a3412;
+  --color-accent-800: #7c2d12;
+  --color-accent-900: #6c2e10;
   
   /* ── Neutral Colors (Grau, nicht zu schwarz) ─────────────────────────── */
   --color-neutral-50: #fafaf9;

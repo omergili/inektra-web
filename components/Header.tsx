@@ -20,12 +20,12 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-2">
             {siteConfig.navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-accent-600 font-medium transition-colors"
+                className="text-gray-700 hover:text-accent-600 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-slate-50"
               >
                 {item.name}
               </Link>
@@ -53,12 +53,12 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <nav className="md:hidden pb-4 flex flex-wrap gap-4">
+        <nav className="md:hidden pb-4 flex flex-wrap gap-2">
           {siteConfig.navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-gray-700 hover:text-accent-600"
+              className="text-sm text-gray-700 hover:text-accent-600 px-3 py-2 rounded-lg hover:bg-slate-50"
             >
               {item.name}
             </Link>
