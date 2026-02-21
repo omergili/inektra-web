@@ -22,7 +22,7 @@ export default function Home() {
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Präzise <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">Werkskalibrierung</span> für Ihre Messgeräte
@@ -50,7 +50,7 @@ export default function Home() {
 
       {/* USP Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-100 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -87,7 +87,7 @@ export default function Home() {
 
       {/* Services Overview */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Unsere Leistungen</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">

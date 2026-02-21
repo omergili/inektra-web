@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/config';
 export default function Header() {
   return (
     <header className="bg-white/95 backdrop-blur-md border-b border-neutral-200/50 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">{/* pr-96 = Platz für ContactSidebar (384px) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{/* Header bleibt full-width */}
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">

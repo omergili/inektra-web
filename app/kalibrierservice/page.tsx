@@ -46,7 +46,7 @@ export default function KalibrierservicePage() {
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Professioneller <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">Kalibrierservice</span>
@@ -66,7 +66,7 @@ export default function KalibrierservicePage() {
 
       {/* Process */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">So funktioniert's</h2>
             <p className="text-xl text-slate-600">Einfacher Ablauf in 5 Schritten</p>
@@ -93,7 +93,7 @@ export default function KalibrierservicePage() {
 
       {/* Benefits */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-slate-900 mb-6">Qualität & Zertifizierung</h2>
