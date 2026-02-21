@@ -4,16 +4,27 @@ let pool: Pool | null = null;
 
 export function getPool() {
   if (!pool) {
-    pool = new Pool({
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432'),
-      database: process.env.DB_NAME || 'lurch_db',
-      user: process.env.DB_USER || 'lurch_admin',
-      password: process.env.DB_PASSWORD || 'oF&4449',
-      max: 20,
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 2000,
-    });
+    // Prefer DATABASE_URL (Supabase Pooler)
+    if (process.env.DATABASE_URL) {
+      pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+        max: 20,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 2000,
+      });
+    } else {
+      // Fallback to individual env vars (local dev)
+      pool = new Pool({
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT || '5432'),
+        database: process.env.DB_NAME || 'lurch_db',
+        user: process.env.DB_USER || 'lurch_admin',
+        password: process.env.DB_PASSWORD || 'oF&4449',
+        max: 20,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 2000,
+      });
+    }
   }
   return pool;
 }
