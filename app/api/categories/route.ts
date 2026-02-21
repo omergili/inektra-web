@@ -15,7 +15,7 @@ export async function GET() {
       ORDER BY device_count DESC
     `);
 
-    const categories = result.rows.map(row => ({
+    const categories = result.rows.map((row: any) => ({
       name: row.category,
       slug: row.category.toLowerCase()
         .replace(/ä/g, 'ae')
