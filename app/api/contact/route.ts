@@ -58,13 +58,20 @@ export async function POST(request: NextRequest) {
     };
 
     // E-Mail senden
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info.messageId);
 
     return NextResponse.json({ success: true, message: 'Anfrage erfolgreich gesendet!' });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error);
+    console.error('Error details:', error.message, error.code);
+    
     return NextResponse.json(
-      { success: false, message: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.' },
+      { 
+        success: false, 
+        message: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.',
+        debug: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
       { status: 500 }
     );
   }
