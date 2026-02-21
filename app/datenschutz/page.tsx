@@ -60,8 +60,8 @@ export default function DatenschutzPage() {
           </p>
           <p>
             {siteConfig.legal.company}<br />
-            {siteConfig.contact.address.street}<br />
-            {siteConfig.contact.address.city}
+            {siteConfig.contact.legal_address.street}<br />
+            {siteConfig.contact.legal_address.city}
           </p>
           <p>
             Telefon: {siteConfig.contact.phone}<br />

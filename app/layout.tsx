@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContactSidebar from '@/components/ContactSidebar';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({ 
@@ -63,8 +64,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow">{children}</main>
+          <div className="flex-grow lg:pr-96">{children}</div>
           <Footer />
+          <ContactSidebar />
         </div>
       </body>
     </html>

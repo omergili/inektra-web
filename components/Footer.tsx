@@ -19,6 +19,7 @@ export default function Footer() {
               Professionelle Kalibrierung für Industrie und Labor. Präzise, schnell und deutschlandweit.
             </p>
             <div className="space-y-2 text-sm">
+              <p className="text-xs text-gray-400">{siteConfig.contact.address.subtitle}</p>
               <p>{siteConfig.contact.address.street}</p>
               <p>{siteConfig.contact.address.city}</p>
               <p className="pt-2">

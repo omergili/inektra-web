@@ -16,9 +16,9 @@ export default function ImpressumPage() {
           <h2 className="text-2xl font-bold mt-8 mb-4">Angaben gemäß § 5 TMG</h2>
           <p>
             {siteConfig.legal.company}<br />
-            {siteConfig.contact.address.street}<br />
-            {siteConfig.contact.address.city}<br />
-            {siteConfig.contact.address.country}
+            {siteConfig.contact.legal_address.street}<br />
+            {siteConfig.contact.legal_address.city}<br />
+            {siteConfig.contact.legal_address.country}
           </p>
 
           <h3 className="text-xl font-semibold mt-6 mb-3">Vertreten durch:</h3>
@@ -46,8 +46,8 @@ export default function ImpressumPage() {
           <h3 className="text-xl font-semibold mt-6 mb-3">Verantwortlich i.S.d. § 18 Abs. 2 MStV:</h3>
           <p>
             {siteConfig.legal.ceo}<br />
-            {siteConfig.contact.address.street}<br />
-            {siteConfig.contact.address.city}
+            {siteConfig.contact.legal_address.street}<br />
+            {siteConfig.contact.legal_address.city}
           </p>
 
           <h2 className="text-2xl font-bold mt-12 mb-4">Haftung für Inhalte</h2>

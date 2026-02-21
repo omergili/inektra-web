@@ -10,8 +10,8 @@ export const siteConfig = {
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'inektra GmbH',
   
   // Site Metadata
-  name: 'Kalibrierservice | Professionelle Messgeräte-Kalibrierung',
-  description: 'Präzise Kalibrierung für Industrie & Labor. Vor-Ort-Service deutschlandweit. ISO 9001 zertifiziert. Schnell, zuverlässig, akkreditiert.',
+  name: 'Kalibrierservice | Professionelle Werkskalibrierung',
+  description: 'Präzise Werkskalibrierung für Industrie & Labor. ISO-Kalibrierung nach DIN EN ISO/IEC 17025. Über 3.200 Messgrößen. Schnell, zuverlässig, deutschlandweit.',
   keywords: [
     'kalibrierservice',
     'messgeräte kalibrieren',
@@ -27,9 +27,18 @@ export const siteConfig = {
     phone: process.env.NEXT_PUBLIC_PHONE || '+49 5921 72 31 00',
     email: process.env.NEXT_PUBLIC_EMAIL || 'info@inektra.com',
     address: {
-      street: process.env.NEXT_PUBLIC_ADDRESS_STREET || 'Zum Jadebusen 73',
-      city: process.env.NEXT_PUBLIC_ADDRESS_CITY || '26316 Varel',
-      country: process.env.NEXT_PUBLIC_ADDRESS_COUNTRY || 'Deutschland',
+      // Labor-Adresse (Nordhorn)
+      street: 'Losserstr. 4',
+      city: '48527 Nordhorn',
+      country: 'Deutschland',
+      // Ehemals
+      subtitle: 'ehemals Calpro Hagels/Theußing GmbH & Co. KG',
+    },
+    // Firmensitz (für Impressum)
+    legal_address: {
+      street: 'Zum Jadebusen 73',
+      city: '26316 Varel',
+      country: 'Deutschland',
     },
   },
   

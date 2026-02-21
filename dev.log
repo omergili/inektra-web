@@ -62,3 +62,47 @@ https://nextjs.org/telemetry
  GET /ueber-uns 200 in 211ms (compile: 3ms, render: 208ms)
  GET /ueber-uns 200 in 150ms (compile: 9ms, render: 140ms)
  GET /ueber-uns 200 in 66ms (compile: 3ms, render: 63ms)
+ GET / 200 in 784ms (compile: 121ms, render: 663ms)
+ GET /grid.svg 404 in 771ms (compile: 645ms, render: 126ms)
+ GET / 200 in 420ms (compile: 14ms, render: 406ms)
+ GET /grid.svg 404 in 144ms (compile: 11ms, render: 133ms)
+ GET / 200 in 172ms (compile: 5ms, render: 168ms)
+ GET /grid.svg 404 in 147ms (compile: 15ms, render: 132ms)
+ GET /ueber-uns 200 in 755ms (compile: 133ms, render: 621ms)
+ GET /ueber-uns 200 in 244ms (compile: 5ms, render: 239ms)
+ GET / 200 in 441ms (compile: 112ms, render: 328ms)
+ GET / 200 in 246ms (compile: 52ms, render: 194ms)
+ GET /ueber-uns 200 in 197ms (compile: 4ms, render: 194ms)
+ GET / 200 in 258ms (compile: 9ms, render: 249ms)
+ GET /ueber-uns 200 in 365ms (compile: 4ms, render: 361ms)
+ GET /ueber-uns 200 in 257ms (compile: 6ms, render: 251ms)
+ GET / 200 in 309ms (compile: 4ms, render: 306ms)
+ GET / 200 in 202ms (compile: 5ms, render: 197ms)
+ GET /ueber-uns 200 in 149ms (compile: 5ms, render: 144ms)
+ GET / 200 in 101ms (compile: 4ms, render: 97ms)
+ GET /ueber-uns 200 in 159ms (compile: 3ms, render: 156ms)
+ GET / 200 in 112ms (compile: 4ms, render: 108ms)
+✓ Compiled in 32ms
+ GET /ueber-uns 200 in 604ms (compile: 126ms, render: 478ms)
+ GET / 200 in 601ms (compile: 304ms, render: 297ms)
+ GET /ueber-uns 200 in 222ms (compile: 4ms, render: 218ms)
+ GET / 200 in 222ms (compile: 48ms, render: 174ms)
+ GET /ueber-uns 200 in 129ms (compile: 3ms, render: 125ms)
+ GET / 200 in 128ms (compile: 53ms, render: 76ms)
+ GET /ueber-uns 200 in 320ms (compile: 5ms, render: 316ms)
+ GET / 200 in 320ms (compile: 60ms, render: 260ms)
+ GET / 200 in 211ms (compile: 44ms, render: 167ms)
+ GET /ueber-uns 200 in 267ms (compile: 3ms, render: 264ms)
+ GET /ueber-uns 200 in 176ms (compile: 4ms, render: 173ms)
+ GET / 200 in 218ms (compile: 46ms, render: 172ms)
+ GET /ueber-uns 200 in 114ms (compile: 4ms, render: 111ms)
+ GET / 200 in 56ms (compile: 4ms, render: 52ms)
+✓ Compiled in 59ms
+✓ Compiled in 19ms
+✓ Compiled in 268ms
+✓ Compiled in 45ms
+✓ Compiled in 50ms
+✓ Compiled in 18ms
+✓ Compiled in 23ms
+✓ Compiled in 52ms
+✓ Compiled in 19ms
