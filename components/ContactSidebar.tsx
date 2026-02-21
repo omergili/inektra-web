@@ -148,7 +148,7 @@ export default function ContactSidebar() {
             {/* File Upload */}
             <div>
               <label className="block text-sm font-medium text-neutral-700 mb-2">
-                Messmittelliste hochladen
+                Messmittelliste hochladen <span className="text-neutral-500 font-normal">(optional)</span>
               </label>
               <div className="border-2 border-dashed border-neutral-300 rounded-lg p-4 hover:border-primary-400 transition-colors">
                 <input

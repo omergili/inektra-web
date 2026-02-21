@@ -99,13 +99,15 @@ export default function MessgeraetePage() {
             {categories.map((cat) => (
               <div
                 key={cat.name}
-                className="p-8 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300"
+                className="relative p-8 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300"
               >
+                {/* Count Badge - oben rechts */}
+                <span className="absolute top-4 right-4 px-3 py-1 bg-accent-100 text-accent-700 text-xs font-bold rounded-full">
+                  {cat.count}
+                </span>
+                
                 <div className="text-5xl mb-4">{cat.icon}</div>
-                <div className="flex items-baseline justify-between mb-3">
-                  <h3 className="text-xl font-bold text-slate-900">{cat.name}</h3>
-                  <span className="text-sm font-semibold text-accent-600">{cat.count}</span>
-                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 pr-16">{cat.name}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{cat.description}</p>
               </div>
             ))}
