@@ -1,177 +1,171 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import PageFAQ from '@/components/PageFAQ';
 
 export const metadata: Metadata = {
-  title: 'Messgeräte kalibrieren | Präzise & Zertifiziert',
-  description: 'Professionelle Kalibrierung aller Messgeräte nach ISO-Normen: Druck, Temperatur, elektrische Messtechnik. Schnelle Bearbeitung.',
-  keywords: ['messgeräte kalibrieren', 'messmittel kalibrierung', 'kalibrierung messgeräte'],
+  title: 'Messgeräte kalibrieren | Über 3.200 Gerätetypen | inektra',
+  description: 'Kalibrierung elektrischer Messgeräte: Multimeter, Oszilloskope, Stromzangen, Leistungsanalysatoren. Temperatur, Druck, Dimensionsmesstechnik und mehr.',
+  keywords: ['multimeter kalibrieren', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'elektrische messtechnik', 'temperatur kalibrierung'],
 };
 
-export default function MessgeraeteKalibrierenPage() {
-  const deviceCategories = [
-    {
-      title: 'Druckmessgeräte',
-      devices: ['Manometer', 'Drucktransmitter', 'Druckschalter', 'Barometer'],
-      applications: 'Pneumatik, Hydraulik, Prozessindustrie',
-    },
-    {
-      title: 'Temperaturmessgeräte',
-      devices: ['Thermometer', 'Temperaturfühler', 'Thermoelemente', 'Pyrometer'],
-      applications: 'Labor, Pharma, Lebensmittelindustrie',
-    },
-    {
-      title: 'Elektrische Messgeräte',
-      devices: ['Multimeter', 'Strommesszangen', 'Oszilloskope', 'Widerstandsmessgeräte'],
-      applications: 'Elektrotechnik, Elektronikfertigung',
-    },
-    {
-      title: 'Waagen & Kraftmesstechnik',
-      devices: ['Präzisionswaagen', 'Analysenwaagen', 'Prüfgewichte', 'Kraftmessgeräte'],
-      applications: 'Labor, Qualitätskontrolle, Produktion',
-    },
-    {
-      title: 'Dimensionelle Messtechnik',
-      devices: ['Messschieber', 'Mikrometerschrauben', 'Lehren', 'Höhenmessgeräte'],
-      applications: 'Metallverarbeitung, Maschinenbau',
-    },
-    {
-      title: 'Feuchte & Klima',
-      devices: ['Hygrometer', 'Klimamessgeräte', 'Taupunktmessgeräte', 'Datenlogger'],
-      applications: 'Klimatechnik, Lagerhaltung',
-    },
-  ];
+const categories = [
+  {
+    name: 'Elektrische Messtechnik',
+    description: 'Multimeter, Oszilloskope, Stromzangen, Leistungsanalysatoren, Widerstandsmessgeräte',
+    icon: '⚡',
+    count: '1.200+',
+  },
+  {
+    name: 'Temperaturmesstechnik',
+    description: 'Thermometer, Thermoelemente, IR-Sensoren, Temperaturregler, Datalogger',
+    icon: '🌡️',
+    count: '400+',
+  },
+  {
+    name: 'Druckmesstechnik',
+    description: 'Manometer, Drucktransmitter, Drucksensoren, Differenzdruckmessgeräte',
+    icon: '🔬',
+    count: '300+',
+  },
+  {
+    name: 'Dimensionsmesstechnik',
+    description: 'Messschieber, Messschrauben, Lehren, Prüfmittel, Längenmessgeräte',
+    icon: '📐',
+    count: '800+',
+  },
+  {
+    name: 'Waagen & Kraft',
+    description: 'Analysenwaagen, Präzisionswaagen, Kraftmessgeräte, Drehmomentschlüssel',
+    icon: '⚖️',
+    count: '200+',
+  },
+  {
+    name: 'Weitere Messgeräte',
+    description: 'Zeit, Frequenz, Optik, Feuchte, Akustik, Chemie, Gas-Analyse',
+    icon: '🔧',
+    count: '300+',
+  },
+];
 
+const faqs = [
+  {
+    question: 'Welche Messgeräte können Sie kalibrieren?',
+    answer: 'Wir kalibrieren über 3.200 Gerätetypen: Elektrische Messtechnik (Multimeter, Oszilloskope), Temperatur, Druck, Dimensionsmesstechnik, Waagen und viele mehr. Senden Sie uns Ihre Geräteliste für ein individuelles Angebot.',
+  },
+  {
+    question: 'Kalibrieren Sie auch Spezialgeräte?',
+    answer: 'Ja! Unser Portfolio ist umfangreich. Sollte Ihr Gerät nicht standardmäßig dabei sein, kontaktieren Sie uns – wir finden eine Lösung oder vermitteln Sie an spezialisierte Partner.',
+  },
+  {
+    question: 'Wie oft sollte ich kalibrieren lassen?',
+    answer: 'Empfohlen wird eine jährliche Kalibrierung. Je nach Nutzungshäufigkeit und Genauigkeitsanforderungen kann das Intervall kürzer (halbjährlich) oder länger (alle 2 Jahre) sein.',
+  },
+];
+
+export default function MessgeraetePage() {
   return (
     <>
-      <section className="relative bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Messgeräte kalibrieren lassen
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Über <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">3.200 kalibrierbare</span> Gerätetypen
             </h1>
-            <p className="text-xl text-neutral-200 mb-8 leading-relaxed">
-              Von Druck und Temperatur bis zu elektrischen Messgeräten – 
-              wir kalibrieren alle gängigen Messgerätetypen präzise und zuverlässig nach ISO-Normen.
+            <p className="text-xl text-slate-300 mb-8">
+              Von elektrischer Messtechnik bis Dimensionsmesstechnik – wir kalibrieren Ihre komplette Messausstattung.
             </p>
             <Link
               href="/kontakt"
-              className="inline-block bg-white text-neutral-900 px-8 py-4 rounded-xl font-semibold hover:bg-neutral-100 transition-all shadow-soft-lg"
+              className="inline-flex items-center px-8 py-4 text-lg font-bold bg-accent-500 text-white rounded-xl hover:bg-accent-600 transition-colors shadow-lg"
             >
-              Jetzt anfragen
+              Anfrage starten
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Categories */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
-              Welche Messgeräte kalibrieren wir?
-            </h2>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Unser Labor deckt ein breites Spektrum an Gerätetypen ab.
-            </p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Unsere Kategorien</h2>
+            <p className="text-xl text-slate-600">Umfassende Kalibrierung für alle Messgerätebereiche</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {deviceCategories.map((category) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {categories.map((cat) => (
               <div
-                key={category.title}
-                className="bg-white p-6 rounded-xl border border-neutral-200 hover:shadow-soft transition-all"
+                key={cat.name}
+                className="p-8 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300"
               >
-                <h3 className="text-xl font-semibold text-neutral-900 mb-4">
-                  {category.title}
-                </h3>
-                <div className="mb-4">
-                  <p className="text-sm font-medium text-neutral-700 mb-2">Gerätetypen:</p>
-                  <ul className="space-y-1">
-                    {category.devices.map((device) => (
-                      <li key={device} className="text-sm text-neutral-600 flex items-center">
-                        <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
-                        {device}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="text-5xl mb-4">{cat.icon}</div>
+                <div className="flex items-baseline justify-between mb-3">
+                  <h3 className="text-xl font-bold text-slate-900">{cat.name}</h3>
+                  <span className="text-sm font-semibold text-accent-600">{cat.count}</span>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-neutral-700 mb-1">Typische Anwendung:</p>
-                  <p className="text-sm text-neutral-600">{category.applications}</p>
-                </div>
+                <p className="text-slate-600 text-sm leading-relaxed">{cat.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-neutral-50">
+      {/* Benefits */}
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-neutral-900 mb-6">
-                Warum Messgeräte kalibrieren?
-              </h2>
-              <div className="space-y-4 text-neutral-600">
-                <p>
-                  Messgeräte unterliegen natürlichem Verschleiß und Drift. Regelmäßige Kalibrierung 
-                  stellt sicher, dass Ihre Messergebnisse präzise und zuverlässig bleiben.
-                </p>
-                <div className="bg-primary-50 p-6 rounded-xl">
-                  <h3 className="font-semibold text-neutral-900 mb-3">Vorteile der Kalibrierung:</h3>
-                  <ul className="space-y-2">
-                    {[
-                      'Sicherstellung der Messgenauigkeit',
-                      'Rechtssichere Dokumentation',
-                      'Vermeidung von Messfehlern',
-                      'Qualitätssicherung in der Produktion',
-                    ].map((item) => (
-                      <li key={item} className="flex items-start">
-                        <svg className="w-5 h-5 text-primary-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Warum inektra?</h2>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <div>
+                <div className="w-16 h-16 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">ISO-konforme Kalibrierung</h3>
+                <p className="text-slate-600 text-sm">Rückverfolgbare Kalibrierscheine nach anerkannten Normen.</p>
               </div>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-soft border border-neutral-200">
-              <h3 className="text-2xl font-bold text-neutral-900 mb-4">Kalibrierintervalle</h3>
-              <p className="text-neutral-600 mb-6 text-sm">
-                Die empfohlenen Kalibrierintervalle hängen von verschiedenen Faktoren ab:
-              </p>
-              <div className="space-y-4">
-                {[
-                  { title: 'Standard-Intervalle', desc: '12 Monate für die meisten Messgeräte', color: 'primary' },
-                  { title: 'Kritische Anwendungen', desc: '6 Monate bei hoher Messfrequenz', color: 'accent' },
-                  { title: 'Selten genutzt', desc: '24 Monate bei geringer Beanspruchung', color: 'neutral' },
-                ].map((item) => (
-                  <div key={item.title} className={`border-l-4 border-${item.color}-600 pl-4`}>
-                    <h4 className="font-semibold text-neutral-900 mb-1 text-sm">{item.title}</h4>
-                    <p className="text-xs text-neutral-600">{item.desc}</p>
-                  </div>
-                ))}
+              <div>
+                <div className="w-16 h-16 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Schnelle Bearbeitung</h3>
+                <p className="text-slate-600 text-sm">5-10 Werktage Standard, Express auf Anfrage.</p>
               </div>
-              <p className="text-xs text-neutral-500 mt-6">
-                Wir beraten Sie gerne bei der Festlegung optimaler Kalibrierintervalle.
-              </p>
+              <div>
+                <div className="w-16 h-16 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Transparente Preise</h3>
+                <p className="text-slate-600 text-sm">Faire Kalkulation, keine versteckten Kosten.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-primary-600 text-white py-16">
+      {/* FAQs */}
+      <PageFAQ faqs={faqs} title="Häufige Fragen zu Messgeräte-Kalibrierung" />
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Messgeräte kalibrieren lassen</h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Fordern Sie jetzt ein kostenloses Angebot für die Kalibrierung Ihrer Messgeräte an.
+          <h2 className="text-4xl font-bold mb-6">Ihr Messgerät nicht dabei?</h2>
+          <p className="text-xl text-slate-300 mb-8">
+            Kontaktieren Sie uns – wir finden eine Lösung!
           </p>
           <Link
             href="/kontakt"
-            className="inline-block bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold hover:bg-neutral-50 transition-all shadow-lg"
+            className="inline-flex items-center px-8 py-4 text-lg font-bold bg-accent-500 text-white rounded-xl hover:bg-accent-600 transition-colors shadow-lg"
           >
-            Angebot anfragen
+            Jetzt anfragen
           </Link>
         </div>
       </section>

@@ -1,11 +1,27 @@
 import { siteConfig } from '@/lib/config';
 import type { Metadata } from 'next';
+import PageFAQ from '@/components/PageFAQ';
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Kalibrierung anfragen',
+  title: 'Kontakt | Kalibrierung anfragen | inektra GmbH',
   description: `Kontaktieren Sie ${siteConfig.brandName} für professionelle Werkskalibrierung. Telefon, E-Mail oder Kontaktformular. Schnelle Antwort garantiert.`,
-  keywords: ['kalibrierung anfragen', 'angebot kalibrierung', 'kontakt kalibrierlabor'],
+  keywords: ['kalibrierung anfragen', 'angebot kalibrierung', 'kontakt kalibrierlabor', 'nordhorn'],
 };
+
+const faqs = [
+  {
+    question: 'Wie schnell erhalte ich ein Angebot?',
+    answer: 'In der Regel innerhalb von 24 Stunden. Senden Sie uns Ihre Geräteliste per E-Mail, Formular oder laden Sie sie direkt hoch.',
+  },
+  {
+    question: 'Was kostet der Versand?',
+    answer: 'Standardversand: 15 € netto zzgl. MwSt. Palettenversand nach Aufwand. Versicherter Versand inklusive.',
+  },
+  {
+    question: 'Kann ich Geräte persönlich vorbeibringen?',
+    answer: 'Nach vorheriger Terminabsprache gerne! Kontaktieren Sie uns telefonisch oder per E-Mail.',
+  },
+];
 
 export default function KontaktPage() {
   return (
@@ -162,6 +178,9 @@ export default function KontaktPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQs */}
+      <PageFAQ faqs={faqs} title="Häufige Fragen zum Kontakt" />
     </>
   );
 }
