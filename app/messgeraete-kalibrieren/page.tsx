@@ -116,7 +116,7 @@ export default function MessgeraetePage() {
       {/* Benefits */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="text-center">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Warum inektra?</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
               <div>
@@ -156,7 +156,7 @@ export default function MessgeraetePage() {
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center">
           <h2 className="text-4xl font-bold mb-6">Ihr Messgerät nicht dabei?</h2>
           <p className="text-xl text-slate-300 mb-8">
             Kontaktieren Sie uns – wir finden eine Lösung!

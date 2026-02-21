@@ -148,7 +148,7 @@ export default function UeberUnsPage() {
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center">
           <h2 className="text-4xl font-bold mb-6">Lernen Sie uns kennen</h2>
           <p className="text-xl text-slate-300 mb-8">
             Kontaktieren Sie uns für eine persönliche Beratung.
