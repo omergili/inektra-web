@@ -46,7 +46,6 @@ export const siteConfig = {
   navigation: [
     { name: 'Kalibrierservice', href: '/kalibrierservice' },
     { name: 'Messgeräte', href: '/messgeraete-kalibrieren' },
-    { name: 'Vor-Ort-Service', href: '/vor-ort-kalibrierung' },
     { name: 'Über uns', href: '/ueber-uns' },
     { name: 'Kontakt', href: '/kontakt' },
   ],

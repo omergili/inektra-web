@@ -16,3 +16,49 @@ https://nextjs.org/telemetry
 ✓ Ready in 1258ms
 ○ Compiling / ...
  HEAD / 200 in 4.5s (compile: 3.9s, render: 638ms)
+ GET / 200 in 216ms (compile: 18ms, render: 198ms)
+ GET /datenschutz 200 in 636ms (compile: 571ms, render: 65ms)
+ GET /impressum 200 in 512ms (compile: 470ms, render: 41ms)
+ GET /kalibrierservice 200 in 529ms (compile: 458ms, render: 70ms)
+ GET /messgeraete-kalibrieren 200 in 480ms (compile: 396ms, render: 84ms)
+ GET /vor-ort-kalibrierung 200 in 475ms (compile: 420ms, render: 55ms)
+ GET /ueber-uns 200 in 502ms (compile: 454ms, render: 49ms)
+ GET /ueber-uns 200 in 335ms (compile: 7ms, render: 328ms)
+✓ Compiled in 100ms
+⚠ Fast Refresh had to perform a full reload when ./node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /ueber-uns 200 in 282ms (compile: 191ms, render: 91ms)
+ GET /ueber-uns 200 in 595ms (compile: 114ms, render: 481ms)
+ GET /ueber-uns 200 in 386ms (compile: 9ms, render: 376ms)
+ GET /ueber-uns 200 in 496ms (compile: 5ms, render: 492ms)
+ GET /ueber-uns 200 in 472ms (compile: 106ms, render: 366ms)
+ GET /ueber-uns 200 in 303ms (compile: 3ms, render: 300ms)
+ GET /ueber-uns 200 in 248ms (compile: 3ms, render: 245ms)
+ GET /ueber-uns 200 in 203ms (compile: 4ms, render: 199ms)
+ GET /ueber-uns 200 in 146ms (compile: 4ms, render: 142ms)
+ GET /ueber-uns 200 in 71ms (compile: 4ms, render: 67ms)
+✓ Compiled in 472ms
+✓ Compiled in 151ms
+✓ Compiled in 301ms
+ GET /ueber-uns 200 in 518ms (compile: 139ms, render: 379ms)
+ GET /ueber-uns 200 in 294ms (compile: 4ms, render: 290ms)
+ GET /ueber-uns 200 in 225ms (compile: 2ms, render: 223ms)
+ GET /ueber-uns 200 in 180ms (compile: 3ms, render: 177ms)
+ GET /ueber-uns 200 in 128ms (compile: 3ms, render: 125ms)
+ GET /ueber-uns 200 in 79ms (compile: 4ms, render: 76ms)
+✓ Compiled in 59ms
+ GET /ueber-uns 200 in 61ms (compile: 6ms, render: 55ms)
+✓ Compiled in 174ms
+✓ Compiled in 30ms
+ GET /ueber-uns 200 in 63ms (compile: 7ms, render: 56ms)
+ GET /ueber-uns 200 in 444ms (compile: 102ms, render: 341ms)
+ GET /ueber-uns 200 in 282ms (compile: 4ms, render: 278ms)
+ GET /ueber-uns 200 in 210ms (compile: 3ms, render: 207ms)
+ GET /ueber-uns 200 in 169ms (compile: 3ms, render: 166ms)
+ GET /ueber-uns 200 in 124ms (compile: 3ms, render: 121ms)
+ GET /ueber-uns 200 in 73ms (compile: 3ms, render: 70ms)
+ GET /ueber-uns 200 in 477ms (compile: 96ms, render: 381ms)
+ GET /ueber-uns 200 in 311ms (compile: 3ms, render: 307ms)
+ GET /ueber-uns 200 in 256ms (compile: 4ms, render: 253ms)
+ GET /ueber-uns 200 in 211ms (compile: 3ms, render: 208ms)
+ GET /ueber-uns 200 in 150ms (compile: 9ms, render: 140ms)
+ GET /ueber-uns 200 in 66ms (compile: 3ms, render: 63ms)
