@@ -1,0 +1,97 @@
+import Link from 'next/link';
+import { siteConfig } from '@/lib/config';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="col-span-1 md:col-span-2">
+            <img 
+              src="/logo.png" 
+              alt={siteConfig.brandName}
+              className="h-10 w-auto mb-4 brightness-0 invert"
+            />
+            <p className="text-sm mb-4">
+              Professionelle Kalibrierung für Industrie und Labor. Präzise, schnell und deutschlandweit.
+            </p>
+            <div className="space-y-2 text-sm">
+              <p>{siteConfig.contact.address.street}</p>
+              <p>{siteConfig.contact.address.city}</p>
+              <p className="pt-2">
+                <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`} className="hover:text-white">
+                  Tel: {siteConfig.contact.phone}
+                </a>
+              </p>
+              <p>
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
+                  {siteConfig.contact.email}
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Leistungen</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/kalibrierservice" className="hover:text-white transition-colors">
+                  Kalibrierservice
+                </Link>
+              </li>
+              <li>
+                <Link href="/messgeraete-kalibrieren" className="hover:text-white transition-colors">
+                  Messgeräte kalibrieren
+                </Link>
+              </li>
+              <li>
+                <Link href="/vor-ort-kalibrierung" className="hover:text-white transition-colors">
+                  Vor-Ort-Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Unternehmen</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/ueber-uns" className="hover:text-white transition-colors">
+                  Über uns
+                </Link>
+              </li>
+              <li>
+                <Link href="/kontakt" className="hover:text-white transition-colors">
+                  Kontakt
+                </Link>
+              </li>
+              <li>
+                <Link href="/impressum" className="hover:text-white transition-colors">
+                  Impressum
+                </Link>
+              </li>
+              <li>
+                <Link href="/datenschutz" className="hover:text-white transition-colors">
+                  Datenschutz
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center md:text-left">
+          <p>
+            © {currentYear} {siteConfig.brandName}. Alle Rechte vorbehalten. | 
+            USt-IdNr: {siteConfig.legal.vatId}
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
