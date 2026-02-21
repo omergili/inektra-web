@@ -15,8 +15,8 @@ interface PageFAQProps {
 export default function PageFAQ({ faqs, title = "Häufige Fragen" }: PageFAQProps) {
   return (
     <section className="py-16 bg-slate-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">{title}</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+        <h2 className="text-3xl font-bold text-slate-900 mb-8">{title}</h2>
         
         <div className="space-y-4">
           {faqs.map((faq, index) => (
