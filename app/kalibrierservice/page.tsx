@@ -118,7 +118,7 @@ export default function KalibrierservicePage() {
             <div className="bg-primary-50 p-8 rounded-xl">
               <h3 className="text-2xl font-bold text-neutral-900 mb-4">Ihre Vorteile</h3>
               <ul className="space-y-3">
-                {['Schnelle Bearbeitungszeiten', 'Transparente Preisgestaltung', 'Persönlicher Ansprechpartner', 'Kostenloser Versand ab 500€', 'Erinnerung an Rekalibrierung', 'Digitale Zertifikatsverwaltung'].map((item) => (
+                {['Schnelle Bearbeitungszeiten', 'Transparente Preisgestaltung', 'Persönlicher Ansprechpartner', 'Erinnerung an Rekalibrierung', 'Digitale Zertifikatsverwaltung'].map((item) => (
                   <li key={item} className="flex items-center text-neutral-700">
                     <span className="w-2 h-2 bg-primary-600 rounded-full mr-3"></span>
                     {item}

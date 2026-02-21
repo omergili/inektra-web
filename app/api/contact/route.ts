@@ -6,6 +6,23 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, phone, message, hasFile, fileName } = body;
 
+    // Validierung
+    if (!name || !email) {
+      return NextResponse.json(
+        { success: false, message: 'Name und E-Mail sind erforderlich.' },
+        { status: 400 }
+      );
+    }
+
+    // Environment-Check
+    if (!process.env.SMTP_PASSWORD) {
+      console.error('SMTP_PASSWORD not configured');
+      return NextResponse.json(
+        { success: false, message: 'Server-Konfigurationsfehler. Bitte kontaktieren Sie uns telefonisch.' },
+        { status: 500 }
+      );
+    }
+
     // Email-Konfiguration (nutzt bot@mylurch.de Mail-Server)
     const transporter = nodemailer.createTransport({
       host: 'cp120.sp-server.net',
@@ -13,7 +30,10 @@ export async function POST(request: NextRequest) {
       secure: true,
       auth: {
         user: 'bot@mylurch.de',
-        pass: process.env.SMTP_PASSWORD || 'oF&4449', // TODO: in .env verschieben
+        pass: process.env.SMTP_PASSWORD,
+      },
+      tls: {
+        rejectUnauthorized: false, // Für selbstsignierte Zertifikate
       },
     });
 
