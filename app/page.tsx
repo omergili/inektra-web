@@ -40,8 +40,8 @@ export default function HomePage() {
   ];
 
   const brands = [
-    'Fluke', 'Tektronix', 'Metrawatt', 'Philips', 'Siemens',
-    'Chauvin Arnoux', 'Hameg', 'Keithley', 'Testo', 'Agilent',
+    'Digital-Multimeter', 'Oszilloskope', 'Messschieber', 'Bügelmessschrauben',
+    'Manometer', 'Thermometer', 'Waagen', 'Prüfgewichte',
   ];
 
   return (
@@ -145,12 +145,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brands Section */}
+      {/* Device Types Section */}
       <section className="py-16 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h3 className="text-sm font-semibold text-neutral-600 uppercase tracking-wider">
-              Wir kalibrieren Geräte von
+              Typische Gerätetypen die wir kalibrieren
             </h3>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
@@ -179,7 +179,7 @@ export default function HomePage() {
                 {[
                   { title: 'Werkskalibrierung', desc: 'Kalibrierung nach ISO-Normen mit rückführbaren Normalen' },
                   { title: 'Riesiges Portfolio', desc: 'Über 3.200 kalibrierbare Gerätetypen – eines der umfangreichsten in Deutschland' },
-                  { title: 'Herstellerunabhängig', desc: 'Alle gängigen Marken von Fluke bis Tektronix' },
+                  { title: 'Herstellerunabhängig', desc: 'Alle gängigen Geräte-Hersteller und Fabrikate' },
                   { title: 'Schneller Service', desc: 'Kurze Durchlaufzeiten für minimale Ausfallzeiten' },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start">

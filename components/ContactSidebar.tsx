@@ -10,6 +10,7 @@ export default function ContactSidebar() {
     email: '',
     phone: '',
     message: '',
+    dataPrivacy: false,
   });
   const [file, setFile] = useState<File | null>(null);
 
@@ -39,7 +40,7 @@ export default function ContactSidebar() {
 
       if (data.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', message: '', dataPrivacy: false });
         setFile(null);
         setTimeout(() => setIsOpen(false), 2000);
       } else {
@@ -176,10 +177,25 @@ export default function ContactSidebar() {
               </div>
             </div>
 
+            {/* Privacy Checkbox */}
+            <div className="flex items-start">
+              <input
+                type="checkbox"
+                id="quick-privacy"
+                required
+                checked={formData.dataPrivacy}
+                onChange={(e) => setFormData({ ...formData, dataPrivacy: e.target.checked })}
+                className="mt-1 mr-2 w-4 h-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
+              />
+              <label htmlFor="quick-privacy" className="text-xs text-neutral-600">
+                Ich habe die <a href="/datenschutz" target="_blank" className="text-primary-600 hover:underline">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. *
+              </label>
+            </div>
+
             {/* Submit */}
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !formData.dataPrivacy}
               className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
