@@ -106,3 +106,16 @@ https://nextjs.org/telemetry
 ✓ Compiled in 23ms
 ✓ Compiled in 52ms
 ✓ Compiled in 19ms
+ GET / 200 in 955ms (compile: 191ms, render: 764ms)
+ GET /grid.svg 404 in 365ms (compile: 155ms, render: 211ms)
+ GET /kalibrierservice 200 in 244ms (compile: 149ms, render: 96ms)
+ GET /messgeraete-kalibrieren 200 in 366ms (compile: 146ms, render: 220ms)
+ GET /ueber-uns 200 in 213ms (compile: 145ms, render: 69ms)
+ GET /kontakt 200 in 480ms (compile: 432ms, render: 48ms)
+ GET /kalibrierservice 200 in 62ms (compile: 4ms, render: 58ms)
+ GET / 200 in 58ms (compile: 3ms, render: 55ms)
+ GET /ueber-uns 200 in 47ms (compile: 4ms, render: 43ms)
+ GET /messgeraete-kalibrieren 200 in 80ms (compile: 4ms, render: 77ms)
+ GET /kalibrierservice 200 in 74ms (compile: 5ms, render: 70ms)
+ GET / 200 in 49ms (compile: 4ms, render: 45ms)
+[?25h

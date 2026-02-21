@@ -3,11 +3,11 @@ import { siteConfig } from '@/lib/config';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Präzisions-Werkskalibrierung | Über 3.200 Messgrößen',
-  description: 'Professionelle Werkskalibrierung nach DIN EN ISO/IEC 17025. Über 3.200 Messgrößen. Von Dimensionsmesstechnik bis Elektronik – präzise, schnell, deutschlandweit.',
+  title: 'Präzisions-Werkskalibrierung | Über 3.200 Gerätetypen',
+  description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Von Dimensionsmesstechnik bis Elektronik – präzise, schnell, deutschlandweit.',
   openGraph: {
     title: 'Präzisions-Werkskalibrierung | inektra GmbH',
-    description: 'Werkskalibrierung mit über 3.200 Messgrößen. Deutschlandweiter Service.',
+    description: 'Werkskalibrierung mit über 3.200 Gerätetypen. Deutschlandweiter Service.',
   },
 };
 
@@ -54,7 +54,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
-              <span className="text-accent-400 text-sm font-medium">Werkskalibrierung nach DIN EN ISO/IEC 17025</span>
+              <span className="text-accent-400 text-sm font-medium">Werkskalibrierung nach ISO-Normen</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -65,7 +65,7 @@ export default function HomePage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-neutral-200 mb-10 leading-relaxed">
-              Über <span className="text-accent-400 font-semibold">3.200 Messgrößen</span> in unserem Kalibrierlabor. 
+              Über <span className="text-accent-400 font-semibold">3.200 kalibrierbare Gerätetypen</span> in unserem Kalibrierlabor. 
               Von Dimensionsmesstechnik bis Elektronik – präzise, schnell und deutschlandweit.
             </p>
             
@@ -177,8 +177,8 @@ export default function HomePage() {
               </h2>
               <div className="space-y-6">
                 {[
-                  { title: 'Werkskalibrierung', desc: 'ISO-Kalibrierung nach DIN EN ISO/IEC 17025 mit rückführbaren Normalen' },
-                  { title: 'Riesiges Portfolio', desc: 'Über 3.200 Messgrößen – eines der umfangreichsten in Deutschland' },
+                  { title: 'Werkskalibrierung', desc: 'Kalibrierung nach ISO-Normen mit rückführbaren Normalen' },
+                  { title: 'Riesiges Portfolio', desc: 'Über 3.200 kalibrierbare Gerätetypen – eines der umfangreichsten in Deutschland' },
                   { title: 'Herstellerunabhängig', desc: 'Alle gängigen Marken von Fluke bis Tektronix' },
                   { title: 'Schneller Service', desc: 'Kurze Durchlaufzeiten für minimale Ausfallzeiten' },
                 ].map((item, idx) => (

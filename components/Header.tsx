@@ -12,9 +12,9 @@ export default function Header() {
             <Image 
               src="/logo.png" 
               alt={siteConfig.brandName}
-              width={220}
-              height={110}
-              className="h-14 w-auto md:h-16"
+              width={280}
+              height={140}
+              className="h-16 w-auto md:h-20"
               priority
             />
           </Link>

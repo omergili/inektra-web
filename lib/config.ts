@@ -11,7 +11,7 @@ export const siteConfig = {
   
   // Site Metadata
   name: 'Kalibrierservice | Professionelle Werkskalibrierung',
-  description: 'Präzise Werkskalibrierung für Industrie & Labor. ISO-Kalibrierung nach DIN EN ISO/IEC 17025. Über 3.200 Messgrößen. Schnell, zuverlässig, deutschlandweit.',
+  description: 'Präzise Werkskalibrierung für Industrie & Labor nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Schnell, zuverlässig, deutschlandweit.',
   keywords: [
     'kalibrierservice',
     'messgeräte kalibrieren',

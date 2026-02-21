@@ -13,10 +13,44 @@ export default function ContactSidebar() {
   });
   const [file, setFile] = useState<File | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement form submission
-    alert('Formular-Versand wird in Phase 2 implementiert');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          hasFile: !!file,
+          fileName: file?.name,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFile(null);
+        setTimeout(() => setIsOpen(false), 2000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -145,10 +179,23 @@ export default function ContactSidebar() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-sm"
+              disabled={isSubmitting}
+              className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Anfrage senden
+              {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
             </button>
+
+            {submitStatus === 'success' && (
+              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">
+                ✓ Anfrage erfolgreich gesendet! Wir melden uns zeitnah.
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm">
+                ✗ Fehler beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an.
+              </div>
+            )}
 
             <p className="text-xs text-neutral-500">
               * Pflichtfelder. Wir antworten innerhalb von 24 Stunden.
