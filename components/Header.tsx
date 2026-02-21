@@ -12,10 +12,11 @@ export default function Header() {
             <Image 
               src="/logo.png" 
               alt={siteConfig.brandName}
-              width={280}
-              height={140}
+              width={160}
+              height={80}
               className="h-16 w-auto md:h-20"
               priority
+              quality={90}
             />
           </Link>
 
