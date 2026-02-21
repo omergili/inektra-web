@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { siteConfig } from '@/lib/config';
 
 export default function Footer() {
@@ -11,13 +10,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <Image 
+            <img 
               src="/logo.png" 
               alt={siteConfig.brandName}
-              width={80}
-              height={40}
               className="h-10 w-auto mb-4 brightness-0 invert"
-              quality={85}
             />
             <p className="text-sm mb-4">
               Professionelle Kalibrierung für Industrie und Labor. Präzise, schnell und deutschlandweit.
