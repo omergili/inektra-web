@@ -1,36 +1,49 @@
 import { NextResponse } from 'next/server';
-import { query } from '@/lib/db';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
   try {
-    const result = await query(`
-      SELECT 
-        category,
-        COUNT(*) as device_count,
-        MIN(price_euro) as min_price,
-        MAX(price_euro) as max_price,
-        AVG(price_euro) as avg_price
-      FROM calibration_devices
-      GROUP BY category
-      ORDER BY device_count DESC
-    `);
+    // Get all devices to calculate stats client-side
+    const { data: devices, error } = await supabase
+      .from('calibration_devices')
+      .select('category, price_euro');
 
-    const categories = result.rows.map((row: any) => ({
-      name: row.category,
-      slug: row.category.toLowerCase()
-        .replace(/ä/g, 'ae')
-        .replace(/ö/g, 'oe')
-        .replace(/ü/g, 'ue')
-        .replace(/ß/g, 'ss')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, ''),
-      deviceCount: parseInt(row.device_count),
-      priceRange: {
-        min: parseFloat(row.min_price),
-        max: parseFloat(row.max_price),
-        avg: parseFloat(row.avg_price)
+    if (error) throw error;
+
+    // Calculate stats per category
+    const categoryMap = new Map<string, { count: number; prices: number[] }>();
+    
+    devices?.forEach((device: any) => {
+      const cat = device.category || 'Sonstige';
+      if (!categoryMap.has(cat)) {
+        categoryMap.set(cat, { count: 0, prices: [] });
       }
-    }));
+      const stats = categoryMap.get(cat)!;
+      stats.count++;
+      stats.prices.push(device.price_euro);
+    });
+
+    const categories = Array.from(categoryMap.entries())
+      .map(([name, stats]) => {
+        const prices = stats.prices.sort((a, b) => a - b);
+        return {
+          name,
+          slug: name.toLowerCase()
+            .replace(/ä/g, 'ae')
+            .replace(/ö/g, 'oe')
+            .replace(/ü/g, 'ue')
+            .replace(/ß/g, 'ss')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, ''),
+          deviceCount: stats.count,
+          priceRange: {
+            min: prices[0] || 0,
+            max: prices[prices.length - 1] || 0,
+            avg: prices.reduce((sum, p) => sum + p, 0) / prices.length || 0
+          }
+        };
+      })
+      .sort((a, b) => b.deviceCount - a.deviceCount);
 
     return NextResponse.json({ categories });
 

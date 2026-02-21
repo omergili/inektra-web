@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { query } from '@/lib/db';
+import { supabase } from '@/lib/supabase';
 
 export async function GET(
   request: NextRequest,
@@ -23,45 +23,39 @@ export async function GET(
     const offset = parseInt(searchParams.get('offset') || '0');
 
     // Geräte laden
-    const devicesResult = await query(`
-      SELECT 
-        id, article_number, name, device_standard, device_type,
-        price_euro, calibration_type
-      FROM calibration_devices
-      WHERE category ILIKE $1
-      ORDER BY price_euro ASC
-      LIMIT $2 OFFSET $3
-    `, [categoryName, limit, offset]);
+    const { data: devices, error, count } = await supabase
+      .from('calibration_devices')
+      .select('id, article_number, name, device_standard, device_type, price_euro, calibration_type', { count: 'exact' })
+      .ilike('category', categoryName)
+      .order('price_euro', { ascending: true })
+      .range(offset, offset + limit - 1);
 
-    // Statistiken
-    const statsResult = await query(`
-      SELECT 
-        COUNT(*) as total,
-        MIN(price_euro) as min_price,
-        MAX(price_euro) as max_price,
-        AVG(price_euro) as avg_price
-      FROM calibration_devices
-      WHERE category ILIKE $1
-    `, [categoryName]);
+    if (error) throw error;
 
-    const stats = statsResult.rows[0];
+    // Statistiken berechnen (alle devices für die Kategorie)
+    const { data: allDevices } = await supabase
+      .from('calibration_devices')
+      .select('price_euro')
+      .ilike('category', categoryName);
+
+    const prices = allDevices?.map(d => d.price_euro).sort((a, b) => a - b) || [];
 
     return NextResponse.json({
       category: categoryName,
       slug,
-      devices: devicesResult.rows,
+      devices: devices || [],
       stats: {
-        total: parseInt(stats.total),
+        total: count || 0,
         priceRange: {
-          min: parseFloat(stats.min_price),
-          max: parseFloat(stats.max_price),
-          avg: parseFloat(stats.avg_price)
+          min: prices[0] || 0,
+          max: prices[prices.length - 1] || 0,
+          avg: prices.reduce((sum, p) => sum + p, 0) / prices.length || 0
         }
       },
       pagination: {
         limit,
         offset,
-        hasMore: offset + limit < parseInt(stats.total)
+        hasMore: offset + limit < (count || 0)
       }
     });
 
