@@ -65,3 +65,64 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Accessibility Improvements ───────────────────────────────────────── */
+
+/* Links erkennbar machen (nicht nur durch Farbe) */
+/* Nur Text-Links unterstreichen, keine Buttons/Cards */
+a:where(:not([class*="inline-flex"]):not([class*="block"]):not([class*="group"])) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Hover-Effekt für Text-Links */
+a:where(:not([class*="inline-flex"]):not([class*="block"]):not([class*="group"])):hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Explizite underline für Fließtext-Links */
+.prose a,
+main a:not([class*="btn"]):not([class*="button"]):not([class*="card"]) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Fokus-Indikator für Tastatur-Navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+/* Skip-to-content Link für Screenreader */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: var(--color-accent-500);
+  color: white;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+/* Screen-reader only (versteckt, aber für Screenreader lesbar) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -49,8 +49,9 @@ export default function Home() {
       </section>
 
       {/* USP Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" aria-labelledby="usps-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <h2 id="usps-heading" className="sr-only">Unsere Vorteile</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-100 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-4">
