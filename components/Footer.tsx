@@ -49,11 +49,6 @@ export default function Footer() {
                   Messgeräte kalibrieren
                 </Link>
               </li>
-              <li>
-                <Link href="/vor-ort-kalibrierung" className="hover:text-white transition-colors">
-                  Vor-Ort-Service
-                </Link>
-              </li>
             </ul>
           </div>
 
