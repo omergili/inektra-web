@@ -64,6 +64,6 @@ export const siteConfig = {
     ogImage: '/og-image.jpg',
     twitterHandle: '@inektra', // später anpassen
   },
-} as const;
+};
 
 export type SiteConfig = typeof siteConfig;

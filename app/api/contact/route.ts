@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     const { name, email, phone, message, hasFile, fileName } = body;
 
     // Email-Konfiguration (nutzt bot@mylurch.de Mail-Server)
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'cp120.sp-server.net',
       port: 465,
       secure: true,
