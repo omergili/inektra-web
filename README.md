@@ -1,5 +1,6 @@
 # 🚀 Inektra Self-Optimizing SEO Website
 
+
 **Domain:** kalibrierservice.com (oder inektra.de)  
 **Tech Stack:** Next.js 15, TypeScript, Tailwind CSS, PostgreSQL  
 **Mission:** Selbstoptimierendes SEO-System mit KI-gestützter Content-Optimierung
