@@ -77,8 +77,8 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center">
+      <section className="pt-32 pb-20 min-h-[500px] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center w-full">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Häufig gestellte <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">Fragen</span>
           </h1>
