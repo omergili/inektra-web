@@ -85,9 +85,9 @@ export default function PreisePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white relative overflow-hidden min-h-[500px] flex items-center">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Kalibrierpreise <span className="text-accent-500">durchsuchen</span>
           </h1>
