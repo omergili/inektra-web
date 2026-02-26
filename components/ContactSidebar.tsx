@@ -49,7 +49,7 @@ export default function ContactSidebar() {
         setTimeout(() => setIsOpen(false), 2000);
       } else {
         setSubmitStatus('error');
-        setErrorMessage(data.message || `HTTP ${response.status}`);
+        setErrorMessage(data.debug || data.message || `HTTP ${response.status}`);
       }
     } catch (error: any) {
       console.error('Submit error:', error);

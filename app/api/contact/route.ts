@@ -97,7 +97,8 @@ export async function POST(request: NextRequest) {
       console.error('[❌ EMAIL FAILED]', emailError.message, emailError.code);
       return NextResponse.json({
         success: false,
-        message: 'E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.',
+        message: `E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.`,
+        debug: `${emailError.code || 'UNKNOWN'}: ${emailError.message}`,
       }, { status: 500 });
     }
 
