@@ -25,7 +25,7 @@ export const siteConfig = {
   // Contact
   contact: {
     phone: process.env.NEXT_PUBLIC_PHONE || '+49 5921 72 31 00',
-    email: process.env.NEXT_PUBLIC_EMAIL || 'info@inektra.com',
+    email: process.env.NEXT_PUBLIC_EMAIL || 'info@inektra.de',
     address: {
       // Labor-Adresse (Nordhorn)
       street: 'Losserstr. 4',
