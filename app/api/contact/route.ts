@@ -83,7 +83,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: false,
         message: 'E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.',
-        debug: emailError.message,
       }, { status: 500 });
     }
 
@@ -98,7 +97,6 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         message: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut oder rufen Sie uns an.',
-        debug: error.message,
       },
       { status: 500 }
     );

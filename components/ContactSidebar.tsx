@@ -17,13 +17,11 @@ export default function ContactSidebar() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    setErrorMessage('');
 
     try {
       const body = new FormData();
@@ -49,12 +47,10 @@ export default function ContactSidebar() {
         setTimeout(() => setIsOpen(false), 2000);
       } else {
         setSubmitStatus('error');
-        setErrorMessage(data.debug || data.message || `HTTP ${response.status}`);
       }
     } catch (error: any) {
       console.error('Submit error:', error);
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'Netzwerkfehler');
     } finally {
       setIsSubmitting(false);
     }
@@ -222,9 +218,6 @@ export default function ContactSidebar() {
             {submitStatus === 'error' && (
               <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm">
                 ✗ Fehler beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an.
-                {errorMessage && (
-                  <p className="mt-1 text-xs text-red-600">Debug: {errorMessage}</p>
-                )}
               </div>
             )}
 
