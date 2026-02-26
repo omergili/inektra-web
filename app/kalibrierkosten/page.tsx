@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
 
 interface ToolboxxItem {
   id: number;
@@ -14,12 +14,27 @@ interface ToolboxxItem {
   manufacturer: string | null;
 }
 
+interface Category {
+  name: string;
+  count: number;
+}
+
 export default function KalibrierKostenPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState<ToolboxxItem[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const [fetchedAt, setFetchedAt] = useState('');
+
+  // Kategorien laden
+  useEffect(() => {
+    fetch('/api/toolboxx/items?categories=true')
+      .then(res => res.json())
+      .then(data => setCategories(data.categories || []))
+      .catch(err => console.error('Failed to load categories:', err));
+  }, []);
 
   // Suche durchführen
   useEffect(() => {
@@ -28,13 +43,14 @@ export default function KalibrierKostenPage() {
     }, 300);
 
     return () => clearTimeout(delaySearch);
-  }, [searchQuery]);
+  }, [searchQuery, selectedCategory]);
 
   const performSearch = async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
       if (searchQuery) params.append('q', searchQuery);
+      if (selectedCategory) params.append('category', selectedCategory);
       params.append('limit', '100');
 
       const res = await fetch(`/api/toolboxx/items?${params}`);
@@ -99,6 +115,42 @@ export default function KalibrierKostenPage() {
             {loading ? 'Suche läuft...' : `${total.toLocaleString('de-DE')} Kalibrierleistungen verfügbar`}
           </p>
         </div>
+
+        {/* Kategorien-Filter */}
+        {categories.length > 0 && (
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <FunnelIcon className="h-5 w-5 text-slate-600" />
+              <h2 className="text-lg font-semibold text-slate-900">Nach Kategorie filtern</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  selectedCategory === null
+                    ? 'bg-accent-500 text-white shadow-lg'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:border-accent-500'
+                }`}
+              >
+                Alle
+              </button>
+              {categories.map((cat) => (
+                <button
+                  key={cat.name}
+                  onClick={() => setSelectedCategory(cat.name)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    selectedCategory === cat.name
+                      ? 'bg-accent-500 text-white shadow-lg'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:border-accent-500'
+                  }`}
+                >
+                  {cat.name}
+                  <span className="ml-2 text-sm opacity-75">({cat.count})</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Ergebnisse */}
         {items.length > 0 ? (
