@@ -1,6 +1,7 @@
 import { siteConfig } from '@/lib/config';
 import type { Metadata } from 'next';
 import PageFAQ from '@/components/PageFAQ';
+import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Kalibrierung anfragen | inektra GmbH',
@@ -79,12 +80,10 @@ export default function KontaktPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-slate-900 mb-1">E-Mail</h3>
-                      <a 
-                        href={`mailto:${siteConfig.contact.email}`}
-                        className="text-accent-600 hover:text-accent-700 text-lg font-medium transition-colors break-all"
-                      >
-                        {siteConfig.contact.email}
-                      </a>
+                      <EmailLink
+                        email={siteConfig.contact.email}
+                        className="text-accent-600 hover:text-accent-700 text-lg font-medium transition-colors break-all cursor-pointer"
+                      />
                       <p className="text-sm text-slate-600 mt-1">Antwort innerhalb von 24h</p>
                     </div>
                   </div>

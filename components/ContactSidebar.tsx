@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { siteConfig } from '@/lib/config';
+import EmailLink from '@/components/EmailLink';
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -238,15 +239,15 @@ export default function ContactSidebar() {
                 </svg>
                 {siteConfig.contact.phone}
               </a>
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+              <EmailLink
+                email={siteConfig.contact.email}
+                className="flex items-center text-sm text-neutral-600 hover:text-primary-600 transition-colors cursor-pointer"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 {siteConfig.contact.email}
-              </a>
+              </EmailLink>
             </div>
           </div>
         </div>
