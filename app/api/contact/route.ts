@@ -3,8 +3,12 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, phone, message, hasFile, fileName } = body;
+    const formData = await request.formData();
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const message = formData.get('message') as string;
+    const file = formData.get('file') as File | null;
 
     // Validierung
     if (!name || !email) {
@@ -21,8 +25,8 @@ export async function POST(request: NextRequest) {
       email,
       phone: phone || '',
       message: message || '',
-      hasFile: hasFile || false,
-      fileName: fileName || '',
+      hasFile: !!file,
+      fileName: file?.name || '',
     };
 
     // 📊 Console-Log für Vercel Logs (Backup)
@@ -57,6 +61,17 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      // Anhang vorbereiten
+      const attachments = [];
+      if (file) {
+        const buffer = Buffer.from(await file.arrayBuffer());
+        attachments.push({
+          filename: file.name,
+          content: buffer,
+          contentType: file.type,
+        });
+      }
+
       await transporter.sendMail({
         from: `inektra Kontaktformular <${smtpUser}>`,
         to: 'info@inektra.de',
@@ -68,12 +83,13 @@ export async function POST(request: NextRequest) {
           <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
           ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
           ${message ? `<p><strong>Nachricht:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
-          ${hasFile ? `<p><strong>Datei hochgeladen:</strong> ${escapeHtml(fileName || 'unbekannt')}</p>` : ''}
+          ${file ? `<p><strong>Datei im Anhang:</strong> ${escapeHtml(file.name)}</p>` : ''}
           <hr/>
           <p style="color: #666; font-size: 12px;">
             Gesendet am ${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })}
           </p>
         `,
+        attachments,
       });
 
       console.log('[✅ EMAIL SENT via SMTP]');

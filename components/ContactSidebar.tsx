@@ -23,17 +23,18 @@ export default function ContactSidebar() {
     setSubmitStatus('idle');
 
     try {
+      const body = new FormData();
+      body.append('name', formData.name);
+      body.append('email', formData.email);
+      body.append('phone', formData.phone);
+      body.append('message', formData.message);
+      if (file) {
+        body.append('file', file);
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          hasFile: !!file,
-          fileName: file?.name,
-        }),
+        body,
       });
 
       const data = await response.json();
