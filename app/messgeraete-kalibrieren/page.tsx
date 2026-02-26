@@ -41,7 +41,7 @@ const categories = [
   },
   {
     name: 'Weitere Messgeräte',
-    description: 'Zeit, Frequenz, Optik, Feuchte, Akustik, Chemie, Gas-Analyse',
+    description: 'Zeit, Frequenz, Optik, Feuchte, Akustik',
     icon: '🔧',
     count: '300+',
   },
