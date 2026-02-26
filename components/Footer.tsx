@@ -82,8 +82,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center md:text-left">
           <p>
-            © {currentYear} {siteConfig.brandName}. Alle Rechte vorbehalten. | 
-            USt-IdNr: {siteConfig.legal.vatId}
+            © {currentYear} {siteConfig.brandName}. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>
