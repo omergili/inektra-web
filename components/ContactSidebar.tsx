@@ -68,11 +68,11 @@ export default function ContactSidebar() {
       {/* Sidebar */}
       <div
         className={`
-          fixed top-20 right-0 z-40 w-full lg:w-96 h-[calc(100vh-5rem)] 
+          fixed top-20 right-0 z-40 w-full lg:w-96 h-[calc(100vh-5rem)]
           bg-white border-l border-neutral-200 shadow-2xl
           transform transition-transform duration-300
           ${isOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
-          overflow-y-auto
+          overflow-y-auto pointer-events-auto
         `}
       >
         <div className="p-6">
