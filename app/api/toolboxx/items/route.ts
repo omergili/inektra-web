@@ -20,7 +20,9 @@ interface ToolboxxData {
 }
 
 let cachedData: ToolboxxData | null = null;
-let cachedManufacturers: { name: string; count: number }[] | null = null;
+
+/** Prefixes to exclude from results (generic service entries, not device-specific) */
+const EXCLUDED_PREFIXES = ['Werkskalibrierung', 'Akkreditierte Kalibrierung'];
 
 function loadData(): ToolboxxData {
   if (cachedData) return cachedData;
@@ -30,76 +32,26 @@ function loadData(): ToolboxxData {
     return { fetchedAt: '', totalItems: 0, items: [] };
   }
 
-  cachedData = JSON.parse(readFileSync(filePath, 'utf-8'));
-  return cachedData!;
-}
+  const raw: ToolboxxData = JSON.parse(readFileSync(filePath, 'utf-8'));
 
-/**
- * Extract manufacturer name from the product name.
- * Most toolboxx items start with the manufacturer name followed by the model.
- * E.g. "Fluke 115 Digitalmultimeter" → "Fluke"
- * Special case: "Chauvin Arnoux" is two words.
- */
-function extractManufacturer(name: string): string {
-  if (!name) return 'Sonstige';
+  // Filter out generic calibration service entries
+  raw.items = raw.items.filter(
+    (item) => !EXCLUDED_PREFIXES.some((prefix) => item.name.startsWith(prefix))
+  );
+  raw.totalItems = raw.items.length;
 
-  // Handle known two-word manufacturers
-  const twoWordPrefixes = ['Chauvin Arnoux', 'Gossen Metrawatt', 'Rohde & Schwarz', 'H&B'];
-  for (const prefix of twoWordPrefixes) {
-    if (name.startsWith(prefix)) return prefix;
-  }
-
-  // Strip leading "--- " (some items have this prefix)
-  const cleaned = name.replace(/^-+\s*/, '');
-
-  // First word = manufacturer
-  const firstWord = cleaned.split(/\s+/)[0];
-  return firstWord || 'Sonstige';
-}
-
-function getManufacturers(items: ToolboxxItem[]): { name: string; count: number }[] {
-  if (cachedManufacturers) return cachedManufacturers;
-
-  const map = new Map<string, number>();
-  for (const item of items) {
-    const mfr = extractManufacturer(item.name);
-    map.set(mfr, (map.get(mfr) || 0) + 1);
-  }
-
-  // Only include manufacturers with ≥10 items, sorted by count descending
-  cachedManufacturers = Array.from(map.entries())
-    .filter(([, count]) => count >= 10)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
-
-  return cachedManufacturers;
+  cachedData = raw;
+  return cachedData;
 }
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-
-  const data = loadData();
-
-  // Return manufacturers list
-  if (searchParams.get('manufacturers') === 'true') {
-    const manufacturers = getManufacturers(data.items);
-    return NextResponse.json({ manufacturers });
-  }
-
   const query = searchParams.get('q')?.toLowerCase() || '';
-  const manufacturer = searchParams.get('manufacturer') || '';
   const limit = parseInt(searchParams.get('limit') || '50');
   const offset = parseInt(searchParams.get('offset') || '0');
 
+  const data = loadData();
   let items = data.items;
-
-  // Filter by manufacturer (extracted from name)
-  if (manufacturer) {
-    items = items.filter((item) => {
-      const mfr = extractManufacturer(item.name);
-      return mfr === manufacturer;
-    });
-  }
 
   // Filter by search query
   if (query && query.length >= 2) {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 interface ToolboxxItem {
   id: number;
@@ -14,27 +14,12 @@ interface ToolboxxItem {
   manufacturer: string | null;
 }
 
-interface Manufacturer {
-  name: string;
-  count: number;
-}
-
 export default function KalibrierKostenPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState<ToolboxxItem[]>([]);
-  const [manufacturers, setManufacturers] = useState<Manufacturer[]>([]);
-  const [selectedManufacturer, setSelectedManufacturer] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const [fetchedAt, setFetchedAt] = useState('');
-
-  // Hersteller laden
-  useEffect(() => {
-    fetch('/api/toolboxx/items?manufacturers=true')
-      .then(res => res.json())
-      .then(data => setManufacturers(data.manufacturers || []))
-      .catch(err => console.error('Failed to load manufacturers:', err));
-  }, []);
 
   // Suche durchführen
   useEffect(() => {
@@ -43,14 +28,13 @@ export default function KalibrierKostenPage() {
     }, 300);
 
     return () => clearTimeout(delaySearch);
-  }, [searchQuery, selectedManufacturer]);
+  }, [searchQuery]);
 
   const performSearch = async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
       if (searchQuery) params.append('q', searchQuery);
-      if (selectedManufacturer) params.append('manufacturer', selectedManufacturer);
       params.append('limit', '100');
 
       const res = await fetch(`/api/toolboxx/items?${params}`);
@@ -93,7 +77,7 @@ export default function KalibrierKostenPage() {
             Kalibrierkosten <span className="text-accent-500">Übersicht</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl">
-            Über {total > 0 ? total.toLocaleString('de-DE') : '3.600'} Kalibrierleistungen • Transparente Preise • Werkskalibrierung
+            Über {total > 0 ? total.toLocaleString('de-DE') : '3.200'} Kalibrierleistungen • Transparente Preise • Werkskalibrierung
           </p>
         </div>
       </div>
@@ -112,45 +96,9 @@ export default function KalibrierKostenPage() {
             />
           </div>
           <p className="mt-2 text-sm text-slate-600">
-            {loading ? 'Suche läuft...' : `${total.toLocaleString('de-DE')} Kalibrierleistungen${selectedManufacturer ? ` von ${selectedManufacturer}` : ''} verfügbar`}
+            {loading ? 'Suche läuft...' : `${total.toLocaleString('de-DE')} Kalibrierleistungen verfügbar`}
           </p>
         </div>
-
-        {/* Hersteller-Filter */}
-        {manufacturers.length > 0 && (
-          <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <FunnelIcon className="h-5 w-5 text-slate-600" />
-              <h2 className="text-lg font-semibold text-slate-900">Nach Hersteller filtern</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSelectedManufacturer(null)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  selectedManufacturer === null
-                    ? 'bg-accent-500 text-white shadow-lg'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:border-accent-500'
-                }`}
-              >
-                Alle
-              </button>
-              {manufacturers.map((mfr) => (
-                <button
-                  key={mfr.name}
-                  onClick={() => setSelectedManufacturer(mfr.name)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                    selectedManufacturer === mfr.name
-                      ? 'bg-accent-500 text-white shadow-lg'
-                      : 'bg-white text-slate-700 border border-slate-200 hover:border-accent-500'
-                  }`}
-                >
-                  {mfr.name}
-                  <span className="ml-2 text-sm opacity-75">({mfr.count})</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Ergebnisse */}
         {items.length > 0 ? (
