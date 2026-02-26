@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 const processSteps = [
   { step: 1, title: 'Anfrage', description: 'Senden Sie uns Ihre Geräteliste oder kontaktieren Sie uns telefonisch.' },
   { step: 2, title: 'Angebot', description: 'Sie erhalten ein transparentes, verbindliches Angebot inkl. Bearbeitungszeit.' },
-  { step: 3, title: 'Versand', description: 'Senden Sie Ihre Geräte versichert an unser Labor. Versandkosten: 15 € netto zzgl. MwSt. (Palettenversand nach Aufwand).' },
+  { step: 3, title: 'Einsendung', description: 'Senden Sie Ihre Geräte versichert an unser Labor.' },
   { step: 4, title: 'Kalibrierung', description: 'Wir kalibrieren nach ISO-Normen und dokumentieren alle Messwerte.' },
-  { step: 5, title: 'Rücksendung', description: 'Sie erhalten Ihre Geräte mit rückverfolgbarem Kalibrierschein zurück.' },
+  { step: 5, title: 'Rücksendung', description: 'Sie erhalten Ihre Geräte mit rückverfolgbarem Kalibrierschein zurück. Rückversand: 15 € netto zzgl. MwSt. (Palettenversand nach Aufwand).' },
 ];
 
 const benefits = [
@@ -27,7 +27,7 @@ const benefits = [
 const faqs = [
   {
     question: 'Was kostet der Kalibrierservice?',
-    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang. Wir erstellen Ihnen ein individuelles Angebot basierend auf Ihrer Geräteliste. Versandkosten: 15 € netto zzgl. MwSt. (Palettenversand nach Aufwand).',
+    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang. Wir erstellen Ihnen ein individuelles Angebot basierend auf Ihrer Geräteliste. Rückversand: 15 € netto zzgl. MwSt. (Palettenversand nach Aufwand).',
   },
   {
     question: 'Wie lange dauert die Kalibrierung?',

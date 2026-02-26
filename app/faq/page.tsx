@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const faqData = [
   {
     question: 'Was kostet eine Kalibrierung?',
-    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang der Kalibrierung. Für ein individuelles Angebot kontaktieren Sie uns bitte mit Ihrer Geräteliste. Wir erstellen Ihnen ein transparentes, verbindliches Angebot. Versandkosten: 15 € netto zzgl. MwSt.',
+    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang der Kalibrierung. Für ein individuelles Angebot kontaktieren Sie uns bitte mit Ihrer Geräteliste. Wir erstellen Ihnen ein transparentes, verbindliches Angebot. Rückversand: 15 € netto zzgl. MwSt.',
   },
   {
     question: 'Wie lange dauert eine Kalibrierung?',
@@ -46,8 +46,8 @@ const faqData = [
     answer: 'Aktuell erfolgt die Kalibrierung in unserem Labor in Nordhorn. Für größere Projekte oder immobile Messgeräte sprechen Sie uns bitte direkt an – wir finden eine Lösung.',
   },
   {
-    question: 'Welche Versandkosten fallen an?',
-    answer: 'Die Versandkosten betragen pauschal 15 € netto (zzgl. MwSt.) pro Sendung, unabhängig vom Auftragswert. Versicherter Versand ist inklusive.',
+    question: 'Welche Rückversandkosten fallen an?',
+    answer: 'Der Rückversand Ihrer kalibrierten Geräte beträgt pauschal 15 € netto (zzgl. MwSt.) pro Sendung. Versicherter Versand ist inklusive. Die Einsendung Ihrer Geräte an unser Labor erfolgt auf Ihre Kosten.',
   },
   {
     question: 'Kann ich eine Sammelrechnung für mehrere Geräte erhalten?',

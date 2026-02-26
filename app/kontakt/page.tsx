@@ -15,8 +15,8 @@ const faqs = [
     answer: 'In der Regel innerhalb von 24 Stunden. Senden Sie uns Ihre Geräteliste per E-Mail, Formular oder laden Sie sie direkt hoch.',
   },
   {
-    question: 'Was kostet der Versand?',
-    answer: 'Standardversand: 15 € netto zzgl. MwSt. Palettenversand nach Aufwand. Versicherter Versand inklusive.',
+    question: 'Was kostet der Rückversand?',
+    answer: 'Rückversand: 15 € netto zzgl. MwSt. Palettenversand nach Aufwand. Versicherter Versand inklusive. Die Einsendung erfolgt auf Ihre Kosten.',
   },
   {
     question: 'Kann ich Geräte persönlich vorbeibringen?',

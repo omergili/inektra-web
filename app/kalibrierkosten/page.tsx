@@ -220,7 +220,7 @@ export default function KalibrierKostenPage() {
           <h3 className="font-semibold text-accent-900 mb-2">Hinweise zu den Kalibrierkosten</h3>
           <ul className="space-y-1 text-sm text-accent-800">
             <li>• Alle Preise verstehen sich netto zzgl. MwSt.</li>
-            <li>• Versandkosten: 15 € netto (Palettenversand nach Aufwand)</li>
+            <li>• Rückversand: 15 € netto (Palettenversand nach Aufwand)</li>
             <li>• Werkskalibrierung nach ISO-Normen (nicht akkreditiert)</li>
             <li>• Lieferzeit: i.d.R. 5-10 Werktage</li>
             <li>• Individuelle Angebote für größere Stückzahlen auf Anfrage</li>
