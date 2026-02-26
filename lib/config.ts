@@ -56,6 +56,7 @@ export const siteConfig = {
     { name: 'Kalibrierservice', href: '/kalibrierservice' },
     { name: 'Messgeräte', href: '/messgeraete-kalibrieren' },
     { name: 'Preise', href: '/preise' },
+    { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Über uns', href: '/ueber-uns' },
     { name: 'Kontakt', href: '/kontakt' },
