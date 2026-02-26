@@ -29,43 +29,59 @@ export async function POST(request: NextRequest) {
     console.log('[🔔 NEW CONTACT FORM SUBMISSION]', JSON.stringify(lead, null, 2));
 
     // ✉️ E-Mail senden via Nodemailer (SMTP)
-    if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-      try {
-        const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST,
-          port: Number(process.env.SMTP_PORT) || 587,
-          secure: false, // STARTTLS on port 587
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
-        });
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
 
-        await transporter.sendMail({
-          from: `inektra Kontaktformular <${process.env.SMTP_USER}>`,
-          to: 'info@inektra.de',
-          replyTo: email,
-          subject: `Neue Anfrage von ${name}`,
-          html: `
-            <h2>Neue Kontaktanfrage über kalibrierservice.com</h2>
-            <p><strong>Name/Firma:</strong> ${escapeHtml(name)}</p>
-            <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
-            ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
-            ${message ? `<p><strong>Nachricht:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
-            ${hasFile ? `<p><strong>Datei hochgeladen:</strong> ${escapeHtml(fileName || 'unbekannt')}</p>` : ''}
-            <hr/>
-            <p style="color: #666; font-size: 12px;">
-              Gesendet am ${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })}
-            </p>
-          `,
-        });
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      console.error('[⚠️ SMTP not configured]', {
+        hasHost: !!smtpHost,
+        hasUser: !!smtpUser,
+        hasPass: !!smtpPass,
+      });
+      return NextResponse.json({
+        success: false,
+        message: 'E-Mail-Versand ist nicht konfiguriert. Bitte rufen Sie uns direkt an.',
+      }, { status: 500 });
+    }
 
-        console.log('[✅ EMAIL SENT via SMTP]');
-      } catch (emailError: any) {
-        console.error('[⚠️ EMAIL FAILED]', emailError.message);
-      }
-    } else {
-      console.log('[⚠️ SMTP not configured - email skipped]');
+    try {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: false, // STARTTLS on port 587
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `inektra Kontaktformular <${smtpUser}>`,
+        to: 'info@inektra.de',
+        replyTo: email,
+        subject: `Neue Anfrage von ${name}`,
+        html: `
+          <h2>Neue Kontaktanfrage über kalibrierservice.com</h2>
+          <p><strong>Name/Firma:</strong> ${escapeHtml(name)}</p>
+          <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
+          ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
+          ${message ? `<p><strong>Nachricht:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
+          ${hasFile ? `<p><strong>Datei hochgeladen:</strong> ${escapeHtml(fileName || 'unbekannt')}</p>` : ''}
+          <hr/>
+          <p style="color: #666; font-size: 12px;">
+            Gesendet am ${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })}
+          </p>
+        `,
+      });
+
+      console.log('[✅ EMAIL SENT via SMTP]');
+    } catch (emailError: any) {
+      console.error('[❌ EMAIL FAILED]', emailError.message);
+      return NextResponse.json({
+        success: false,
+        message: 'E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.',
+      }, { status: 500 });
     }
 
     return NextResponse.json({
