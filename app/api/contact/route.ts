@@ -78,10 +78,11 @@ export async function POST(request: NextRequest) {
 
       console.log('[✅ EMAIL SENT via SMTP]');
     } catch (emailError: any) {
-      console.error('[❌ EMAIL FAILED]', emailError.message);
+      console.error('[❌ EMAIL FAILED]', emailError.message, emailError.code);
       return NextResponse.json({
         success: false,
         message: 'E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.',
+        debug: `${emailError.code}: ${emailError.message}`,
       }, { status: 500 });
     }
 
