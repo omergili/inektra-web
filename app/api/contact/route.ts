@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       `;
 
       await resend.emails.send({
-        from: 'inektra Kontaktformular <kontakt@inektra.de>',
+        from: 'inektra Kontaktformular <info@inektra.de>',
         to: ['info@inektra.de'],
         replyTo: email,
         subject: `Neue Anfrage von ${name}`,
