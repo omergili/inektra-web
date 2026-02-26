@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         replyTo: email,
         subject: `Neue Anfrage von ${name}`,
         html: `
-          <h2>Neue Kontaktanfrage über kalibrierservice.com</h2>
+          <h2>Neue Kontaktanfrage über inektra.de</h2>
           <p><strong>Name/Firma:</strong> ${escapeHtml(name)}</p>
           <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
           ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
