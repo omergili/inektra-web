@@ -9,17 +9,18 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kalibrierservice.com',
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'inektra GmbH',
   
-  // Site Metadata
-  name: 'Kalibrierservice | Professionelle Werkskalibrierung',
-  description: 'Präzise Werkskalibrierung für Industrie & Labor nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Schnell, zuverlässig, deutschlandweit.',
+  // Site Metadata (Default-Title wird im Layout als Fallback genutzt)
+  name: 'Kalibrierservice – Professionelle Werkskalibrierung',
+  description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnelle Bearbeitung, faire Preise, deutschlandweit.',
   keywords: [
     'kalibrierservice',
+    'werkskalibrierung',
     'messgeräte kalibrieren',
     'kalibrierung dienstleister',
-    'vor ort kalibrierung',
-    'mobile kalibrierung',
     'kalibrierlabor',
     'messmittel kalibrierung',
+    'iso kalibrierung',
+    'kalibrierung nordhorn',
   ],
   
   // Contact

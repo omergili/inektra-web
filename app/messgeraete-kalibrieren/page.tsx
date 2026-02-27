@@ -3,9 +3,12 @@ import Link from 'next/link';
 import PageFAQ from '@/components/PageFAQ';
 
 export const metadata: Metadata = {
-  title: 'Messgeräte kalibrieren | Über 3.200 Gerätetypen | inektra',
-  description: 'Kalibrierung elektrischer Messgeräte: Multimeter, Oszilloskope, Stromzangen, Leistungsanalysatoren. Temperatur, Druck, Dimensionsmesstechnik und mehr.',
-  keywords: ['multimeter kalibrieren', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'elektrische messtechnik', 'temperatur kalibrierung'],
+  title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen',
+  description: 'Messgeräte kalibrieren lassen: Multimeter, Oszilloskope, Stromzangen, Temperatur-, Druck- und Dimensionsmesstechnik. ISO-konforme Werkskalibrierung. Jetzt Angebot anfordern!',
+  keywords: ['messgeräte kalibrieren', 'multimeter kalibrieren', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'elektrische messtechnik', 'temperatur kalibrierung', 'druck kalibrierung'],
+  alternates: {
+    canonical: 'https://kalibrierservice.com/messgeraete-kalibrieren',
+  },
 };
 
 const categories = [

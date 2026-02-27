@@ -4,9 +4,12 @@ import { siteConfig } from '@/lib/config';
 import PageFAQ from '@/components/PageFAQ';
 
 export const metadata: Metadata = {
-  title: 'Über uns | Kalibrierlabor in Nordhorn | inektra GmbH',
-  description: 'inektra GmbH – Ihr Partner für präzise Werkskalibrierung. Labor in Nordhorn. Über 3.200 kalibrierbare Gerätetypen. Erfahren Sie mehr über uns.',
-  keywords: ['kalibrierlabor nordhorn', 'inektra', 'über uns', 'calpro hagels', 'werkskalibrierung'],
+  title: 'Über uns – Kalibrierlabor in Nordhorn',
+  description: 'inektra GmbH (ehem. Calpro Hagels) – Ihr Kalibrierlabor in Nordhorn. Über 3.200 kalibrierbare Gerätetypen. Erfahrung, Präzision und Zuverlässigkeit seit Jahren.',
+  keywords: ['kalibrierlabor nordhorn', 'inektra gmbh', 'calpro hagels', 'werkskalibrierung nordhorn', 'kalibrierdienstleister niedersachsen'],
+  alternates: {
+    canonical: 'https://kalibrierservice.com/ueber-uns',
+  },
 };
 
 const faqs = [

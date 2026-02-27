@@ -4,9 +4,12 @@ import PageFAQ from '@/components/PageFAQ';
 import EmailLink from '@/components/EmailLink';
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Kalibrierung anfragen | inektra GmbH',
-  description: `Kontaktieren Sie ${siteConfig.brandName} für professionelle Werkskalibrierung. Telefon, E-Mail oder Kontaktformular. Schnelle Antwort garantiert.`,
-  keywords: ['kalibrierung anfragen', 'angebot kalibrierung', 'kontakt kalibrierlabor', 'nordhorn'],
+  title: 'Kontakt – Kalibrierung anfragen',
+  description: `Kontaktieren Sie ${siteConfig.brandName} für Werkskalibrierung. Per Telefon, E-Mail oder Kontaktformular. Antwort innerhalb von 24 Stunden. Jetzt unverbindliches Angebot anfordern!`,
+  keywords: ['kalibrierung anfragen', 'angebot kalibrierung', 'kontakt kalibrierlabor', 'kalibrierung nordhorn', 'messmittel kalibrieren lassen'],
+  alternates: {
+    canonical: 'https://kalibrierservice.com/kontakt',
+  },
 };
 
 const faqs = [

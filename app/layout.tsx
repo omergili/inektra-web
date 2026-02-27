@@ -38,14 +38,18 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   robots: {
-    index: false,
-    follow: false,
-    noarchive: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noarchive: true,
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
+  },
+  alternates: {
+    canonical: siteConfig.siteUrl,
   },
   icons: {
     icon: '/favicon.ico',

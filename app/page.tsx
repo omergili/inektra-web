@@ -3,12 +3,17 @@ import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Präzise Werkskalibrierung für Industrie & Labor | inektra GmbH',
-  description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnell, präzise, zuverlässig.',
-  keywords: ['werkskalibrierung', 'messgeräte kalibrieren', 'kalibrierlabor', 'iso kalibrierung', 'nordhorn', 'inektra'],
+  title: {
+    absolute: 'Kalibrierservice – Präzise Werkskalibrierung für Industrie & Labor | inektra GmbH',
+  },
+  description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnelle Bearbeitung, faire Preise. Jetzt Angebot anfordern!',
+  keywords: ['werkskalibrierung', 'kalibrierservice', 'messgeräte kalibrieren', 'kalibrierlabor', 'iso kalibrierung', 'kalibrierung dienstleister', 'nordhorn'],
+  alternates: {
+    canonical: siteConfig.siteUrl,
+  },
   openGraph: {
-    title: 'Präzise Werkskalibrierung | inektra GmbH',
-    description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen.',
+    title: 'Kalibrierservice – Präzise Werkskalibrierung | inektra GmbH',
+    description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn.',
     url: siteConfig.siteUrl,
     type: 'website',
     locale: 'de_DE',
