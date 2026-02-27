@@ -96,7 +96,7 @@ export default function ContactSidebar() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
                 placeholder="Ihr Name oder Firma"
               />
             </div>
@@ -112,7 +112,7 @@ export default function ContactSidebar() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
                 placeholder="ihre@email.de"
               />
             </div>
@@ -127,7 +127,7 @@ export default function ContactSidebar() {
                 id="quick-phone"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
                 placeholder="+49 ..."
               />
             </div>
@@ -142,7 +142,7 @@ export default function ContactSidebar() {
                 rows={3}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
                 placeholder="Welche Geräte sollen kalibriert werden?"
               ></textarea>
             </div>

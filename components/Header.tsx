@@ -1,16 +1,21 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/lib/config';
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className="bg-white/95 backdrop-blur-md border-b border-neutral-200/50 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{/* Header bleibt full-width */}
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image 
-              src="/logo.png" 
+            <Image
+              src="/logo.png"
               alt={siteConfig.brandName}
               width={280}
               height={140}
@@ -19,7 +24,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-2">
             {siteConfig.navigation.map((item) => (
               <Link
@@ -32,7 +37,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button + Hamburger */}
           <div className="flex items-center space-x-4">
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
@@ -45,25 +50,55 @@ export default function Header() {
             </a>
             <Link
               href="/kontakt"
-              className="bg-accent-500 text-white px-5 py-2.5 rounded-xl hover:bg-accent-600 transition-all font-bold shadow-sm hover:shadow-md"
+              className="hidden sm:inline-flex bg-accent-500 text-white px-5 py-2.5 rounded-xl hover:bg-accent-600 transition-all font-bold shadow-sm hover:shadow-md"
             >
               Angebot anfragen
             </Link>
+
+            {/* Hamburger Button (Mobile) */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-slate-100 transition-colors"
+              aria-label={mobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <nav className="md:hidden pb-4 flex flex-wrap gap-2">
-          {siteConfig.navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-gray-700 hover:text-accent-600 px-3 py-2 rounded-lg hover:bg-slate-50"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        {/* Mobile Navigation (Dropdown) */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden pb-4 border-t border-slate-100 pt-3">
+            <div className="flex flex-col space-y-1">
+              {siteConfig.navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-accent-600 font-medium px-3 py-3 rounded-lg hover:bg-slate-50 transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/kontakt"
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-2 text-center bg-accent-500 text-white px-5 py-3 rounded-xl hover:bg-accent-600 transition-all font-bold shadow-sm"
+              >
+                Angebot anfragen
+              </Link>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );

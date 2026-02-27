@@ -53,12 +53,7 @@
   --color-neutral-950: #0c0a09;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Dark mode deaktiviert – Seite unterstützt nur Light Mode */
 
 body {
   background: var(--background);
