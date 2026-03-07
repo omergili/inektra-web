@@ -101,7 +101,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/messgeraete-kalibrieren" className="group block p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300">
               <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Messgeräte-Kalibrierung</h3>
               <p className="text-slate-600 mb-4">
@@ -126,6 +126,46 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
+            </Link>
+
+            <Link href="/kalibrierkosten" className="group block p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Kalibrierkosten</h3>
+              <p className="text-slate-600 mb-4">
+                Transparente Preisübersicht für über 3.200 Kalibrierleistungen. Durchsuchen Sie unseren Katalog.
+              </p>
+              <span className="inline-flex items-center text-accent-600 font-semibold group-hover:translate-x-2 transition-transform">
+                Preise ansehen
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Teaser */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-slate-900 mb-2">Häufige Fragen</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="p-6 bg-slate-50 rounded-xl">
+              <h3 className="font-bold text-slate-900 mb-2">Was kostet eine Kalibrierung?</h3>
+              <p className="text-slate-600 text-sm">Die Kosten variieren je nach Gerätetyp. Transparente Preise ab 40 EUR netto. Rückversand: 15 EUR netto zzgl. MwSt.</p>
+            </div>
+            <div className="p-6 bg-slate-50 rounded-xl">
+              <h3 className="font-bold text-slate-900 mb-2">Wie lange dauert die Kalibrierung?</h3>
+              <p className="text-slate-600 text-sm">Standard: 5-10 Werktage ab Eingang. Express-Service auf Anfrage möglich.</p>
+            </div>
+          </div>
+          <div className="text-center">
+            <Link href="/faq" className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform">
+              Alle FAQ ansehen
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>

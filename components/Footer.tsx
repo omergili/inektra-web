@@ -48,6 +48,16 @@ export default function Footer() {
                   Messgeräte kalibrieren
                 </Link>
               </li>
+              <li>
+                <Link href="/kalibrierkosten" className="hover:text-white transition-colors">
+                  Kalibrierkosten
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-white transition-colors">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
 

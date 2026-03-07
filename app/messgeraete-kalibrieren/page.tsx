@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import PageFAQ from '@/components/PageFAQ';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen',
@@ -68,6 +69,8 @@ const faqs = [
 export default function MessgeraetePage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: 'Messgeräte kalibrieren' }]} />
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import PageFAQ from '@/components/PageFAQ';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kalibrierservice – Werkskalibrierung für Industrie & Labor',
@@ -42,9 +43,42 @@ const faqs = [
   },
 ];
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Werkskalibrierung',
+  description: 'Professioneller Kalibrierservice nach ISO-Normen. Schnelle Bearbeitung, transparente Preise, über 3.200 kalibrierbare Gerätetypen.',
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://inektra.de/#organization',
+  },
+  serviceType: 'Werkskalibrierung',
+  areaServed: {
+    '@type': 'Country',
+    name: 'Deutschland',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Kalibrierleistungen',
+    itemListElement: [
+      { '@type': 'OfferCatalog', name: 'Elektrische Messtechnik', description: 'Multimeter, Oszilloskope, Stromzangen, Leistungsanalysatoren' },
+      { '@type': 'OfferCatalog', name: 'Temperaturmesstechnik', description: 'Thermometer, Thermoelemente, IR-Sensoren' },
+      { '@type': 'OfferCatalog', name: 'Druckmesstechnik', description: 'Manometer, Drucktransmitter, Drucksensoren' },
+      { '@type': 'OfferCatalog', name: 'Dimensionsmesstechnik', description: 'Messschieber, Messschrauben, Lehren' },
+      { '@type': 'OfferCatalog', name: 'Waagen & Kraft', description: 'Analysenwaagen, Präzisionswaagen, Drehmomentschlüssel' },
+    ],
+  },
+};
+
 export default function KalibrierservicePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <Breadcrumbs items={[{ name: 'Kalibrierservice' }]} />
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
@@ -106,15 +140,26 @@ export default function KalibrierservicePage() {
               <p className="text-slate-600 mb-4">
                 Wir bieten Werkskalibrierung für über 3.200 Gerätetypen aus allen Bereichen der Messtechnik.
               </p>
-              <Link
-                href="/messgeraete-kalibrieren"
-                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
-              >
-                Alle kalibrierbaren Geräte
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/messgeraete-kalibrieren"
+                  className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+                >
+                  Alle kalibrierbaren Geräte
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/kalibrierkosten"
+                  className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+                >
+                  Preisübersicht
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-200">

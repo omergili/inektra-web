@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { siteConfig } from '@/lib/config';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Häufige Fragen zur Kalibrierung (FAQ)',
@@ -79,6 +80,7 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Breadcrumbs items={[{ name: 'FAQ' }]} />
 
       <section className="pt-32 pb-20 min-h-[500px] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center w-full">

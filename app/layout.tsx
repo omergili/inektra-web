@@ -57,6 +57,43 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${siteConfig.siteUrl}/#organization`,
+  name: siteConfig.brandName,
+  url: siteConfig.siteUrl,
+  logo: `${siteConfig.siteUrl}/logo.png`,
+  image: `${siteConfig.siteUrl}/logo.png`,
+  description: siteConfig.description,
+  telephone: siteConfig.contact.phone,
+  email: siteConfig.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.contact.address.street,
+    addressLocality: 'Nordhorn',
+    postalCode: '48527',
+    addressRegion: 'Niedersachsen',
+    addressCountry: 'DE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 52.4309,
+    longitude: 7.0686,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '16:30',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Deutschland',
+  },
+  priceRange: '$$',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -65,9 +102,16 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <div className="flex flex-col min-h-screen">
+          <a href="#main-content" className="skip-to-content">
+            Zum Inhalt springen
+          </a>
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main id="main-content" className="flex-grow">{children}</main>
           <Footer />
           <ContactSidebar />
         </div>

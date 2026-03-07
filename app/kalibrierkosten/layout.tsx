@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kalibrierkosten – Transparente Preise für Werkskalibrierung',
@@ -14,5 +15,10 @@ export default function KalibrierKostenLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <Breadcrumbs items={[{ name: 'Kalibrierkosten' }]} />
+      {children}
+    </>
+  );
 }

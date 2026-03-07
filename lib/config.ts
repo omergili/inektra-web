@@ -62,11 +62,8 @@ export const siteConfig = {
     { name: 'Kontakt', href: '/kontakt' },
   ],
   
-  // SEO
-  seo: {
-    ogImage: '/og-image.jpg',
-    twitterHandle: '@inektra', // später anpassen
-  },
+  // SEO (OG-Image wird via app/opengraph-image.tsx generiert)
+  seo: {},
 };
 
 export type SiteConfig = typeof siteConfig;

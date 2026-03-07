@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
 import PageFAQ from '@/components/PageFAQ';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Über uns – Kalibrierlabor in Nordhorn',
@@ -30,6 +31,8 @@ const faqs = [
 export default function UeberUnsPage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: 'Über uns' }]} />
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>

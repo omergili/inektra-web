@@ -2,6 +2,7 @@ import { siteConfig } from '@/lib/config';
 import type { Metadata } from 'next';
 import PageFAQ from '@/components/PageFAQ';
 import EmailLink from '@/components/EmailLink';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kontakt – Kalibrierung anfragen',
@@ -30,6 +31,8 @@ const faqs = [
 export default function KontaktPage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: 'Kontakt' }]} />
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
