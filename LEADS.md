@@ -1,87 +1,43 @@
-# Lead-Management für inektra-web
+# Lead-Management – inektra-web
 
 ## Aktueller Status
 
-**Contact-Form funktioniert!** Aber Leads werden **noch nicht** automatisch per E-Mail/Telegram versendet.
+Das Kontaktformular ist aktiv und versendet Anfragen per **Resend API** als E-Mail an info@inektra.de.
 
-### Wo landen Leads aktuell?
+### Lead-Flow
 
-1. **Vercel Logs** (primär): Alle Submissions werden geloggt mit `[🔔 NEW CONTACT FORM SUBMISSION]`
-2. **Resend.com E-Mail** (optional): Wenn `RESEND_API_KEY` konfiguriert ist
+1. Besucher fuellt ContactSidebar-Formular aus (Name, E-Mail, Telefon, Nachricht, optionaler Datei-Upload)
+2. POST an `/api/contact` (FormData/multipart)
+3. Serverseitige Validierung (Name + E-Mail Pflicht, Datenschutz-Checkbox)
+4. HTML-Escaping gegen XSS
+5. Resend API sendet E-Mail an info@inektra.de (mit Reply-To des Absenders)
+6. Lead wird in Vercel Runtime Logs geloggt (Timestamp, Kontaktdaten)
 
----
+### Wo landen Leads?
 
-## Setup: E-Mail-Benachrichtigungen via Resend.com
-
-**Warum Resend?**
-- Speziell für Next.js/Vercel gemacht
-- 3.000 E-Mails/Monat **kostenlos**
-- Funktioniert out-of-the-box (kein SMTP-Port-Blocking wie bei klassischem SMTP)
-
-**Setup (5 Minuten):**
-
-1. **Resend-Account erstellen:**
-   - Gehe zu https://resend.com/signup
-   - Signup mit GitHub/Google
-
-2. **API-Key holen:**
-   - Dashboard → API Keys → Create API Key
-   - Kopiere den Key (beginnt mit `re_...`)
-
-3. **Environment Variable setzen:**
-   ```bash
-   cd /home/olaf/.openclaw/workspace/inektra-web
-   echo "re_..." | vercel env add RESEND_API_KEY production
-   ```
-
-4. **Redeploy:**
-   ```bash
-   vercel --prod
-   ```
-
-5. **Custom Domain (optional, später):**
-   - Resend → Domains → Add Domain
-   - DNS-Einträge bei deinem Provider eintragen
-   - Dann in route.ts `from:` ändern zu `from: 'kontakt@inektra.de'`
-
----
-
-## Alternative: Telegram-Benachrichtigungen
-
-**Option A: Heartbeat-Polling** (später von myLurch implementiert)
-- myLurch checkt regelmäßig Vercel-Logs
-- Neue Leads werden per Telegram gesendet
-
-**Option B: Webhook** (komplexer)
-- Lokaler Webhook-Server + Cloudflare Tunnel
-- Contact-Form sendet direkt an Webhook
-- Webhook sendet Telegram-Nachricht
+| Kanal | Status |
+|-------|--------|
+| E-Mail an info@inektra.de | Aktiv (via Resend API) |
+| Vercel Runtime Logs | Aktiv (stdout Logging) |
 
 ---
 
 ## Vercel Logs ansehen
 
-**Via CLI:**
-```bash
-vercel logs inektra-web --follow
-```
-
 **Via Dashboard:**
-https://vercel.com/omergilis-projects/inektra-web/logs
+https://vercel.com/omergilis-projects/inektra-web → Runtime Logs
 
-**Filtern nach Leads:**
-Suche nach: `NEW CONTACT FORM SUBMISSION`
-
----
-
-## Nächste Schritte
-
-- [ ] Resend.com API-Key einrichten
-- [ ] Custom Domain für Resend (inektra.de)
-- [ ] Telegram-Integration (via myLurch Heartbeat)
-- [ ] Admin-Panel für Lead-Management (später)
-- [ ] Vercel KV für persistent Lead-Storage (später)
+**Suche nach:**
+`NEW CONTACT FORM SUBMISSION` oder `LEAD`
 
 ---
 
-**Für Fragen:** Frag myLurch! 🗿
+## Naechste Schritte
+
+- [ ] Resend Custom Domain einrichten (E-Mails von @inektra.de statt onboarding@resend.dev)
+- [ ] Telegram-Benachrichtigung bei neuen Leads
+- [ ] Lead-Datenbank (optional, wenn Volumen steigt)
+
+---
+
+**Letzte Aktualisierung:** 07.03.2026
