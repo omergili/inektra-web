@@ -5,8 +5,8 @@
 
 export const siteConfig = {
   // Domain & Branding
-  domain: process.env.NEXT_PUBLIC_DOMAIN || 'kalibrierservice.com',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kalibrierservice.com',
+  domain: process.env.NEXT_PUBLIC_DOMAIN || 'inektra.de',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://inektra.de',
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME || 'inektra GmbH',
   
   // Site Metadata (Default-Title wird im Layout als Fallback genutzt)

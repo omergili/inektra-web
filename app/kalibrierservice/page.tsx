@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Professioneller Kalibrierservice nach ISO-Normen. Schnelle Bearbeitung, transparente Preise, über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Jetzt Kalibrierung beauftragen!',
   keywords: ['kalibrierservice', 'werkskalibrierung', 'iso kalibrierung', 'kalibrierlabor', 'messgeräte kalibrieren', 'kalibrierung beauftragen'],
   alternates: {
-    canonical: 'https://kalibrierservice.com/kalibrierservice',
+    canonical: 'https://inektra.de/kalibrierservice',
   },
 };
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Messgeräte kalibrieren lassen: Multimeter, Oszilloskope, Stromzangen, Temperatur-, Druck- und Dimensionsmesstechnik. ISO-konforme Werkskalibrierung. Jetzt Angebot anfordern!',
   keywords: ['messgeräte kalibrieren', 'multimeter kalibrieren', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'elektrische messtechnik', 'temperatur kalibrierung', 'druck kalibrierung'],
   alternates: {
-    canonical: 'https://kalibrierservice.com/messgeraete-kalibrieren',
+    canonical: 'https://inektra.de/messgeraete-kalibrieren',
   },
 };
 

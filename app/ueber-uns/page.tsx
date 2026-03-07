@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'inektra GmbH (ehem. Calpro Hagels) – Ihr Kalibrierlabor in Nordhorn. Über 3.200 kalibrierbare Gerätetypen. Erfahrung, Präzision und Zuverlässigkeit seit Jahren.',
   keywords: ['kalibrierlabor nordhorn', 'inektra gmbh', 'calpro hagels', 'werkskalibrierung nordhorn', 'kalibrierdienstleister niedersachsen'],
   alternates: {
-    canonical: 'https://kalibrierservice.com/ueber-uns',
+    canonical: 'https://inektra.de/ueber-uns',
   },
 };
 

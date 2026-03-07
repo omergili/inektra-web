@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Antworten auf häufige Fragen zur Werkskalibrierung: Was kostet eine Kalibrierung? Wie lange dauert es? Welche Normen gelten? Alles zu Ablauf, Kosten und ISO-Standards.',
   keywords: ['kalibrierung faq', 'kalibrierung kosten', 'kalibrierung dauer', 'was kostet kalibrierung', 'iso kalibrierung', 'werkskalibrierung ablauf'],
   alternates: {
-    canonical: 'https://kalibrierservice.com/faq',
+    canonical: 'https://inektra.de/faq',
   },
   openGraph: {
     title: 'Häufige Fragen zur Kalibrierung (FAQ) | inektra GmbH',
