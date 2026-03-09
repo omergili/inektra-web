@@ -57,7 +57,7 @@ app/                       # Next.js App Router Seiten
 └── datenschutz/           # Datenschutzerklärung (noindex, follow)
 
 components/
-├── Header.tsx             # Sticky Header mit Mobile-Hamburger-Menü ('use client')
+├── Header.tsx             # Sticky Header mit Dropdown-Navigation + Mobile-Hamburger ('use client')
 ├── Footer.tsx             # Footer mit Kontaktinfos und internen Links (Server Component)
 ├── ContactSidebar.tsx     # Rechte Sidebar mit Schnellanfrage-Formular ('use client')
 ├── GoogleAdsTag.tsx       # Google Ads gtag.js + Consent Mode v2 + trackConversion() ('use client')
@@ -71,7 +71,7 @@ types/
 └── gtag.d.ts              # TypeScript-Deklarationen für window.gtag/dataLayer + Consent Mode v2
 
 lib/
-├── config.ts              # Zentrale Konfiguration (siteConfig)
+├── config.ts              # Zentrale Konfiguration (siteConfig, NavItem-Interface, Navigation mit Dropdowns)
 └── consent.ts             # Cookie-Consent-Utility (localStorage + Cookie, 13 Monate Ablauf)
 
 scripts/
@@ -112,6 +112,16 @@ data/
 - **Alle** Seitenkonfigurationen zentral in `lib/config.ts` (`siteConfig`)
 - Navigation, Kontaktdaten, Firmeninfos, SEO-Keywords – alles an einer Stelle
 - Environment-Variablen mit Fallback-Defaults
+
+### Navigation (Header)
+- **Datenstruktur:** `NavItem`-Interface mit optionalem `children`-Array fuer Dropdown-Menues
+- **Desktop (md+):** Items ohne `children` → `<Link>`, Items mit `children` → `<button>` mit Chevron-Icon (▼)
+- **Dropdown:** `absolute top-full left-0`, `bg-white shadow-xl rounded-xl border`, schließt bei Click-Outside + Escape + Link-Click
+- **Mobile:** Hamburger-Menue mit aufklappbaren Untergruppen (Border-Einrueckung `ml-3 border-l-2`)
+- **State:** `openDropdown` (Desktop), `openMobileSubmenu` (Mobile), `mobileMenuOpen` (Hamburger)
+- **Erweiterung:** Neue Seiten werden durch Hinzufuegen eines Eintrags in `siteConfig.navigation` → `children`-Array verlinkt
+- **5 Top-Level-Items:** Kalibrierservice, Messverfahren ▼, Kalibrierkosten, Ratgeber ▼, Ueber uns
+- **Kontakt:** Nicht in Navigation, sondern als CTA-Button "Angebot anfragen" (Desktop + Mobile)
 
 ### Datenfluss Kalibrierkosten
 1. `scripts/fetch-toolboxx.mjs` wird vor dem Build ausgeführt (prebuild)
@@ -348,6 +358,8 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+24b2525 Header-Navigation: Dropdown-Menues fuer Messverfahren + Ratgeber (09.03.2026)
+99613e7 Dokumentation: Messverfahren-Strategie + Onlinebeauftragung-Konzept (09.03.2026)
 5cddddd Fix: Kalibrierkosten-Preistabelle mit echten Katalogpreisen (09.03.2026)
 fa6273a SEO: Kalibrierkosten-Seite um Ratgeber-Content + FAQ erweitern (09.03.2026)
 97bcfc1 Dokumentation: Vercel Speed Insights ergaenzen (09.03.2026)
@@ -400,6 +412,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Vercel Web Analytics + Speed Insights eingerichtet (09.03.2026)
 - [x] /kalibrierkosten Ratgeber-Content + Preistabelle + 2 FAQs integriert (09.03.2026)
 - [x] Content-Strategie: Messverfahren-Seiten + Onlinebeauftragung-Konzept dokumentiert (09.03.2026)
+- [x] Header-Navigation: Dropdown-Menues fuer Messverfahren + Ratgeber (Desktop Click-Toggle + Mobile aufklappbar, 09.03.2026)
 
 ## Content-Ausbauplan
 
