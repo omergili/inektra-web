@@ -8,6 +8,7 @@ import ContactSidebar from '@/components/ContactSidebar';
 import GoogleAdsTag from '@/components/GoogleAdsTag';
 import CookieConsent from '@/components/CookieConsent';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({ 
@@ -128,6 +129,7 @@ export default function RootLayout({
         </div>
         <CookieConsent />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
