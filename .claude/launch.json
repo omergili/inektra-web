@@ -4,8 +4,8 @@
     {
       "name": "dev",
       "runtimeExecutable": "./node_modules/.bin/next",
-      "runtimeArgs": ["dev"],
-      "port": 3000
+      "runtimeArgs": ["dev", "-p", "3001"],
+      "port": 3001
     }
   ]
 }
