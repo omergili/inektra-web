@@ -75,12 +75,27 @@ lib/
 └── consent.ts             # Cookie-Consent-Utility (localStorage + Cookie, 13 Monate Ablauf)
 
 scripts/
-└── fetch-toolboxx.mjs     # Prebuild: Holt Produktdaten von toolboxx.biz API
+├── fetch-toolboxx.mjs     # Prebuild: Holt Produktdaten von toolboxx.biz API
+└── generate-favicons.py   # Generiert Favicon-Set (Pillow, alle Groessen + SVG + ICO)
 
 tests/
 └── features.test.ts       # 35 Regression-Tests (Playwright)
 
+docs/
+├── google-ads-kampagne.md # Google Ads Kampagnen-Dokumentation + Aenderungshistorie
+└── sistrix-keywords.md    # 50 SISTRIX-Tracking-Keywords (9 Kategorien)
+
 public/                    # Statische Assets (Logo, Favicon, Icons)
+├── favicon.ico            # Multi-Size ICO (16+32+48)
+├── icon.svg               # SVG-Favicon (Hero Dark + i)
+├── favicon-16x16.png      # Pixel-perfektes 16px Favicon
+├── favicon-32x32.png      # 32px Favicon (Google SERP)
+├── favicon-48x48.png      # 48px Favicon
+├── icon-192x192.png       # PWA-Icon 192px
+├── icon-512x512.png       # PWA-Icon 512px
+├── apple-touch-icon.png   # Apple Touch Icon (180x180)
+└── site.webmanifest       # Web App Manifest (Theme: #0f172a)
+
 data/
 └── toolboxx-items.json    # Gecachte Produktdaten (gitignored, wird beim Build erzeugt)
 ```
@@ -130,6 +145,23 @@ data/
   - Nach Consent: Update auf `granted` + gtag.js laden
   - Ohne Consent: Kein gtag.js, keine Marketing-Cookies, anonymisierte Signale (Consent Mode Modeling)
 - **Wichtig:** Google Tag ID (AW-18003383640) ist NICHT identisch mit der Google Ads Konto-ID (981-989-9245). Die Tag-ID wird beim Erstellen der Conversion-Aktion vergeben.
+
+### Google Ads Kampagne "Kalibrierservice – Hochintent"
+- **Status:** Angelegt (09.03.2026), wartet auf Zahlungsmittel
+- **Typ:** Search (Suchnetzwerk), manueller CPC
+- **Budget:** 15 EUR/Tag
+- **Standort:** Deutschland, Sprache Deutsch
+- **Werbenetzwerk:** Nur Google-Suche (kein Display, keine Suchpartner)
+- **Geraete:** Nur Desktop (Mobile -100%, Tablet -100%)
+- **Werbezeitplaner:** Mo–Fr 05:00–16:00
+- **Anzeigengruppen:**
+  1. **Kalibrierservice** – 7 Keywords (Exact+Phrase), Zielseite /kalibrierservice, 2 RSAs
+  2. **Messgeraete kalibrieren** – 6 Keywords (Exact+Phrase), Zielseite /messgeraete-kalibrieren, 1 RSA
+  3. **Kalibrierkosten** – 6 Keywords (Exact+Phrase), Zielseite /kalibrierkosten, 1 RSA
+- **Negative Keywords (Kampagnenebene):** akkreditiert, dakks, iso 17025, selber, anleitung, jobs, software, kostenlos, gebraucht, reparatur u.a.
+- **Sitelink-Erweiterungen:** Kalibrierkosten, Messgeraete, Ueber uns, FAQ
+- **Lessons learned von kalibrieren-direkt.de:** Kein Broad Match, hoeheres Budget, thematische Anzeigengruppen, keyword-passende Zielseiten, negative Keywords von Anfang an
+- **Detaillierte Dokumentation:** `docs/google-ads-kampagne.md`
 
 ### Cookie-Consent (DSGVO)
 - **Komponenten:**
@@ -182,6 +214,17 @@ data/
 - CTAs: Orange (`bg-accent-500`) mit Hover-Effekt und Shadow
 - Max-Breite: `max-w-7xl` mit `px-4 sm:px-6 lg:px-8 lg:pr-96`
 
+### Favicon
+- **Design:** Hero Dark (#0f172a) Hintergrund, weisses "i" (Strich + Rechteck-Punkt)
+- **i-Punkt:** Kurzes Rechteck (KEIN Kreis!) – exakt wie im inektra-Logo
+- **i-Strich:** Weisser vertikaler Balken, serifenlos
+- **Punkt-Farbe:** Accent Orange (#ea580c)
+- **Generierung:** `python3 scripts/generate-favicons.py` (benoetigt Pillow)
+- **Ausgabe:** Komplett-Set in `public/` (ICO, SVG, PNG 16–512px, Apple Touch, Manifest)
+- **Kleine Groessen:** Pixel-perfekt handgesetzt (16px: 2px breit, 32px: 4px, 48px: 7px)
+- **Metadata:** Konfiguriert in `app/layout.tsx` (icons + manifest)
+- **Google SERP:** Nutzt primaer favicon-32x32.png und icon.svg
+
 ### Accessibility
 - Focus-visible Outlines auf allen interaktiven Elementen (2px solid orange)
 - Screen-reader-only Klassen (`.sr-only`)
@@ -222,6 +265,10 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Interne Verlinkung:** Homepage → 3 Service-Karten + FAQ-Teaser, Footer → 6 Links (Leistungen + Unternehmen)
 - **Skip-to-Content:** Tastaturnavigation-Link im Root Layout
 - **Keywords:** kalibrierservice, werkskalibrierung, messgeräte kalibrieren, kalibrierung dienstleister, kalibrierlabor, messmittel kalibrierung, iso kalibrierung, kalibrierung nordhorn
+- **Favicon:** Komplettes Set (ICO, SVG, PNG, Apple Touch, Manifest) – seit 09.03.2026
+- **SISTRIX-Tracking:** 50 Keywords in 9 Kategorien (docs/sistrix-keywords.md)
+  - Erste Rankings (09.03.2026): "kalibrierkosten" Position 1, "inektra" Position 4
+  - 52 Keywords getrackt, 10 mit Rankings
 
 ## Tests
 
@@ -286,6 +333,8 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+30d2b6d Favicon-Set erstellen + SISTRIX Keywords + Google Ads Doku (09.03.2026)
+dbdb20a Dokumentation: Cookie-Consent-Banner + Tests (v1.4.0) (09.03.2026)
 2724727 DSGVO: Cookie-Consent-Banner + Datenschutzerklaerung erweitern (09.03.2026)
 20c1513 Google Ads Conversion-Tracking einrichten (AW-18003383640) (09.03.2026)
 a3b3d32 SEO-Optimierung: Structured Data, OG-Image, Breadcrumbs, interne Verlinkung (07.03.2026)
@@ -325,6 +374,9 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Cookie-Consent-Banner (DSGVO-konform, Consent Mode v2, 09.03.2026)
 - [x] Datenschutzerklaerung erweitert: Cookies, Google Ads, Vercel, Resend (09.03.2026)
 - [x] 35 Playwright E2E-Tests (8 neue Cookie-Banner-Tests, 09.03.2026)
+- [x] Favicon-Set erstellt: ICO, SVG, PNG (16-512px), Apple Touch, Manifest (09.03.2026)
+- [x] SISTRIX-Keyword-Tracking eingerichtet: 50 Keywords, 9 Kategorien (09.03.2026)
+- [x] Google Ads Kampagne "Kalibrierservice – Hochintent" angelegt: 3 Anzeigengruppen, Exact+Phrase Match, 15 EUR/Tag (09.03.2026)
 
 ## Content-Ausbauplan
 
@@ -432,8 +484,10 @@ Marken-Landingpages (flache URLs):
 ### Dringend
 - [ ] Klären: Kann Domain kalibrieren-direkt.de behalten werden? (Insolvenz Elektro Struss GmbH)
 - [ ] GSC-Tool: Service-Account-Datei in gsc-tool/ kopieren (Pfad im Script anpassen)
-- [ ] Google Ads: Zahlungsmittel hinterlegen (ohne Zahlungsmittel läuft keine Kampagne)
-- [ ] Google Ads: Erste Search-Kampagne anlegen (Keywords, Anzeigen, Budget 15-20 EUR/Tag)
+- [ ] Google Ads: Zahlungsmittel hinterlegen (ohne Zahlungsmittel laeuft keine Kampagne)
+- [x] Google Ads: Kampagne "Kalibrierservice – Hochintent" angelegt (3 Anzeigengruppen, 09.03.2026)
+- [ ] Google Ads: Sitelink-Erweiterungen hinzufuegen (geplant, noch nicht im UI erstellt)
+- [ ] Google Ads: Negative Keywords auf Kampagnenebene hinzufuegen (geplant, noch nicht im UI erstellt)
 
 ### Wichtig
 - [x] Resend Custom Domain konfiguriert (inektra.de verifiziert, Region eu-west-1, E-Mails von info@inektra.de)
