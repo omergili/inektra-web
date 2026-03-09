@@ -246,8 +246,8 @@ export default function KalibrierKostenPage() {
             <p className="text-lg text-slate-600 mb-6">
               Die Kosten einer Werkskalibrierung richten sich nach drei Faktoren: dem Gerätetyp,
               dem Messbereich und der Anzahl der Kalibrierpunkte. Einfache Handmessgeräte wie
-              Messschieber beginnen bei ca. 35 EUR netto, während komplexe Mehrkanal-Messgeräte
-              mit erweitertem Messbereich über 150 EUR kosten können.
+              Messschieber beginnen ab ca. 8 EUR netto, während komplexe Mehrkanal-Messgeräte
+              mit erweitertem Messbereich über 200 EUR kosten können.
             </p>
             <p className="text-slate-600 mb-8">
               Die folgende Tabelle zeigt typische Preisspannen für häufig kalibrierte
@@ -271,23 +271,23 @@ export default function KalibrierKostenPage() {
               <tbody className="divide-y divide-slate-100">
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-slate-900">Multimeter</td>
-                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">45 – 120 EUR</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">ab 29,97 EUR</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-slate-900">Stromzangen</td>
-                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">50 – 95 EUR</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">ab 29,97 EUR</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-slate-900">Drehmomentschlüssel</td>
-                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">40 – 85 EUR</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">ab 24,76 EUR</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-slate-900">Messschieber</td>
-                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">35 – 60 EUR</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">ab 7,81 EUR</td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-slate-900">Manometer / Druckmessgeräte</td>
-                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">60 – 150 EUR</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">ab 20,85 EUR</td>
                 </tr>
               </tbody>
             </table>
