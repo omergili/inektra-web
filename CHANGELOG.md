@@ -7,6 +7,19 @@
 
 ---
 
+## [1.3.0] – 2026-03-09
+
+### Google Ads Conversion-Tracking
+- **Neues Google Ads Konto:** 981-989-9245 (inektra GmbH, eigenständig)
+- **gtag.js:** Neue Komponente `components/GoogleAdsTag.tsx` – lädt Google Tag (AW-18003383640) auf allen Seiten
+- **Conversion-Tracking:** `trackConversion()` feuert bei erfolgreichem Kontaktformular-Submit
+- **Conversion-Aktion:** „Kontaktformular_gesendet" (Lead-Formular senden, 50 EUR Wert, primäre Aktion)
+- **Konfiguration:** `siteConfig.googleAds` in `lib/config.ts` (conversionId + conversionLabel)
+- **TypeScript:** Neue Deklarationen `types/gtag.d.ts` für `window.gtag` und `window.dataLayer`
+- **Integration:** `ContactSidebar.tsx` ruft `trackConversion()` auf, `layout.tsx` bindet `<GoogleAdsTag />` ein
+
+---
+
 ## [1.2.0] – 2026-03-07
 
 ### SEO-Optimierung
@@ -77,4 +90,4 @@
 
 ---
 
-**Letzte Aktualisierung:** 07.03.2026 (v1.2.0)
+**Letzte Aktualisierung:** 09.03.2026 (v1.3.0)

@@ -60,10 +60,14 @@ components/
 ├── Header.tsx             # Sticky Header mit Mobile-Hamburger-Menü ('use client')
 ├── Footer.tsx             # Footer mit Kontaktinfos und internen Links (Server Component)
 ├── ContactSidebar.tsx     # Rechte Sidebar mit Schnellanfrage-Formular ('use client')
+├── GoogleAdsTag.tsx       # Google Ads gtag.js Loader + trackConversion() ('use client')
 ├── Breadcrumbs.tsx        # Breadcrumb-Navigation + BreadcrumbList JSON-LD (Server Component)
 ├── EmailLink.tsx          # E-Mail-Link mit Copy-to-Clipboard ('use client')
 ├── PageFAQ.tsx            # FAQ-Akkordeon mit FAQPage JSON-LD ('use client')
 └── dashboard/             # Dashboard-Komponenten (interne Nutzung)
+
+types/
+└── gtag.d.ts              # TypeScript-Deklarationen für window.gtag/dataLayer
 
 lib/
 └── config.ts              # Zentrale Konfiguration (siteConfig)
@@ -105,6 +109,21 @@ data/
 - HTML-Escaping gegen XSS
 - Pflichtfelder: Name, E-Mail, Datenschutz-Checkbox
 - Lead-Logging in stdout mit Timestamp
+- **Google Ads Conversion-Tracking:** Bei erfolgreichem Submit wird `trackConversion()` aufgerufen
+
+### Google Ads Conversion-Tracking
+- **Konto:** 981-989-9245 (inektra GmbH, eigenständig, nicht im OMTEC MCC)
+- **Google Tag ID:** AW-18003383640 (≠ Konto-ID!)
+- **Conversion-Label:** cadjCIy0pIUcENiq14hD
+- **Conversion-Aktion:** „Kontaktformular_gesendet" (Kategorie: Lead-Formular senden, Wert: 50 EUR, Zählung: Eine, Primäre Aktion)
+- **Implementierung:**
+  - `components/GoogleAdsTag.tsx` – Lädt gtag.js auf allen Seiten via `<Script strategy="afterInteractive">`
+  - `components/GoogleAdsTag.tsx` → `trackConversion()` – Feuert `gtag('event', 'conversion', {send_to: 'AW-18003383640/cadjCIy0pIUcENiq14hD'})`
+  - `components/ContactSidebar.tsx` – Ruft `trackConversion()` bei `data.success` auf
+  - `app/layout.tsx` – `<GoogleAdsTag />` im `<body>` vor allen anderen Inhalten
+  - `lib/config.ts` → `siteConfig.googleAds` – conversionId + conversionLabel zentral konfiguriert
+  - `types/gtag.d.ts` – TypeScript-Deklarationen für `window.gtag` und `window.dataLayer`
+- **Wichtig:** Google Tag ID (AW-18003383640) ist NICHT identisch mit der Google Ads Konto-ID (981-989-9245). Die Tag-ID wird beim Erstellen der Conversion-Aktion vergeben.
 
 ## Wichtige Geschäftsregeln
 
@@ -223,6 +242,7 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+20c1513 Google Ads Conversion-Tracking einrichten (AW-18003383640) (09.03.2026)
 a3b3d32 SEO-Optimierung: Structured Data, OG-Image, Breadcrumbs, interne Verlinkung (07.03.2026)
 7829550 Sitemap hinzufügen und Dokumentation aktualisieren (07.03.2026)
 1a14793 Supabase/PostgreSQL-Anbindung komplett entfernen (07.03.2026)
@@ -255,6 +275,8 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Interne Verlinkung optimiert (Homepage 3 Service-Karten + FAQ-Teaser, Footer ergänzt)
 - [x] Skip-to-Content Link (Accessibility)
 - [x] Google Search Console eingerichtet, Seiten zur Indexierung eingereicht (07.03.2026)
+- [x] Google Ads Konto eingerichtet (981-989-9245, 09.03.2026)
+- [x] Google Ads Conversion-Tracking implementiert (gtag.js + trackConversion(), 09.03.2026)
 
 ## Content-Ausbauplan
 
@@ -362,6 +384,8 @@ Marken-Landingpages (flache URLs):
 ### Dringend
 - [ ] Klären: Kann Domain kalibrieren-direkt.de behalten werden? (Insolvenz Elektro Struss GmbH)
 - [ ] GSC-Tool: Service-Account-Datei in gsc-tool/ kopieren (Pfad im Script anpassen)
+- [ ] Google Ads: Zahlungsmittel hinterlegen (ohne Zahlungsmittel läuft keine Kampagne)
+- [ ] Google Ads: Erste Search-Kampagne anlegen (Keywords, Anzeigen, Budget 15-20 EUR/Tag)
 
 ### Wichtig
 - [x] Resend Custom Domain konfiguriert (inektra.de verifiziert, Region eu-west-1, E-Mails von info@inektra.de)
