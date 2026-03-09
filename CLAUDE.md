@@ -345,6 +345,9 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+5cddddd Fix: Kalibrierkosten-Preistabelle mit echten Katalogpreisen (09.03.2026)
+fa6273a SEO: Kalibrierkosten-Seite um Ratgeber-Content + FAQ erweitern (09.03.2026)
+97bcfc1 Dokumentation: Vercel Speed Insights ergaenzen (09.03.2026)
 590c65b Vercel Speed Insights einrichten (09.03.2026)
 83034e3 Vercel Web Analytics einrichten (09.03.2026)
 30d2b6d Favicon-Set erstellen + SISTRIX Keywords + Google Ads Doku (09.03.2026)
@@ -392,87 +395,155 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] SISTRIX-Keyword-Tracking eingerichtet: 50 Keywords, 9 Kategorien (09.03.2026)
 - [x] Google Ads Kampagne "Kalibrierservice – Hochintent" angelegt: 3 Anzeigengruppen, Exact+Phrase Match, 15 EUR/Tag (09.03.2026)
 - [x] Vercel Web Analytics + Speed Insights eingerichtet (09.03.2026)
+- [x] /kalibrierkosten Ratgeber-Content + Preistabelle + 2 FAQs integriert (09.03.2026)
+- [x] Content-Strategie: Messverfahren-Seiten + Onlinebeauftragung-Konzept dokumentiert (09.03.2026)
 
 ## Content-Ausbauplan
 
-### Strategische Lage (Stand 07.03.2026)
+### Strategische Lage (Stand 09.03.2026)
 - **kalibrieren-direkt.de** (Elektro Struss GmbH) ist wegen Insolvenz unsicher – Domain-Zukunft unklar
 - **inektra.de** muss eigenständig aufgebaut werden und langfristig alle Kalibrierungs-Inhalte tragen
-- Solange kalibrieren-direkt.de noch läuft: **keine konkurrierenden Geräte-/Marken-Seiten** bauen
-- Stattdessen: Ratgeber-Content (informational) + Längenlabor-Expertise (inektras USP)
-- **Entscheidung über Geräte-/Marken-Landingpages nach Klärung der kalibrieren-direkt.de Situation**
+- **Messverfahren-Seiten** ersetzen die urspruenglich geplanten 16+ Einzelgeraete-Seiten (weniger Aufwand, bessere Struktur)
+- Ratgeber-Content + Messverfahren-Seiten sind Informationsseiten → keine Konkurrenz zu kd.de Produktseiten
+- Marken-Landingpages weiterhin erst nach Klaerung der kd.de-Situation
 - Falls kalibrieren-direkt.de Domain behalten werden kann: 301-Redirect auf inektra.de (SEO-Juice-Transfer)
+- **Langfristziel:** Onlinebeauftragung (Kalibrierauftrag-System) auf Basis der Messverfahren-Seiten
 
-### URL-Schema (beschlossen)
-- **Flache URLs**, keyword-orientiert (bewährt durch Wettbewerbsanalyse: meta-m.de, quality-tools-shop.de, sourcetronic.com)
-- Geräte-Seiten (später): `/multimeter-kalibrieren`, `/messschieber-kalibrieren` etc.
-- Marken-Seiten (später): `/fluke-kalibrierung`, `/benning-kalibrierung` etc.
-- Ratgeber: `/kalibrierkosten-ratgeber`, `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle`
-- Expertise: `/laengenlabor`
+### Kalibrierpreisliste (Datenquelle)
+- **Datei:** `preis2026 (3).pdf` – inektra Kalibrierpreisliste 2026
+- **Kapitel und Messverfahren:**
+  - Kap. 2: **Dimensionale Groessen** (22 Seiten, ~67 Geraetetypen: Endmasse, Messschieber, Lehren, Messuhren, Messschrauben...)
+  - Kap. 3: **Planimetrie** (5 Seiten, ~15 Geraetetypen: Lineale, Pruefplatten, Winkel, Wasserwaagen)
+  - Kap. 4: **Physikalische Groessen** (8 Seiten, ~30 Geraetetypen: Druck, Drehmoment, Temperatur, Feuchte, Haerte, Schallpegel, Kraft, Masse)
+  - Kap. 5: **Rauheit** (1 Seite, 3 Geraetetypen)
+  - Kap. 8: **Elektrische Messgeraete** (44 Seiten, 100+ Geraetetypen)
+- **Enthaltene Daten pro Geraetetyp:** Pruefungsrichtlinie (DKD-R, VDI/VDE/DGQ, etc.), Genauigkeitsanforderung (DIN, ISO), Preismatrix nach Messbereich, Artikel-Nr., Sonderhinweise
+- **Referenzierte Normen:** DKD-R 4-3, DKD-R 6-1, VDI/VDE/DGQ 2618, DIN 862, DIN 863, DIN EN ISO 3650, DIN ISO 6789, DIN EN ISO 14253-1, u.v.m.
+- **Experten:** Theodor Hagels (Elektrisch, Physikalisch, Rauheit), Martin Theussing (Dimensional)
+
+### URL-Schema (aktualisiert 09.03.2026)
+- **Flache URLs**, keyword-orientiert
+- **Messverfahren-Seiten:** `/laengenlabor`, `/druckkalibrierung`, `/temperaturkalibrierung`, `/drehmoment-kalibrierung`, `/elektrische-messtechnik-kalibrierung`
+- **Ratgeber:** `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle`
+- **Kalibrierkosten:** `/kalibrierkosten` (mit integriertem Ratgeber-Content, erledigt 09.03.2026)
+- **Onlinebeauftragung (spaeter):** `/kalibrierauftrag`
+- **Marken-Seiten (nach kd.de-Klaerung):** `/fluke-kalibrierung`, `/benning-kalibrierung` etc.
 - Kein `/kalibrierung/` oder `/hersteller/` Verzeichnis
+- **Gestrichen:** `/kalibrierkosten-ratgeber` (Content jetzt auf /kalibrierkosten), 16+ Einzelgeraete-Seiten (ersetzt durch 5 Messverfahren-Seiten)
 
 ### Datengrundlage
 - **GSC-Export kalibrieren-direkt.de:** 500+ Keywords, 90 Tage (06.12.2025–06.03.2026)
 - **Mega-Keyword:** "kalibrieren" = 14.747 Impressionen/90T, Position 10.5
-- **Top-Kategorien nach Impressionen:** Drehmomentschlüssel (1.245), Messschieber (1.215), Multimeter (1.170), Manometer (1.351)
+- **Top-Kategorien nach Impressionen:** Drehmomentschluessel (1.245), Messschieber (1.215), Multimeter (1.170), Manometer (1.351)
 - **Top-Marken nach Impressionen:** Fluke (2.150+), Benning (1.768+), Voltcraft (~500)
-- **Wettbewerbsanalyse:** Große Labore (Perschmann, Testo TIS, ESZ) haben keine Geräte-/Marken-SEO-Seiten → Long-Tail-Keywords sind offen
+- **Wettbewerbsanalyse:** Grosse Labore (Perschmann, Testo TIS, ESZ) haben keine Messverfahren-SEO-Seiten mit technischer Tiefe → Alleinstellungsmerkmal
+- **Kalibrierpreisliste 2026:** Einzigartige Fachdaten (Pruefungsrichtlinien, Genauigkeitsklassen, Messbereiche) die kein Wettbewerber online hat
 - **Analysedokumente:** `/Users/olafmergili/CLAUDE-PROJEKTE/kalibrieren-direkt/docs/`
 
-### Woche 1 – Ratgeber + Längenlabor (keine Konkurrenz zu kd.de)
-
-**Ratgeber-Artikel (informational – kd.de hat keinen Ratgeber-Content):**
+### Phase 1 – Ratgeber-Seiten (sofort umsetzbar)
 
 | Seite | Ziel-Keywords | Suchvolumen |
 |-------|--------------|-------------|
-| `/kalibrierkosten-ratgeber` | kalibrierung kosten, kalibrieren kosten | 2.000+/Monat |
 | `/werkskalibrierung-vs-dakks` | werkskalibrierung, akkreditierte kalibrierung, dakks unterschied | 1.500+/Monat |
 | `/kalibrierintervalle` | kalibrierintervall, wie oft kalibrieren, kalibrierung intervall | 1.000+/Monat |
 
-**Jeder Ratgeber enthält:**
-- 800–1.200 Wörter Fachtext
+**Jeder Ratgeber enthaelt:**
+- 800–1.200 Woerter Fachtext
 - 3 FAQs am Ende (+ FAQPage JSON-LD)
 - CTA-Box mit Schnellanfrage
 - Interne Links zu `/kalibrierkosten` und `/kalibrierservice`
 - Breadcrumbs: Startseite → [Ratgeber-Titel]
 - Metadata: Title, Description, Keywords, Canonical URL
 
-**Längenlabor-Seite (inektras Alleinstellungsmerkmal):**
+### Phase 2 – Messverfahren-Seiten (Kern der Content-Strategie)
 
-| Seite | Ziel-Keywords | Impressionen (kd.de) |
-|-------|--------------|---------------------|
-| `/laengenlabor` | messschieber kalibrieren, endmaß kalibrierung, bügelmessschraube kalibrieren | 1.215 + 840+ |
+**Konzept:** Statt 16+ Einzelgeraete-Seiten decken 5 Messverfahren-Seiten alle Kalibrierverfahren ab. Jede Seite kombiniert Fachinhalte (Normen, Verfahren, Genauigkeiten) mit gefiltertem Toolboxx-Katalog. Spaeter wird der Katalog um einen "Zum Kalibrierauftrag hinzufuegen"-Button erweitert.
 
-**Inhalt:**
-- inektras Stärke in der Dimensionsmesstechnik
-- Alle kalibrierbaren Messgrößen: Messschieber, Bügelmessschrauben, Endmaße, Messuhren, Lehrdorne, Gewindelehrringe, Rauheitsmessgeräte, Schichtdickenmessgeräte
-- Gefilterter Katalog (Toolboxx-Kategorie "Längenmesstechnik")
-- Genauigkeitsangaben und Messbereiche
-- 3 FAQs zur dimensionellen Kalibrierung (+ JSON-LD)
-- Service JSON-LD
-- Verlinkung von `/messgeraete-kalibrieren` und `/kalibrierservice`
+| Seite | Messverfahren | Aus Preisliste | Geraetetypen |
+|-------|---------------|----------------|--------------|
+| `/laengenlabor` | Dimensionale Groessen + Planimetrie + Rauheit | Kap. 2 + 3 + 5 | Messschieber, Endmasse, Lehrdorne, Messuhren, Messschrauben, Lineale, Pruefplatten, Rauheitsmessgeraete |
+| `/druckkalibrierung` | Druck | Kap. 4.3 | Manometer, Drucksensoren, Transmitter, Pruefpumpen, Reifendruckpruefer |
+| `/temperaturkalibrierung` | Temperatur + Feuchte | Kap. 4.7 + 4.8 | Thermometer, IR-Thermometer, Klimaschraenke, Hygrometer, Holzfeuchtemessgeraete |
+| `/drehmoment-kalibrierung` | Drehmoment | Kap. 4.2 | Drehmomentschluessel, Drehmomentpruefgeraete |
+| `/elektrische-messtechnik-kalibrierung` | Elektrische Messgeraete | Kap. 8 | Multimeter, Oszilloskope, Stromzangen, Pruefgeraete, Netzgeraete, Kalibratoren (100+ Typen) |
 
-**Technisch (Freitag):**
-- Sitemap erweitern (7 → 11 Seiten)
-- Bestehende Seiten verknüpfen (interne Links auf neue Seiten)
-- Build + Deploy
+**Aufbau pro Messverfahren-Seite:**
+1. **H1** – z.B. "Druckkalibrierung – Manometer & Drucksensoren kalibrieren"
+2. **Einleitung** – Wann und warum kalibrieren, welche Normen (z.B. DKD-R 6-1)
+3. **Pruefverfahren erklaert** – Was wird gemessen, wie viele Messpunkte, steigend/fallend
+4. **Geraete-Uebersicht** – Tabelle mit Geraetetypen, Genauigkeitsklassen, Preisspannen (aus Preisliste)
+5. **Gefilterter Toolboxx-Katalog** – Live-Suche nur fuer diese Kategorie (wiederverwendbare Komponente)
+6. **3–4 FAQs** (+ FAQPage JSON-LD)
+7. **CTA** → Kontaktformular / Anfrage (spaeter: Kalibrierauftrag)
+8. **Interne Links** zu `/kalibrierkosten`, `/kalibrierservice`, verwandte Messverfahren-Seiten
 
-### Nach Klärung kalibrieren-direkt.de – Geräte- und Marken-Seiten
+**Technische Vorbereitung:**
+- Katalog-Komponente als wiederverwendbare React-Komponente (spaeter um Hinzufuegen-Button erweiterbar)
+- Sitemap erweitern (7 → 14 Seiten)
+- Bestehende Seiten verknuepfen (interne Links auf Messverfahren-Seiten)
+- Toolboxx-API-Kategorien fuer Filterung nutzen (16 Kategorien bereits definiert)
 
-**Szenario A: Domain bleibt verfügbar → 301-Redirect + alles auf inektra.de:**
+### Phase 3 – Onlinebeauftragung (Kalibrierauftrag-System)
 
-Geräte-Landingpages (flache URLs):
+**Konzept:** Kein Webshop mit Warenkorb/Checkout/Zahlung, sondern ein B2B-Kalibrierauftrag-System. Kunde stellt Auftrag online zusammen, Bezahlung per Rechnung.
 
-| Seite | Ziel-Keyword | Impressionen (kd.de) |
-|-------|-------------|---------------------|
-| `/multimeter-kalibrieren` | multimeter kalibrieren | 1.170 |
-| `/drehmomentschluessel-kalibrieren` | drehmomentschlüssel kalibrieren | 1.245 |
-| `/messschieber-kalibrieren` | messschieber kalibrieren | 1.215 |
-| `/manometer-kalibrierung` | manometer kalibrieren | 1.351 |
-| `/thermometer-kalibrierung` | thermometer kalibrieren | ~500 |
-| + 11 weitere Kategorien | | |
+**User Flow:**
+```
+Messverfahren-Seite (z.B. /druckkalibrierung)
+→ Liest ueber Pruefverfahren, Normen, Genauigkeiten
+→ Scrollt zum gefilterten Katalog
+→ Findet "Manometer ±2,5%, bis 16 bar" → Klickt [+ Hinzufuegen]
+→ Header zeigt "1 Geraet im Auftrag"
+→ Kann weitere Geraete von anderen Seiten hinzufuegen
+→ Klickt auf "Auftrag abschliessen"
+→ /kalibrierauftrag: Firmendaten + Geraete-Seriennummern
+→ Bestaetigt → Auftragsbestaetigung per E-Mail (Resend)
+```
 
-Marken-Landingpages (flache URLs):
+**Seitenarchitektur mit Onlinebeauftragung:**
+```
+/                                           ← Homepage (Lead-Gen + Einstieg)
+├── /kalibrierservice                       ← Uebersicht Leistungen
+├── /kalibrierkosten                        ← Gesamtkatalog (Suche + Filter + [Hinzufuegen])
+├── /laengenlabor                           ← Messverfahren: Dimensional
+├── /druckkalibrierung                      ← Messverfahren: Druck
+├── /temperaturkalibrierung                 ← Messverfahren: Temperatur
+├── /drehmoment-kalibrierung                ← Messverfahren: Drehmoment
+├── /elektrische-messtechnik-kalibrierung   ← Messverfahren: Elektrisch
+│   └── Jede Seite: Info + gefilterter Katalog + [Hinzufuegen]
+├── /werkskalibrierung-vs-dakks             ← Ratgeber
+├── /kalibrierintervalle                    ← Ratgeber
+├── /kalibrierauftrag                       ← NEU: Auftrags-Zusammenstellung + Formular
+├── /kontakt                                ← Fuer individuelle Anfragen
+├── /ueber-uns / /faq / /impressum / /datenschutz
+```
+
+**Technische Komponenten:**
+- **Auftrags-Context:** React Context + localStorage (persistent ueber Seitennavigation, kein Account noetig)
+- **Katalog-Komponente:** Erweiterung um [+ Hinzufuegen]-Button (nur ein Prop-Wechsel)
+- **Header-Badge:** Warenkorb-Icon mit Anzahl-Badge
+- **`/kalibrierauftrag`-Seite:** Firmendaten, Geraete-Details (Seriennummer, Hersteller, Modell), Wunschtermin, Versandart, AGB-Checkbox
+- **E-Mail-Bestaetigung:** Via Resend API (bereits integriert), optional PDF-Anhang
+- **Kein Zahlungs-Gateway:** B2B = Rechnung (kein Widerrufsrecht, keine Versandkosten-Berechnung noetig, Pauschale 15 EUR bekannt)
+
+**Conversion-Funnel-Verbesserung:**
+| Schritt | Ohne Beauftragung (Phase 1–2) | Mit Beauftragung (Phase 3) |
+|---------|-------------------------------|----------------------------|
+| Informieren | Fachinhalte lesen | Fachinhalte lesen |
+| Finden | Geraet im Katalog finden | Geraet im Katalog finden |
+| Handeln | Kontaktformular (Bruch) | Direkt hinzufuegen (nahtlos) |
+| Beauftragen | Manuelle Anfrage per E-Mail | Strukturierter Auftrag |
+
+**Vergleich mit kalibrieren-direkt.de:**
+| | kalibrieren-direkt.de | inektra.de (Ziel) |
+|---|---|---|
+| Plattform | WooCommerce | Next.js (custom) |
+| Produkte | 394 (manuell) | 3.200+ (Toolboxx API, automatisch) |
+| Fachinhalte | Keine | Messverfahren, Normen, Genauigkeiten |
+| Bestellung | Warenkorb → Checkout → Zahlung | Kalibrierauftrag → Rechnung |
+| SEO | Produktseiten ohne Content | Messverfahren-Seiten mit Content + Katalog |
+
+### Phase 4 – Marken-Landingpages (nach kd.de-Klaerung)
 
 | Seite | Ziel-Keywords | Impressionen (kd.de) |
 |-------|--------------|---------------------|
@@ -481,35 +552,57 @@ Marken-Landingpages (flache URLs):
 | `/voltcraft-kalibrierung` | voltcraft kalibrierung | ~500 |
 | + 6 weitere Marken | | |
 
-**Szenario B: Domain fällt weg → gleiche Seiten, aber ohne Redirect-Bonus:**
-- Gleicher Content-Plan, Rankings bauen sich langsamer auf (3–6 Monate statt 2–4 Wochen)
+Falls kd.de-Domain verfuegbar: 301-Redirect → inektra.de (SEO-Juice-Transfer, Rankings in 2–4 Wochen)
+Falls kd.de-Domain wegfaellt: Gleicher Plan, Rankings bauen sich langsamer auf (3–6 Monate)
+
+### Umsetzungsreihenfolge
+
+| Phase | Zeitraum | Seiten | Inhalt |
+|-------|----------|--------|--------|
+| **1** | Woche 1–2 | 2 | Ratgeber: `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle` |
+| **2a** | Woche 3 | 1 | Messverfahren: `/laengenlabor` (inektras USP, erste Messverfahren-Seite) |
+| **2b** | Woche 4–5 | 2 | Messverfahren: `/druckkalibrierung`, `/elektrische-messtechnik-kalibrierung` |
+| **2c** | Woche 6–7 | 2 | Messverfahren: `/temperaturkalibrierung`, `/drehmoment-kalibrierung` |
+| **3** | Monat 3–4 | 1 | Onlinebeauftragung: `/kalibrierauftrag` + Katalog-Erweiterung |
+| **4** | Nach kd.de | 9+ | Marken-Landingpages |
 
 ### Erwartete Ergebnisse
 
-| Zeitpunkt | Seiten | Geschätzter org. Traffic |
-|-----------|--------|------------------------|
-| Heute | 9 | 0 (seit 07.03.2026 indexiert) |
-| Nach Woche 1 | 13 | Indexierung läuft |
-| Nach 3 Monaten (mit Redirect) | ~42 | 1.000–3.000 Besucher/Monat |
-| Nach 3 Monaten (ohne Redirect) | ~42 | 300–1.000 Besucher/Monat |
-| Nach 6 Monaten | ~42+ | 2.000–5.000 Besucher/Monat |
+| Zeitpunkt | Seiten | Geschaetzter org. Traffic |
+|-----------|--------|--------------------------|
+| Heute (09.03.2026) | 9 | ~0 (seit 07.03.2026 indexiert) |
+| Nach Phase 1 | 11 | Indexierung laeuft |
+| Nach Phase 2 | 16 | 500–1.500 Besucher/Monat |
+| Nach Phase 3 | 17 | 1.000–3.000 Besucher/Monat + direkte Auftraege |
+| Nach Phase 4 (mit kd.de Redirect) | 26+ | 3.000–5.000 Besucher/Monat |
+| Nach Phase 4 (ohne kd.de Redirect) | 26+ | 1.500–3.000 Besucher/Monat |
 
 ## Offene Punkte
 
 ### Dringend
-- [ ] Klären: Kann Domain kalibrieren-direkt.de behalten werden? (Insolvenz Elektro Struss GmbH)
+- [ ] Klaeren: Kann Domain kalibrieren-direkt.de behalten werden? (Insolvenz Elektro Struss GmbH)
 - [ ] GSC-Tool: Service-Account-Datei in gsc-tool/ kopieren (Pfad im Script anpassen)
 - [ ] Google Ads: Zahlungsmittel hinterlegen (ohne Zahlungsmittel laeuft keine Kampagne)
 - [x] Google Ads: Kampagne "Kalibrierservice – Hochintent" angelegt (3 Anzeigengruppen, 09.03.2026)
 - [ ] Google Ads: Sitelink-Erweiterungen hinzufuegen (geplant, noch nicht im UI erstellt)
 - [ ] Google Ads: Negative Keywords auf Kampagnenebene hinzufuegen (geplant, noch nicht im UI erstellt)
 
-### Wichtig
+### Content-Ausbau
+- [ ] Phase 1: `/werkskalibrierung-vs-dakks` (Ratgeber)
+- [ ] Phase 1: `/kalibrierintervalle` (Ratgeber)
+- [ ] Phase 2a: `/laengenlabor` (Messverfahren, inektras USP)
+- [ ] Phase 2b: `/druckkalibrierung` + `/elektrische-messtechnik-kalibrierung`
+- [ ] Phase 2c: `/temperaturkalibrierung` + `/drehmoment-kalibrierung`
+- [ ] Phase 3: `/kalibrierauftrag` (Onlinebeauftragung)
+- [ ] Phase 4: Marken-Landingpages (nach kd.de-Klaerung)
+- [x] `/kalibrierkosten` Ratgeber-Content + FAQ integriert (09.03.2026)
+
+### Technisch
 - [x] Resend Custom Domain konfiguriert (inektra.de verifiziert, Region eu-west-1, E-Mails von info@inektra.de)
-- [ ] Nach kd.de-Klärung: Geräte-Landingpages (16 Seiten, flache URLs)
-- [ ] Nach kd.de-Klärung: Marken-Landingpages (9 Seiten, flache URLs)
-- [ ] Toolboxx-Daten: Hersteller-Feld befüllen (Mapping-Script)
+- [ ] Wiederverwendbare Katalog-Komponente bauen (fuer Messverfahren-Seiten + spaeter Hinzufuegen-Button)
+- [ ] Toolboxx-Daten: Hersteller-Feld befuellen (Mapping-Script)
+- [ ] Sitemap erweitern bei jeder neuen Seite
 
 ### Nice-to-Have
-- [ ] Admin-Dashboard für Lead-Management
+- [ ] Admin-Dashboard fuer Lead-Management
 - [ ] Product JSON-LD auf Kalibrierkosten-Seite
