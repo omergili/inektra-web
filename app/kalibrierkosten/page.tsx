@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import PageFAQ from '@/components/PageFAQ';
 
 interface ToolboxxItem {
   id: number;
@@ -234,6 +235,94 @@ export default function KalibrierKostenPage() {
           </p>
         )}
       </div>
+
+      {/* Ratgeber: Was kostet eine Kalibrierung? */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            Was kostet eine Kalibrierung?
+          </h2>
+          <div className="prose prose-slate max-w-none">
+            <p className="text-lg text-slate-600 mb-6">
+              Die Kosten einer Werkskalibrierung richten sich nach drei Faktoren: dem Gerätetyp,
+              dem Messbereich und der Anzahl der Kalibrierpunkte. Einfache Handmessgeräte wie
+              Messschieber beginnen bei ca. 35 EUR netto, während komplexe Mehrkanal-Messgeräte
+              mit erweitertem Messbereich über 150 EUR kosten können.
+            </p>
+            <p className="text-slate-600 mb-8">
+              Die folgende Tabelle zeigt typische Preisspannen für häufig kalibrierte
+              Gerätekategorien. Die exakten Preise für Ihr Gerät finden Sie im Katalog oben.
+            </p>
+          </div>
+
+          {/* Preistabelle */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+            <table className="w-full">
+              <thead className="bg-slate-50 border-b border-slate-200">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+                    Gerätekategorie
+                  </th>
+                  <th className="px-6 py-4 text-right text-sm font-semibold text-slate-900">
+                    Preisspanne (netto)
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900">Multimeter</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">45 – 120 EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900">Stromzangen</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">50 – 95 EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900">Drehmomentschlüssel</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">40 – 85 EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900">Messschieber</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">35 – 60 EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900">Manometer / Druckmessgeräte</td>
+                  <td className="px-6 py-4 text-right text-accent-600 font-semibold">60 – 150 EUR</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-sm text-slate-500 mb-6">
+            Alle Preise verstehen sich netto zzgl. MwSt. Für Geräte, die nicht im Katalog
+            gelistet sind, erstellen wir Ihnen gerne ein individuelles Angebot.
+          </p>
+
+          <a
+            href="/kalibrierservice"
+            className="inline-flex items-center text-accent-600 hover:text-accent-700 font-medium transition-colors"
+          >
+            Mehr zu unserem Kalibrierservice
+            <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <PageFAQ
+        faqs={[
+          {
+            question: 'Wie setzen sich die Kalibrierkosten zusammen?',
+            answer: 'Die Kalibrierkosten ergeben sich aus dem Gerätetyp, dem zu kalibrierenden Messbereich und der Anzahl der Kalibrierpunkte. Einfache Einkanal-Geräte sind günstiger als Mehrkanal-Geräte mit erweitertem Messbereich. Zusätzlich fällt eine Rückversandpauschale von 15 EUR netto an.',
+          },
+          {
+            question: 'Sind Versandkosten in den Kalibrierpreisen enthalten?',
+            answer: 'Die Einsendung Ihrer Geräte erfolgt auf Ihre Kosten. Der Rückversand nach der Kalibrierung beträgt pauschal 15 EUR netto zzgl. MwSt. Bei Palettenversand werden die Kosten nach Aufwand berechnet.',
+          },
+        ]}
+      />
     </div>
   );
 }
