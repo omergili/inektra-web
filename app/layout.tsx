@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import ContactSidebar from '@/components/ContactSidebar';
 import GoogleAdsTag from '@/components/GoogleAdsTag';
 import CookieConsent from '@/components/CookieConsent';
+import { Analytics } from '@vercel/analytics/next';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({ 
@@ -126,6 +127,7 @@ export default function RootLayout({
           <ContactSidebar />
         </div>
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );
