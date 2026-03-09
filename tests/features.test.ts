@@ -23,10 +23,10 @@ test.describe('Critical Features Check', () => {
   test('Navigation funktioniert', async ({ page }) => {
     await page.goto('http://localhost:3000');
 
-    // Alle Haupt-Nav-Links vorhanden
-    const navLinks = ['Kalibrierservice', 'Messgeräte', 'Kalibrierkosten', 'FAQ', 'Über uns', 'Kontakt'];
-    for (const linkText of navLinks) {
-      await expect(page.locator(`nav >> text="${linkText}"`).first()).toBeVisible();
+    // Alle Haupt-Nav-Items vorhanden (Links + Dropdown-Buttons)
+    const navItems = ['Kalibrierservice', 'Messverfahren', 'Kalibrierkosten', 'Ratgeber', 'Über uns'];
+    for (const itemText of navItems) {
+      await expect(page.locator(`nav >> text="${itemText}"`).first()).toBeVisible();
     }
   });
 

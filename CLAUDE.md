@@ -278,6 +278,9 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Skip-to-Content:** Tastaturnavigation-Link im Root Layout
 - **Keywords:** kalibrierservice, werkskalibrierung, messgeräte kalibrieren, kalibrierung dienstleister, kalibrierlabor, messmittel kalibrierung, iso kalibrierung, kalibrierung nordhorn
 - **Favicon:** Komplettes Set (ICO, SVG, PNG, Apple Touch, Manifest) – seit 09.03.2026
+- **301-Redirects:**
+  - **calpro.de → inektra.de** (seit Anfang Maerz 2026) – Alte Domain der Vorgaengerfirma Calpro Hagels/Theussing GmbH & Co. KG. Backlink-Profil minimal (49 Links, fast nur Spam/Scraper, einzig relevanter Link: messraum.net SI 0,020). Kein nennenswerter SEO-Boost, inektra.de muss Autoritaet selbst aufbauen.
+  - **kalibrieren-direkt.de → inektra.de** – Noch offen (Insolvenz Elektro Struss GmbH, Domain-Zukunft unklar)
 - **SISTRIX-Tracking:** 50 Keywords in 9 Kategorien (docs/sistrix-keywords.md)
   - Erste Rankings (09.03.2026): "kalibrierkosten" Position 1, "inektra" Position 4
   - 52 Keywords getrackt, 10 mit Rankings
@@ -401,8 +404,9 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 ## Content-Ausbauplan
 
 ### Strategische Lage (Stand 09.03.2026)
+- **calpro.de → inektra.de:** 301-Redirect seit Anfang Maerz 2026 aktiv. Backlink-Profil jedoch minimal (49 Links, fast nur Spam) – kein nennenswerter SEO-Boost. inektra.de muss Autoritaet durch eigenen Content aufbauen.
 - **kalibrieren-direkt.de** (Elektro Struss GmbH) ist wegen Insolvenz unsicher – Domain-Zukunft unklar
-- **inektra.de** muss eigenständig aufgebaut werden und langfristig alle Kalibrierungs-Inhalte tragen
+- **inektra.de** muss eigenstaendig aufgebaut werden und langfristig alle Kalibrierungs-Inhalte tragen
 - **Messverfahren-Seiten** ersetzen die urspruenglich geplanten 16+ Einzelgeraete-Seiten (weniger Aufwand, bessere Struktur)
 - Ratgeber-Content + Messverfahren-Seiten sind Informationsseiten → keine Konkurrenz zu kd.de Produktseiten
 - Marken-Landingpages weiterhin erst nach Klaerung der kd.de-Situation
@@ -423,7 +427,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 
 ### URL-Schema (aktualisiert 09.03.2026)
 - **Flache URLs**, keyword-orientiert
-- **Messverfahren-Seiten:** `/laengenlabor`, `/druckkalibrierung`, `/temperaturkalibrierung`, `/drehmoment-kalibrierung`, `/elektrische-messtechnik-kalibrierung`
+- **Messverfahren-Seiten:** `/laengenkalibrierung`, `/druckkalibrierung`, `/temperaturkalibrierung`, `/drehmoment-kalibrierung`, `/elektrische-messtechnik-kalibrierung`
 - **Ratgeber:** `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle`
 - **Kalibrierkosten:** `/kalibrierkosten` (mit integriertem Ratgeber-Content, erledigt 09.03.2026)
 - **Onlinebeauftragung (spaeter):** `/kalibrierauftrag`
@@ -461,7 +465,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 
 | Seite | Messverfahren | Aus Preisliste | Geraetetypen |
 |-------|---------------|----------------|--------------|
-| `/laengenlabor` | Dimensionale Groessen + Planimetrie + Rauheit | Kap. 2 + 3 + 5 | Messschieber, Endmasse, Lehrdorne, Messuhren, Messschrauben, Lineale, Pruefplatten, Rauheitsmessgeraete |
+| `/laengenkalibrierung` | Dimensionale Groessen + Planimetrie + Rauheit | Kap. 2 + 3 + 5 | Messschieber, Endmasse, Lehrdorne, Messuhren, Messschrauben, Lineale, Pruefplatten, Rauheitsmessgeraete |
 | `/druckkalibrierung` | Druck | Kap. 4.3 | Manometer, Drucksensoren, Transmitter, Pruefpumpen, Reifendruckpruefer |
 | `/temperaturkalibrierung` | Temperatur + Feuchte | Kap. 4.7 + 4.8 | Thermometer, IR-Thermometer, Klimaschraenke, Hygrometer, Holzfeuchtemessgeraete |
 | `/drehmoment-kalibrierung` | Drehmoment | Kap. 4.2 | Drehmomentschluessel, Drehmomentpruefgeraete |
@@ -505,7 +509,7 @@ Messverfahren-Seite (z.B. /druckkalibrierung)
 /                                           ← Homepage (Lead-Gen + Einstieg)
 ├── /kalibrierservice                       ← Uebersicht Leistungen
 ├── /kalibrierkosten                        ← Gesamtkatalog (Suche + Filter + [Hinzufuegen])
-├── /laengenlabor                           ← Messverfahren: Dimensional
+├── /laengenkalibrierung                           ← Messverfahren: Dimensional
 ├── /druckkalibrierung                      ← Messverfahren: Druck
 ├── /temperaturkalibrierung                 ← Messverfahren: Temperatur
 ├── /drehmoment-kalibrierung                ← Messverfahren: Drehmoment
@@ -560,7 +564,7 @@ Falls kd.de-Domain wegfaellt: Gleicher Plan, Rankings bauen sich langsamer auf (
 | Phase | Zeitraum | Seiten | Inhalt |
 |-------|----------|--------|--------|
 | **1** | Woche 1–2 | 2 | Ratgeber: `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle` |
-| **2a** | Woche 3 | 1 | Messverfahren: `/laengenlabor` (inektras USP, erste Messverfahren-Seite) |
+| **2a** | Woche 3 | 1 | Messverfahren: `/laengenkalibrierung` (inektras USP, erste Messverfahren-Seite) |
 | **2b** | Woche 4–5 | 2 | Messverfahren: `/druckkalibrierung`, `/elektrische-messtechnik-kalibrierung` |
 | **2c** | Woche 6–7 | 2 | Messverfahren: `/temperaturkalibrierung`, `/drehmoment-kalibrierung` |
 | **3** | Monat 3–4 | 1 | Onlinebeauftragung: `/kalibrierauftrag` + Katalog-Erweiterung |
@@ -590,7 +594,7 @@ Falls kd.de-Domain wegfaellt: Gleicher Plan, Rankings bauen sich langsamer auf (
 ### Content-Ausbau
 - [ ] Phase 1: `/werkskalibrierung-vs-dakks` (Ratgeber)
 - [ ] Phase 1: `/kalibrierintervalle` (Ratgeber)
-- [ ] Phase 2a: `/laengenlabor` (Messverfahren, inektras USP)
+- [ ] Phase 2a: `/laengenkalibrierung` (Messverfahren, inektras USP)
 - [ ] Phase 2b: `/druckkalibrierung` + `/elektrische-messtechnik-kalibrierung`
 - [ ] Phase 2c: `/temperaturkalibrierung` + `/drehmoment-kalibrierung`
 - [ ] Phase 3: `/kalibrierauftrag` (Onlinebeauftragung)

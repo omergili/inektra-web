@@ -3,6 +3,12 @@
  * All environment variables and constants in one place
  */
 
+export interface NavItem {
+  name: string;
+  href?: string;
+  children?: readonly NavItem[];
+}
+
 export const siteConfig = {
   // Domain & Branding
   domain: process.env.NEXT_PUBLIC_DOMAIN || 'inektra.de',
@@ -52,15 +58,18 @@ export const siteConfig = {
     vatId: process.env.NEXT_PUBLIC_VAT_ID || 'DE320727155',
   },
   
-  // Navigation
+  // Navigation (Items mit children werden als Dropdown dargestellt)
   navigation: [
     { name: 'Kalibrierservice', href: '/kalibrierservice' },
-    { name: 'Messgeräte', href: '/messgeraete-kalibrieren' },
+    { name: 'Messverfahren', children: [
+      { name: 'Alle Messgeräte', href: '/messgeraete-kalibrieren' },
+    ]},
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
-    { name: 'FAQ', href: '/faq' },
+    { name: 'Ratgeber', children: [
+      { name: 'FAQ', href: '/faq' },
+    ]},
     { name: 'Über uns', href: '/ueber-uns' },
-    { name: 'Kontakt', href: '/kontakt' },
-  ],
+  ] satisfies NavItem[] as NavItem[],
   
   // Google Ads
   googleAds: {
