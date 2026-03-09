@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactSidebar from '@/components/ContactSidebar';
 import GoogleAdsTag from '@/components/GoogleAdsTag';
+import CookieConsent from '@/components/CookieConsent';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({ 
@@ -117,6 +118,7 @@ export default function RootLayout({
           <Footer />
           <ContactSidebar />
         </div>
+        <CookieConsent />
       </body>
     </html>
   );

@@ -47,10 +47,22 @@ export default function DatenschutzPage() {
           <p>
             Wir hosten die Inhalte unserer Website bei folgendem Anbieter:
           </p>
-          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Externes Hosting</h3>
+          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Vercel</h3>
           <p>
-            Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, 
-            werden auf den Servern des Hosters / der Hoster gespeichert.
+            Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA gehostet.
+            Wenn Sie unsere Website besuchen, werden Ihre personenbezogenen Daten (z.B. IP-Adresse, Browsertyp,
+            Betriebssystem, Referrer-URL, Zugriffszeit) auf den Servern von Vercel verarbeitet.
+          </p>
+          <p>
+            Die Nutzung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes
+            Interesse an einer zuverlaessigen und schnellen Bereitstellung unserer Website. Die Datenuebermittlung
+            in die USA wird auf EU-Standardvertragsklauseln gestuetzt.
+          </p>
+          <p>
+            Weitere Informationen finden Sie in der{' '}
+            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Datenschutzerklaerung von Vercel
+            </a>.
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h2>
@@ -96,12 +108,99 @@ export default function DatenschutzPage() {
 
           <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Anfrage per E-Mail oder Telefon</h3>
           <p>
-            Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden 
+            Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden
             personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet.
           </p>
 
+          <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">5. Cookies und Tracking-Technologien</h2>
+
+          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Was sind Cookies?</h3>
+          <p>
+            Cookies sind kleine Textdateien, die auf Ihrem Endgeraet gespeichert werden. Sie richten keinen Schaden
+            an und enthalten keine Viren. Wir setzen Cookies ein, um unsere Website nutzerfreundlicher zu gestalten
+            und bestimmte Funktionen zu ermoeglichen.
+          </p>
+
+          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Essenzielle Cookies</h3>
+          <p>
+            Wir verwenden technisch notwendige Speichermechanismen (localStorage), um Ihre Cookie-Einstellungen
+            zu speichern. Diese sind fuer den Betrieb der Website erforderlich und koennen nicht deaktiviert werden.
+          </p>
+          <p>
+            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) i.V.m. TTDSG &sect; 25 Abs. 2 Nr. 2
+            (technisch notwendige Speicherung).
+          </p>
+
+          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Marketing-Cookies (Google Ads)</h3>
+          <p>
+            Mit Ihrer Einwilligung setzen wir Marketing-Cookies von Google Ads ein. Diese Cookies dienen der
+            Messung der Wirksamkeit unserer Werbeanzeigen (Conversion-Tracking). Folgende Cookies koennen gesetzt werden:
+          </p>
+          <ul className="list-disc pl-6 mt-3 space-y-2">
+            <li><code className="text-sm bg-slate-100 px-1 rounded">_gcl_au</code> – Google Ads Conversion-Linker (90 Tage)</li>
+            <li><code className="text-sm bg-slate-100 px-1 rounded">_gcl_aw</code> – Google Ads Click-ID (90 Tage)</li>
+            <li><code className="text-sm bg-slate-100 px-1 rounded">_gac_*</code> – Google Ads Kampagneninformationen (90 Tage)</li>
+          </ul>
+          <p className="mt-3">
+            Diese Cookies werden <strong>nur nach Ihrer ausdruecklichen Einwilligung</strong> ueber unseren Cookie-Banner gesetzt.
+            Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) i.V.m. TTDSG &sect; 25 Abs. 1.
+          </p>
+
+          <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4" id="cookie-einstellungen">6. Google Ads Conversion-Tracking</h2>
+          <p>
+            Wir nutzen Google Ads Conversion-Tracking, einen Dienst der Google Ireland Limited,
+            Gordon House, Barrow Street, Dublin 4, Irland (&bdquo;Google&ldquo;).
+          </p>
+          <p>
+            Wenn Sie auf eine unserer Google-Anzeigen klicken, wird ein Conversion-Tracking-Cookie auf Ihrem
+            Endgeraet gespeichert (sofern Sie eingewilligt haben). Wenn Sie anschliessend bestimmte Aktionen
+            auf unserer Website ausfuehren (z.B. Absenden des Kontaktformulars), kann Google zuordnen, dass
+            Sie zuvor auf die Anzeige geklickt haben.
+          </p>
+          <p>
+            Wir verwenden Google Consent Mode v2. Das bedeutet: Ohne Ihre Einwilligung werden keine
+            Marketing-Cookies gesetzt und keine personenbezogenen Daten an Google uebermittelt. Google kann
+            in diesem Fall jedoch anonymisierte, cookielose Signale erheben (Consent Mode Modeling), um
+            aggregierte Statistiken zu erstellen.
+          </p>
+          <p>
+            Die von Google erhobenen Daten koennen in die USA uebertragen werden. Die Datenuebermittlung
+            wird auf EU-Standardvertragsklauseln gestuetzt.
+          </p>
+          <p>
+            Weitere Informationen finden Sie in der{' '}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Datenschutzerklaerung von Google
+            </a>{' '}
+            sowie den{' '}
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Informationen zu Google Ads
+            </a>.
+          </p>
+
+          <h3 className="text-xl font-semibold text-slate-900 mt-6 mb-3">Einwilligung widerrufen</h3>
+          <p>
+            Sie koennen Ihre Einwilligung jederzeit widerrufen, indem Sie im Footer unserer Website auf
+            &bdquo;Cookie-Einstellungen&ldquo; klicken. Nach dem Widerruf werden keine Marketing-Cookies
+            mehr gesetzt. Bereits gesetzte Cookies koennen Sie ueber die Einstellungen Ihres Browsers loeschen.
+            Die gespeicherte Einwilligung laeuft automatisch nach 13 Monaten ab.
+          </p>
+
+          <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">7. E-Mail-Verarbeitung</h2>
+          <p>
+            Fuer den Versand von E-Mails aus unserem Kontaktformular nutzen wir den Dienst Resend
+            (Resend Inc., USA). Wenn Sie unser Kontaktformular absenden, werden Ihre eingegebenen Daten
+            (Name, E-Mail-Adresse, Telefonnummer, Nachricht, ggf. Dateianhang) ueber die Server von
+            Resend an uns uebermittelt.
+          </p>
+          <p>
+            Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung bzw. Durchfuehrung vorvertraglicher
+            Massnahmen auf Anfrage der betroffenen Person). Die Datenuebermittlung in die USA wird auf
+            EU-Standardvertragsklauseln gestuetzt.
+          </p>
+
           <p className="mt-8 text-sm text-gray-600">
-            Stand: {new Date().toLocaleDateString('de-DE')}
+            Stand: Maerz 2026
           </p>
         </div>
       </div>

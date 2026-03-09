@@ -159,8 +159,8 @@ test.describe('Kalibrierkosten-Seite', () => {
     // Warte auf Kategorien-Ladung
     await expect(page.locator('text="Nach Kategorie filtern"')).toBeVisible({ timeout: 10000 });
 
-    // "Alle" Button vorhanden
-    await expect(page.locator('button:has-text("Alle")')).toBeVisible();
+    // "Alle" Button vorhanden (exakt, nicht "Alle akzeptieren" aus Cookie-Banner)
+    await expect(page.getByRole('button', { name: 'Alle', exact: true })).toBeVisible();
 
     // Mindestens Multimeter und Oszilloskope als Kategorien
     await expect(page.locator('button:has-text("Multimeter")')).toBeVisible();
@@ -309,6 +309,92 @@ test.describe('Footer', () => {
 
     const footer = page.locator('footer');
     await expect(footer.locator('text="info@inektra.de"')).toBeVisible();
+  });
+
+});
+
+test.describe('Cookie Consent Banner', () => {
+
+  test('Banner erscheint bei erstem Besuch', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => localStorage.removeItem('cookie-consent'));
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+
+    const banner = page.locator('[role="dialog"][aria-label="Cookie-Einstellungen"]');
+    await expect(banner).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('button:has-text("Alle akzeptieren")')).toBeVisible();
+    await expect(page.locator('button:has-text("Nur essenzielle")')).toBeVisible();
+  });
+
+  test('Banner verschwindet nach Akzeptieren', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => localStorage.removeItem('cookie-consent'));
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.locator('button:has-text("Alle akzeptieren")').click();
+    const banner = page.locator('[role="dialog"][aria-label="Cookie-Einstellungen"]');
+    await expect(banner).not.toBeVisible();
+  });
+
+  test('Banner verschwindet nach Ablehnen', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => localStorage.removeItem('cookie-consent'));
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.locator('button:has-text("Nur essenzielle")').click();
+    const banner = page.locator('[role="dialog"][aria-label="Cookie-Einstellungen"]');
+    await expect(banner).not.toBeVisible();
+  });
+
+  test('Banner erscheint nicht wenn Consent gespeichert', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => {
+      localStorage.setItem('cookie-consent', JSON.stringify({
+        essential: true, marketing: false, timestamp: Date.now(), version: '1.0'
+      }));
+    });
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+    // Kurz warten damit useEffect laufen kann
+    await page.waitForTimeout(500);
+
+    const banner = page.locator('[role="dialog"][aria-label="Cookie-Einstellungen"]');
+    await expect(banner).not.toBeVisible();
+  });
+
+  test('Consent Mode v2 Default wird immer gesetzt', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    const consentScript = page.locator('script#google-consent-default');
+    await expect(consentScript).toBeAttached();
+  });
+
+  test('Datenschutz-Link im Banner vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => localStorage.removeItem('cookie-consent'));
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+
+    const link = page.locator('[role="dialog"] a[href="/datenschutz"]');
+    await expect(link).toBeVisible({ timeout: 5000 });
+  });
+
+  test('Cookie-Einstellungen Link im Footer', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await expect(page.locator('footer >> text="Cookie-Einstellungen"')).toBeVisible();
+  });
+
+  test('Einstellungen-Panel oeffnet sich', async ({ page }) => {
+    await page.goto('http://localhost:3000');
+    await page.evaluate(() => localStorage.removeItem('cookie-consent'));
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
+    await expect(page.locator('text="Essenzielle Cookies"')).toBeVisible();
+    await expect(page.locator('text="Marketing-Cookies (Google Ads)"')).toBeVisible();
   });
 
 });

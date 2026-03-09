@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
+import { CookieSettingsButton } from '@/components/CookieConsent';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -84,6 +85,9 @@ export default function Footer() {
                 <Link href="/datenschutz" className="hover:text-white transition-colors">
                   Datenschutz
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton />
               </li>
             </ul>
           </div>
