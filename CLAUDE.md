@@ -163,6 +163,14 @@ data/
 - **Lessons learned von kalibrieren-direkt.de:** Kein Broad Match, hoeheres Budget, thematische Anzeigengruppen, keyword-passende Zielseiten, negative Keywords von Anfang an
 - **Detaillierte Dokumentation:** `docs/google-ads-kampagne.md`
 
+### Vercel Web Analytics
+- **Package:** `@vercel/analytics` (via `npm i @vercel/analytics`)
+- **Komponente:** `<Analytics />` in `app/layout.tsx` (nach `<CookieConsent />`)
+- **Import:** `import { Analytics } from '@vercel/analytics/next'`
+- **Datenschutz:** Kein Consent noetig – sammelt keine PII, setzt keine Cookies
+- **Dashboard:** Vercel → inektra-web → Analytics (Seitenaufrufe, Besucher, Referrer, Laender, Browser)
+- **Aktiviert:** 09.03.2026
+
 ### Cookie-Consent (DSGVO)
 - **Komponenten:**
   - `lib/consent.ts` – Consent-Utility: `getConsent()`, `setConsent()`, `hasMarketingConsent()`, `clearConsent()`
@@ -333,6 +341,7 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+83034e3 Vercel Web Analytics einrichten (09.03.2026)
 30d2b6d Favicon-Set erstellen + SISTRIX Keywords + Google Ads Doku (09.03.2026)
 dbdb20a Dokumentation: Cookie-Consent-Banner + Tests (v1.4.0) (09.03.2026)
 2724727 DSGVO: Cookie-Consent-Banner + Datenschutzerklaerung erweitern (09.03.2026)
@@ -377,6 +386,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Favicon-Set erstellt: ICO, SVG, PNG (16-512px), Apple Touch, Manifest (09.03.2026)
 - [x] SISTRIX-Keyword-Tracking eingerichtet: 50 Keywords, 9 Kategorien (09.03.2026)
 - [x] Google Ads Kampagne "Kalibrierservice – Hochintent" angelegt: 3 Anzeigengruppen, Exact+Phrase Match, 15 EUR/Tag (09.03.2026)
+- [x] Vercel Web Analytics eingerichtet: @vercel/analytics, kein Consent noetig (09.03.2026)
 
 ## Content-Ausbauplan
 
