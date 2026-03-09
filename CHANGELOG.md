@@ -7,6 +7,30 @@
 
 ---
 
+## [1.4.0] – 2026-03-09
+
+### DSGVO: Cookie-Consent-Banner
+- **Cookie-Banner:** Neue Komponente `components/CookieConsent.tsx` – fixed bottom, z-[60], "Alle akzeptieren" / "Nur essenzielle" / aufklappbare granulare Einstellungen
+- **Consent-Utility:** Neues Modul `lib/consent.ts` – localStorage + Cookie, 13 Monate Ablauf, Version 1.0
+- **Google Consent Mode v2:** `GoogleAdsTag.tsx` komplett umgebaut – Consent Default (denied) immer gesetzt, gtag.js nur bei Marketing-Consent geladen
+- **trackConversion():** Prueft `hasMarketingConsent()` vor dem Feuern
+- **Footer:** "Cookie-Einstellungen" Link via `CookieSettingsButton` (loescht Consent + Reload)
+- **Custom Event:** `consent-updated` verbindet Banner mit GoogleAdsTag fuer dynamisches Nachladen
+- **TypeScript:** `types/gtag.d.ts` um Consent Mode v2 Typen erweitert
+
+### Datenschutzerklaerung erweitert
+- **Hosting:** Vercel Inc. mit Adresse, Rechtsgrundlage, EU-Standardvertragsklauseln
+- **Cookies:** Essenzielle (localStorage, TTDSG §25 Abs. 2) + Marketing (Google Ads, nur nach Einwilligung)
+- **Google Ads Conversion-Tracking:** Anbieter, Zweck, Consent Mode v2, Datentransfer USA
+- **Widerruf:** Cookie-Einstellungen im Footer, 13 Monate Ablauf
+- **E-Mail-Verarbeitung:** Resend Inc. mit Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO
+
+### Tests
+- **8 neue Playwright-Tests** (35 total): Banner-Erscheinen, Akzeptieren, Ablehnen, Consent-Persistenz, Consent Mode v2 Default, Datenschutz-Link, Footer-Link, Einstellungen-Panel
+- Bestehende Tests angepasst (exakte Locatoren fuer "Alle"-Button)
+
+---
+
 ## [1.3.0] – 2026-03-09
 
 ### Google Ads Conversion-Tracking
@@ -90,4 +114,4 @@
 
 ---
 
-**Letzte Aktualisierung:** 09.03.2026 (v1.3.0)
+**Letzte Aktualisierung:** 09.03.2026 (v1.4.0)

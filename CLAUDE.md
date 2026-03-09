@@ -60,23 +60,25 @@ components/
 ├── Header.tsx             # Sticky Header mit Mobile-Hamburger-Menü ('use client')
 ├── Footer.tsx             # Footer mit Kontaktinfos und internen Links (Server Component)
 ├── ContactSidebar.tsx     # Rechte Sidebar mit Schnellanfrage-Formular ('use client')
-├── GoogleAdsTag.tsx       # Google Ads gtag.js Loader + trackConversion() ('use client')
+├── GoogleAdsTag.tsx       # Google Ads gtag.js + Consent Mode v2 + trackConversion() ('use client')
+├── CookieConsent.tsx      # Cookie-Consent-Banner + CookieSettingsButton ('use client')
 ├── Breadcrumbs.tsx        # Breadcrumb-Navigation + BreadcrumbList JSON-LD (Server Component)
 ├── EmailLink.tsx          # E-Mail-Link mit Copy-to-Clipboard ('use client')
 ├── PageFAQ.tsx            # FAQ-Akkordeon mit FAQPage JSON-LD ('use client')
 └── dashboard/             # Dashboard-Komponenten (interne Nutzung)
 
 types/
-└── gtag.d.ts              # TypeScript-Deklarationen für window.gtag/dataLayer
+└── gtag.d.ts              # TypeScript-Deklarationen für window.gtag/dataLayer + Consent Mode v2
 
 lib/
-└── config.ts              # Zentrale Konfiguration (siteConfig)
+├── config.ts              # Zentrale Konfiguration (siteConfig)
+└── consent.ts             # Cookie-Consent-Utility (localStorage + Cookie, 13 Monate Ablauf)
 
 scripts/
 └── fetch-toolboxx.mjs     # Prebuild: Holt Produktdaten von toolboxx.biz API
 
 tests/
-└── features.test.ts       # 27 Regression-Tests (Playwright)
+└── features.test.ts       # 35 Regression-Tests (Playwright)
 
 public/                    # Statische Assets (Logo, Favicon, Icons)
 data/
@@ -117,13 +119,34 @@ data/
 - **Conversion-Label:** cadjCIy0pIUcENiq14hD
 - **Conversion-Aktion:** „Kontaktformular_gesendet" (Kategorie: Lead-Formular senden, Wert: 50 EUR, Zählung: Eine, Primäre Aktion)
 - **Implementierung:**
-  - `components/GoogleAdsTag.tsx` – Lädt gtag.js auf allen Seiten via `<Script strategy="afterInteractive">`
-  - `components/GoogleAdsTag.tsx` → `trackConversion()` – Feuert `gtag('event', 'conversion', {send_to: 'AW-18003383640/cadjCIy0pIUcENiq14hD'})`
+  - `components/GoogleAdsTag.tsx` – Google Consent Mode v2 + bedingtes Laden von gtag.js
+  - `components/GoogleAdsTag.tsx` → `trackConversion()` – Feuert Conversion nur bei Marketing-Consent
   - `components/ContactSidebar.tsx` – Ruft `trackConversion()` bei `data.success` auf
   - `app/layout.tsx` – `<GoogleAdsTag />` im `<body>` vor allen anderen Inhalten
   - `lib/config.ts` → `siteConfig.googleAds` – conversionId + conversionLabel zentral konfiguriert
-  - `types/gtag.d.ts` – TypeScript-Deklarationen für `window.gtag` und `window.dataLayer`
+  - `types/gtag.d.ts` – TypeScript-Deklarationen für `window.gtag`, `window.dataLayer` + Consent Mode v2
+- **Google Consent Mode v2:**
+  - Default: `ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage` = `denied`
+  - Nach Consent: Update auf `granted` + gtag.js laden
+  - Ohne Consent: Kein gtag.js, keine Marketing-Cookies, anonymisierte Signale (Consent Mode Modeling)
 - **Wichtig:** Google Tag ID (AW-18003383640) ist NICHT identisch mit der Google Ads Konto-ID (981-989-9245). Die Tag-ID wird beim Erstellen der Conversion-Aktion vergeben.
+
+### Cookie-Consent (DSGVO)
+- **Komponenten:**
+  - `lib/consent.ts` – Consent-Utility: `getConsent()`, `setConsent()`, `hasMarketingConsent()`, `clearConsent()`
+  - `components/CookieConsent.tsx` – Banner-UI (`'use client'`, fixed bottom, z-[60])
+  - `components/CookieConsent.tsx` → `CookieSettingsButton` – Export fuer Footer (Consent widerrufen)
+- **Speicherung:** localStorage Key `cookie-consent` + Cookie `cookie-consent` (Wert: `all`/`essential`)
+- **Ablauf:** 13 Monate (DSGVO-Standard), danach Banner erneut
+- **Consent-Version:** `1.0` (fuer zukuenftige Migrationen)
+- **Banner-Features:**
+  - "Alle akzeptieren" (orange) / "Nur essenzielle" (outline) / "Einstellungen" (aufklappbar)
+  - Granulare Einstellungen: Essenzielle (immer an, disabled) + Marketing (togglebar)
+  - Link zu /datenschutz
+  - SSR-sicher: Rendert `null` serverseitig, `useEffect` prueft localStorage
+  - Custom Event `consent-updated` verbindet Banner mit GoogleAdsTag
+- **Footer:** "Cookie-Einstellungen" Link (loescht Consent + Reload → Banner erscheint erneut)
+- **Datenschutzerklaerung (/datenschutz):** Abschnitte 5-7 (Cookies, Google Ads, Consent Mode v2, Widerruf, Resend, Vercel)
 
 ## Wichtige Geschäftsregeln
 
@@ -202,14 +225,35 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 
 ## Tests
 
-27 Playwright E2E-Regressionstests in `tests/features.test.ts`:
+35 Playwright E2E-Regressionstests in `tests/features.test.ts`:
+
+**Critical Features Check (12 Tests):**
 - Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten
 - Kontaktformular-Pflichtfelder und Datenschutz-Checkbox
-- Keine verbotenen Akkreditierungs-Claims
-- Kalibrierkosten: Suche, Kategorien, gefilterte Ergebnisse
-- API-Endpoints: Items, Kategorien, Suche
-- Footer: Copyright, E-Mail, keine USt-IdNr
-- Performance: Keine Console-Errors, alle internen Links erreichbar
+- Keine verbotenen Akkreditierungs-Claims, korrekte Terminologie
+- Nordhorn-Adresse, keine Markennamen auf Homepage, Logo-Groesse
+- Submit-Button enabled/disabled, Premium-Design auf Unterseiten
+
+**Kalibrierkosten-Seite (5 Tests):**
+- Hero + Suchfeld, Kategorie-Filter, Suche liefert Ergebnisse
+- Kategorie-Filter funktioniert, Werkskalibrierung ausgeschlossen
+
+**Kalibrierkosten API (5 Tests):**
+- Items-Endpoint, Kategorien-Endpoint, Kategorie-Filter, Suche, Werkskalibrierung-Ausschluss
+
+**Footer (3 Tests):**
+- Keine USt-IdNr, Copyright-Text, E-Mail-Link
+
+**Cookie Consent Banner (8 Tests):**
+- Banner erscheint bei erstem Besuch, verschwindet nach Akzeptieren/Ablehnen
+- Banner erscheint nicht wenn Consent gespeichert
+- Consent Mode v2 Default-Script immer vorhanden
+- Datenschutz-Link im Banner, Cookie-Einstellungen im Footer
+- Einstellungen-Panel oeffnet sich mit granularen Optionen
+
+**Performance & Accessibility (2 Tests):**
+- Keine kritischen Console-Errors auf Homepage
+- Alle internen Links sind erreichbar
 
 Tests laufen gegen `http://localhost:3000` (Dev-Server wird automatisch gestartet).
 
@@ -242,6 +286,7 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+2724727 DSGVO: Cookie-Consent-Banner + Datenschutzerklaerung erweitern (09.03.2026)
 20c1513 Google Ads Conversion-Tracking einrichten (AW-18003383640) (09.03.2026)
 a3b3d32 SEO-Optimierung: Structured Data, OG-Image, Breadcrumbs, interne Verlinkung (07.03.2026)
 7829550 Sitemap hinzufügen und Dokumentation aktualisieren (07.03.2026)
@@ -262,7 +307,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Kontaktformular via Resend API
 - [x] Produktkatalog via toolboxx.biz API (3.200+ Geräte)
 - [x] FAQ-System mit JSON-LD Structured Data
-- [x] 27 Playwright E2E-Tests
+- [x] Playwright E2E-Tests eingerichtet
 - [x] SEO-Indexierung aktiviert (07.03.2026)
 - [x] Domain auf inektra.de umgestellt
 - [x] Canonical-URLs korrigiert
@@ -277,6 +322,9 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Google Search Console eingerichtet, Seiten zur Indexierung eingereicht (07.03.2026)
 - [x] Google Ads Konto eingerichtet (981-989-9245, 09.03.2026)
 - [x] Google Ads Conversion-Tracking implementiert (gtag.js + trackConversion(), 09.03.2026)
+- [x] Cookie-Consent-Banner (DSGVO-konform, Consent Mode v2, 09.03.2026)
+- [x] Datenschutzerklaerung erweitert: Cookies, Google Ads, Vercel, Resend (09.03.2026)
+- [x] 35 Playwright E2E-Tests (8 neue Cookie-Banner-Tests, 09.03.2026)
 
 ## Content-Ausbauplan
 
