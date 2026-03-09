@@ -62,6 +62,12 @@ export const siteConfig = {
     { name: 'Kontakt', href: '/kontakt' },
   ],
   
+  // Google Ads
+  googleAds: {
+    conversionId: 'AW-18003383640',
+    conversionLabel: 'cadjCIy0pIUcENiq14hD',
+  },
+
   // SEO (OG-Image wird via app/opengraph-image.tsx generiert)
   seo: {},
 };

@@ -5,6 +5,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactSidebar from '@/components/ContactSidebar';
+import GoogleAdsTag from '@/components/GoogleAdsTag';
 import { siteConfig } from '@/lib/config';
 
 const inter = Inter({ 
@@ -102,6 +103,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={inter.className}>
+        <GoogleAdsTag />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

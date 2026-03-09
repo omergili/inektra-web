@@ -38,14 +38,16 @@ npm run test:report  # Playwright Report anzeigen
 
 ```
 app/                       # Next.js App Router Seiten
-├── layout.tsx             # Root Layout (Header, Footer, ContactSidebar)
-├── page.tsx               # Homepage (Hero, USPs, Services, CTA)
+├── layout.tsx             # Root Layout (Header, Footer, ContactSidebar, LocalBusiness JSON-LD)
+├── page.tsx               # Homepage (Hero, USPs, 3 Services, FAQ-Teaser, CTA)
 ├── globals.css            # Tailwind + Custom CSS (Accessibility)
 ├── robots.ts              # SEO robots.txt (Allow /, Disallow /api/)
+├── sitemap.ts             # Dynamische XML-Sitemap (7 Seiten)
+├── opengraph-image.tsx    # Dynamischer OG-Image Generator (1200×630, Edge Runtime)
 ├── api/
 │   ├── contact/route.ts   # POST: Kontaktformular → Resend E-Mail
 │   └── toolboxx/items/route.ts  # GET: Kalibrier-Katalog (Suche, Filter, Kategorien)
-├── kalibrierservice/      # Leistungsseite (Prozess, Vorteile, FAQs)
+├── kalibrierservice/      # Leistungsseite (Prozess, Vorteile, FAQs, Service JSON-LD)
 ├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Gerätekategorien)
 ├── kalibrierkosten/       # Preisübersicht mit Suche (Client Component, 300ms Debounce)
 ├── kontakt/               # Kontaktseite
@@ -56,10 +58,11 @@ app/                       # Next.js App Router Seiten
 
 components/
 ├── Header.tsx             # Sticky Header mit Mobile-Hamburger-Menü ('use client')
-├── Footer.tsx             # Footer mit Kontaktinfos (Server Component)
+├── Footer.tsx             # Footer mit Kontaktinfos und internen Links (Server Component)
 ├── ContactSidebar.tsx     # Rechte Sidebar mit Schnellanfrage-Formular ('use client')
+├── Breadcrumbs.tsx        # Breadcrumb-Navigation + BreadcrumbList JSON-LD (Server Component)
 ├── EmailLink.tsx          # E-Mail-Link mit Copy-to-Clipboard ('use client')
-├── PageFAQ.tsx            # FAQ-Akkordeon für Unterseiten ('use client')
+├── PageFAQ.tsx            # FAQ-Akkordeon mit FAQPage JSON-LD ('use client')
 └── dashboard/             # Dashboard-Komponenten (interne Nutzung)
 
 lib/
@@ -164,9 +167,18 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Indexierung:** Aktiv (index: true, follow: true) seit 07.03.2026
 - **Canonical URLs:** inektra.de – pro Seite gesetzt
 - **robots.txt:** Allow: /, Disallow: /api/, Sitemap: https://inektra.de/sitemap.xml
+- **Sitemap:** Dynamisch generiert via `app/sitemap.ts` (7 Seiten, Prioritäten 1.0–0.6)
 - **Meta-Tags:** OpenGraph (de_DE), Twitter Card pro Seite
+- **OG-Image:** Dynamisch generiert via `app/opengraph-image.tsx` (1200×630 PNG, Edge Runtime)
 - **Googlebot:** index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1
-- **Structured Data:** JSON-LD FAQPage Schema auf /faq
+- **Breadcrumbs:** Sichtbar + BreadcrumbList JSON-LD auf allen 6 Unterseiten (nicht Homepage)
+- **Structured Data (JSON-LD):**
+  - `LocalBusiness` – Root Layout (jede Seite): Firmenname, Adresse Nordhorn, Telefon, E-Mail, Öffnungszeiten, Geo-Koordinaten
+  - `Service` + `OfferCatalog` – /kalibrierservice: 5 Kategorien (Elektrische Messtechnik, Temperatur, Druck, Dimension, Waagen)
+  - `FAQPage` – Automatisch auf 5 Seiten via PageFAQ-Komponente (kalibrierservice, messgeraete, faq, kontakt, ueber-uns)
+  - `BreadcrumbList` – Automatisch auf allen 6 Unterseiten via Breadcrumbs-Komponente
+- **Interne Verlinkung:** Homepage → 3 Service-Karten + FAQ-Teaser, Footer → 6 Links (Leistungen + Unternehmen)
+- **Skip-to-Content:** Tastaturnavigation-Link im Root Layout
 - **Keywords:** kalibrierservice, werkskalibrierung, messgeräte kalibrieren, kalibrierung dienstleister, kalibrierlabor, messmittel kalibrierung, iso kalibrierung, kalibrierung nordhorn
 
 ## Tests
@@ -211,6 +223,8 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+a3b3d32 SEO-Optimierung: Structured Data, OG-Image, Breadcrumbs, interne Verlinkung (07.03.2026)
+7829550 Sitemap hinzufügen und Dokumentation aktualisieren (07.03.2026)
 1a14793 Supabase/PostgreSQL-Anbindung komplett entfernen (07.03.2026)
 730a927 SEO: Indexierung aktivieren – noindex/nofollow auf index/follow umstellen
 5bc6d0d SEO: Domain auf inektra.de umstellen, Canonical-URLs korrigieren
@@ -234,15 +248,127 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Canonical-URLs korrigiert
 - [x] Supabase/PostgreSQL komplett entfernt
 - [x] Vercel Auto-Deployment konfiguriert
+- [x] XML-Sitemap (dynamisch, 7 Seiten)
+- [x] Structured Data: LocalBusiness, Service, FAQPage (5 Seiten), BreadcrumbList (6 Seiten)
+- [x] OG-Image Generator (dynamisch, Edge Runtime)
+- [x] Breadcrumbs auf allen Unterseiten (sichtbar + JSON-LD)
+- [x] Interne Verlinkung optimiert (Homepage 3 Service-Karten + FAQ-Teaser, Footer ergänzt)
+- [x] Skip-to-Content Link (Accessibility)
+- [x] Google Search Console eingerichtet, Seiten zur Indexierung eingereicht (07.03.2026)
+
+## Content-Ausbauplan
+
+### Strategische Lage (Stand 07.03.2026)
+- **kalibrieren-direkt.de** (Elektro Struss GmbH) ist wegen Insolvenz unsicher – Domain-Zukunft unklar
+- **inektra.de** muss eigenständig aufgebaut werden und langfristig alle Kalibrierungs-Inhalte tragen
+- Solange kalibrieren-direkt.de noch läuft: **keine konkurrierenden Geräte-/Marken-Seiten** bauen
+- Stattdessen: Ratgeber-Content (informational) + Längenlabor-Expertise (inektras USP)
+- **Entscheidung über Geräte-/Marken-Landingpages nach Klärung der kalibrieren-direkt.de Situation**
+- Falls kalibrieren-direkt.de Domain behalten werden kann: 301-Redirect auf inektra.de (SEO-Juice-Transfer)
+
+### URL-Schema (beschlossen)
+- **Flache URLs**, keyword-orientiert (bewährt durch Wettbewerbsanalyse: meta-m.de, quality-tools-shop.de, sourcetronic.com)
+- Geräte-Seiten (später): `/multimeter-kalibrieren`, `/messschieber-kalibrieren` etc.
+- Marken-Seiten (später): `/fluke-kalibrierung`, `/benning-kalibrierung` etc.
+- Ratgeber: `/kalibrierkosten-ratgeber`, `/werkskalibrierung-vs-dakks`, `/kalibrierintervalle`
+- Expertise: `/laengenlabor`
+- Kein `/kalibrierung/` oder `/hersteller/` Verzeichnis
+
+### Datengrundlage
+- **GSC-Export kalibrieren-direkt.de:** 500+ Keywords, 90 Tage (06.12.2025–06.03.2026)
+- **Mega-Keyword:** "kalibrieren" = 14.747 Impressionen/90T, Position 10.5
+- **Top-Kategorien nach Impressionen:** Drehmomentschlüssel (1.245), Messschieber (1.215), Multimeter (1.170), Manometer (1.351)
+- **Top-Marken nach Impressionen:** Fluke (2.150+), Benning (1.768+), Voltcraft (~500)
+- **Wettbewerbsanalyse:** Große Labore (Perschmann, Testo TIS, ESZ) haben keine Geräte-/Marken-SEO-Seiten → Long-Tail-Keywords sind offen
+- **Analysedokumente:** `/Users/olafmergili/CLAUDE-PROJEKTE/kalibrieren-direkt/docs/`
+
+### Woche 1 – Ratgeber + Längenlabor (keine Konkurrenz zu kd.de)
+
+**Ratgeber-Artikel (informational – kd.de hat keinen Ratgeber-Content):**
+
+| Seite | Ziel-Keywords | Suchvolumen |
+|-------|--------------|-------------|
+| `/kalibrierkosten-ratgeber` | kalibrierung kosten, kalibrieren kosten | 2.000+/Monat |
+| `/werkskalibrierung-vs-dakks` | werkskalibrierung, akkreditierte kalibrierung, dakks unterschied | 1.500+/Monat |
+| `/kalibrierintervalle` | kalibrierintervall, wie oft kalibrieren, kalibrierung intervall | 1.000+/Monat |
+
+**Jeder Ratgeber enthält:**
+- 800–1.200 Wörter Fachtext
+- 3 FAQs am Ende (+ FAQPage JSON-LD)
+- CTA-Box mit Schnellanfrage
+- Interne Links zu `/kalibrierkosten` und `/kalibrierservice`
+- Breadcrumbs: Startseite → [Ratgeber-Titel]
+- Metadata: Title, Description, Keywords, Canonical URL
+
+**Längenlabor-Seite (inektras Alleinstellungsmerkmal):**
+
+| Seite | Ziel-Keywords | Impressionen (kd.de) |
+|-------|--------------|---------------------|
+| `/laengenlabor` | messschieber kalibrieren, endmaß kalibrierung, bügelmessschraube kalibrieren | 1.215 + 840+ |
+
+**Inhalt:**
+- inektras Stärke in der Dimensionsmesstechnik
+- Alle kalibrierbaren Messgrößen: Messschieber, Bügelmessschrauben, Endmaße, Messuhren, Lehrdorne, Gewindelehrringe, Rauheitsmessgeräte, Schichtdickenmessgeräte
+- Gefilterter Katalog (Toolboxx-Kategorie "Längenmesstechnik")
+- Genauigkeitsangaben und Messbereiche
+- 3 FAQs zur dimensionellen Kalibrierung (+ JSON-LD)
+- Service JSON-LD
+- Verlinkung von `/messgeraete-kalibrieren` und `/kalibrierservice`
+
+**Technisch (Freitag):**
+- Sitemap erweitern (7 → 11 Seiten)
+- Bestehende Seiten verknüpfen (interne Links auf neue Seiten)
+- Build + Deploy
+
+### Nach Klärung kalibrieren-direkt.de – Geräte- und Marken-Seiten
+
+**Szenario A: Domain bleibt verfügbar → 301-Redirect + alles auf inektra.de:**
+
+Geräte-Landingpages (flache URLs):
+
+| Seite | Ziel-Keyword | Impressionen (kd.de) |
+|-------|-------------|---------------------|
+| `/multimeter-kalibrieren` | multimeter kalibrieren | 1.170 |
+| `/drehmomentschluessel-kalibrieren` | drehmomentschlüssel kalibrieren | 1.245 |
+| `/messschieber-kalibrieren` | messschieber kalibrieren | 1.215 |
+| `/manometer-kalibrierung` | manometer kalibrieren | 1.351 |
+| `/thermometer-kalibrierung` | thermometer kalibrieren | ~500 |
+| + 11 weitere Kategorien | | |
+
+Marken-Landingpages (flache URLs):
+
+| Seite | Ziel-Keywords | Impressionen (kd.de) |
+|-------|--------------|---------------------|
+| `/fluke-kalibrierung` | fluke kalibrierung | 2.150+ |
+| `/benning-kalibrierung` | benning kalibrierung | 1.768+ |
+| `/voltcraft-kalibrierung` | voltcraft kalibrierung | ~500 |
+| + 6 weitere Marken | | |
+
+**Szenario B: Domain fällt weg → gleiche Seiten, aber ohne Redirect-Bonus:**
+- Gleicher Content-Plan, Rankings bauen sich langsamer auf (3–6 Monate statt 2–4 Wochen)
+
+### Erwartete Ergebnisse
+
+| Zeitpunkt | Seiten | Geschätzter org. Traffic |
+|-----------|--------|------------------------|
+| Heute | 9 | 0 (seit 07.03.2026 indexiert) |
+| Nach Woche 1 | 13 | Indexierung läuft |
+| Nach 3 Monaten (mit Redirect) | ~42 | 1.000–3.000 Besucher/Monat |
+| Nach 3 Monaten (ohne Redirect) | ~42 | 300–1.000 Besucher/Monat |
+| Nach 6 Monaten | ~42+ | 2.000–5.000 Besucher/Monat |
 
 ## Offene Punkte
 
+### Dringend
+- [ ] Klären: Kann Domain kalibrieren-direkt.de behalten werden? (Insolvenz Elektro Struss GmbH)
+- [ ] GSC-Tool: Service-Account-Datei in gsc-tool/ kopieren (Pfad im Script anpassen)
+
 ### Wichtig
-- [ ] Google Search Console einrichten (Sitemap einreichen)
-- [ ] Resend Custom Domain konfigurieren (E-Mails von @inektra.de)
-- [ ] Erste Kategorie-Landingpages (`/kalibrierung/multimeter`)
+- [x] Resend Custom Domain konfiguriert (inektra.de verifiziert, Region eu-west-1, E-Mails von info@inektra.de)
+- [ ] Nach kd.de-Klärung: Geräte-Landingpages (16 Seiten, flache URLs)
+- [ ] Nach kd.de-Klärung: Marken-Landingpages (9 Seiten, flache URLs)
+- [ ] Toolboxx-Daten: Hersteller-Feld befüllen (Mapping-Script)
 
 ### Nice-to-Have
-- [ ] Structured Data erweitern: Organization, LocalBusiness, Service Schema
 - [ ] Admin-Dashboard für Lead-Management
-- [ ] Automatische Content-Optimierung
+- [ ] Product JSON-LD auf Kalibrierkosten-Seite

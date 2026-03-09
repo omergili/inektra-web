@@ -7,6 +7,19 @@
 
 ---
 
+## [1.2.0] – 2026-03-07
+
+### SEO-Optimierung
+- **Structured Data (JSON-LD):** LocalBusiness im Root Layout, Service + OfferCatalog auf /kalibrierservice, FAQPage automatisch auf 5 Seiten via PageFAQ-Komponente
+- **OG-Image:** Dynamischer Generator (`app/opengraph-image.tsx`, 1200×630 PNG, Edge Runtime)
+- **Breadcrumbs:** Neue Komponente (`components/Breadcrumbs.tsx`) mit sichtbarer Navigation + BreadcrumbList JSON-LD auf 6 Unterseiten
+- **Sitemap:** Dynamische XML-Sitemap (`app/sitemap.ts`, 7 Seiten mit Prioritäten)
+- **Interne Verlinkung:** Homepage um 3. Service-Karte (Kalibrierkosten) und FAQ-Teaser erweitert, Footer-Links ergänzt (Kalibrierkosten, FAQ)
+- **Accessibility:** Skip-to-Content Link im Root Layout, `id="main-content"` auf `<main>`
+- **Config bereinigt:** `ogImage`/`twitterHandle` Placeholder aus `lib/config.ts` entfernt
+
+---
+
 ## [1.1.0] – 2026-03-07
 
 ### SEO & Indexierung
@@ -64,4 +77,4 @@
 
 ---
 
-**Letzte Aktualisierung:** 07.03.2026
+**Letzte Aktualisierung:** 07.03.2026 (v1.2.0)

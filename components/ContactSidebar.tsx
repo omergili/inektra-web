@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
+import { trackConversion } from '@/components/GoogleAdsTag';
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function ContactSidebar() {
 
       if (data.success) {
         setSubmitStatus('success');
+        trackConversion();
         setFormData({ name: '', email: '', phone: '', message: '', dataPrivacy: false });
         setFile(null);
         setTimeout(() => setIsOpen(false), 2000);
