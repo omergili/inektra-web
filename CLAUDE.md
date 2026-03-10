@@ -291,9 +291,18 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **301-Redirects:**
   - **calpro.de → inektra.de** (seit Anfang Maerz 2026) – Alte Domain der Vorgaengerfirma Calpro Hagels/Theussing GmbH & Co. KG. Backlink-Profil minimal (49 Links, fast nur Spam/Scraper, einzig relevanter Link: messraum.net SI 0,020). Kein nennenswerter SEO-Boost, inektra.de muss Autoritaet selbst aufbauen.
   - **kalibrieren-direkt.de → inektra.de** – Noch offen (Insolvenz Elektro Struss GmbH, Domain-Zukunft unklar)
-- **SISTRIX-Tracking:** 50 Keywords in 9 Kategorien (docs/sistrix-keywords.md)
-  - Erste Rankings (09.03.2026): "kalibrierkosten" Position 1, "inektra" Position 4
-  - 52 Keywords getrackt, 10 mit Rankings
+- **SISTRIX-Tracking:** 57 Keywords (docs/sistrix-keywords.md)
+  - **Stand 10.03.2026:** 57 Keywords getrackt, alle NEU indexiert
+  - **Top-Rankings:**
+    - "kalibrierkosten" Position **1** → /kalibrierkosten 🏆
+    - "inektra gmbh" Position **5** → /ueber-uns (SV 10)
+    - "inektra" Position **5** → /ueber-uns (SV 10)
+    - "kalibrierlabor nordhorn" Position **19** → /kontakt
+    - "messgeraete kalibrieren lassen" Position **37** → /messgeraete-kalibrieren
+    - "was kostet kalibrierung" Position **60** → /kalibrierkosten
+  - **Groesstes Potenzial:** "messgeraete kalibrieren" Position 97 (SV **750**) → /messgeraete-kalibrieren
+  - **/messgeraete-kalibrieren** rankt fuer 8+ Keywords (Pos. 37–97): messgeraete kalibrierung (71, SV 30), kalibrieren messgeraete (85, SV 60), kalibrieren von messgeraeten (95, SV 40), multimeter kalibrierung (81, SV 20), manometer kalibrieren kosten (64, SV 10)
+  - **Kannibalisierung beobachten:** "kalibrierkosten" rankt auch auf /messgeraete-kalibrieren (Pos. 32) neben /kalibrierkosten (Pos. 1) – Primaerseite dominiert, kein Handlungsbedarf
 
 ## Tests
 

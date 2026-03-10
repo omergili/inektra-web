@@ -125,8 +125,8 @@ kalibrierlabor nordhorn
 ### 6. Laengenmesstechnik (3 Keywords)
 | Keyword | Erwartete URL |
 |---|---|
-| endmass kalibrierung | /messgeraete-kalibrieren (spaeter /laengenlabor) |
-| buegelmessschraube kalibrieren | /messgeraete-kalibrieren (spaeter /laengenlabor) |
+| endmass kalibrierung | /messgeraete-kalibrieren (spaeter /laengenkalibrierung) |
+| buegelmessschraube kalibrieren | /messgeraete-kalibrieren (spaeter /laengenkalibrierung) |
 | schichtdickenmessgeraet kalibrieren | /messgeraete-kalibrieren |
 
 ### 7. Marken-Keywords (6 Keywords)
@@ -155,23 +155,70 @@ kalibrierlabor nordhorn
 
 ---
 
-## Bereits in SISTRIX getrackt (Stand 09.03.2026)
+## SISTRIX-Rankings (Stand 10.03.2026)
 
-| Keyword | Position | Suchvolumen |
-|---|---|---|
-| inektra gmbh | 6 (+2) | 10 |
-| kalibrierung messgeraete | 71 | 350 |
-| kalibrieren von messgeraeten | 100 | 40 |
+57 Keywords getrackt, alle NEU indexiert seit 09.03.2026.
+
+### Top-Rankings (Position 1–40)
+
+| Keyword | Position | URL | Suchvolumen | Klicks |
+|---|---|---|---|---|
+| **kalibrierkosten** | **1** | /kalibrierkosten | – | 0 |
+| kalibrierkosten | 32 | /messgeraete-kalibrieren | – | – |
+| **inektra gmbh** | **5** | /ueber-uns | 10 | 1 |
+| inektra gmbh | 7 | /kontakt | – | – |
+| inektra gmbh | 8 | /messgeraete-kalibrieren | – | – |
+| inektra gmbh | 9 | /kalibrierkosten | – | – |
+| inektra gmbh | 11 | /kontakt | – | – |
+| inektra gmbh | 16 | /messgeraete-kalibrieren | – | – |
+| inektra gmbh | 20 | /kalibrierkosten | – | – |
+| inektra gmbh | 22 | /faq | – | – |
+| **inektra** | **5** | /ueber-uns | 10 | 0 |
+| inektra | 9 | /kontakt | – | – |
+| inektra | 13 | /messgeraete-kalibrieren | – | – |
+| inektra | 17 | /kalibrierkosten | – | – |
+| inektra | 20 | /kalibrierkosten | – | – |
+| inektra | 30 | /faq | – | – |
+| **kalibrierlabor nordhorn** | **19** | /kontakt | 0 | 0 |
+| **messgeraete kalibrieren lassen** | **37** | /messgeraete-kalibrieren | 0 | 0 |
+
+### Rankings 40–100 (groesstes Optimierungspotenzial)
+
+| Keyword | Position | URL | Suchvolumen | Klicks |
+|---|---|---|---|---|
+| was kostet kalibrierung | 60 | /kalibrierkosten | 0 | 0 |
+| manometer kalibrieren kosten | 64 | /messgeraete-kalibrieren | 10 | 0 |
+| messgeraete kalibrierung | 71 | /messgeraete-kalibrieren | 30 | 0 |
+| multimeter kalibrierung | 81 | /messgeraete-kalibrieren | 20 | 0 |
+| kalibrieren messgeraete | 85 | /messgeraete-kalibrieren | 60 | 0 |
+| kalibrieren von messgeraeten | 95 | /messgeraete-kalibrieren | 40 | 0 |
+| **messgeraete kalibrieren** | **97** | /messgeraete-kalibrieren | **750** | 0 |
+
+### Analyse
+
+**Staerken:**
+- "kalibrierkosten" Position 1 – fuer eine 4 Tage alte Seite herausragend
+- Brand-Keywords "inektra" / "inektra gmbh" stabil auf Position 5
+- /messgeraete-kalibrieren faengt bereits 8+ relevante Keywords auf (Topical Authority)
+
+**Groesstes Potenzial:**
+- "messgeraete kalibrieren" (SV 750, Pos. 97) – Von Pos. 97 → Top 20 = massiver Traffic-Gewinn
+- "kalibrieren messgeraete" (SV 60, Pos. 85) + "kalibrieren von messgeraeten" (SV 40, Pos. 95) = gleiche Suchintention
+- Messverfahren-Seiten werden diese Rankings stuetzen (Topical Cluster)
+
+**Beobachten:**
+- Leichte Kannibalisierung bei "kalibrierkosten": /kalibrierkosten (Pos. 1) vs. /messgeraete-kalibrieren (Pos. 32) – kein Handlungsbedarf, Primaerseite dominiert klar
+- "inektra gmbh" rankt mit 8 verschiedenen URLs (normal fuer Brand-Queries, Google zeigt Sitelinks)
 
 ---
 
 ## Tracking-Ziele (3 Monate)
 
-| Kategorie | Ziel |
-|---|---|
-| Brand-Keywords | Top 3 |
-| Kalibrierservice allgemein | Top 20 |
-| Messgeraete kalibrieren | Top 30 |
-| Kalibrierkosten | Top 30 |
-| Geraetekategorien | Top 50 (Indexierung) |
-| Marken-Keywords | Top 50 (Indexierung) |
+| Kategorie | Ziel | Status 10.03.2026 |
+|---|---|---|
+| Brand-Keywords | Top 3 | ✅ Position 5 (fast erreicht) |
+| Kalibrierkosten | Top 5 | ✅ **Position 1** |
+| Kalibrierservice allgemein | Top 20 | ⏳ Noch kein Ranking |
+| Messgeraete kalibrieren | Top 30 | 🔄 Position 37–97 (indexiert) |
+| Geraetekategorien | Top 50 (Indexierung) | 🔄 Position 64–97 (indexiert) |
+| Marken-Keywords | Top 50 (Indexierung) | ⏳ Noch kein Ranking |
