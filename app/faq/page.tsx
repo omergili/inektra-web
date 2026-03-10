@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 const faqData = [
   {
     question: 'Was kostet eine Kalibrierung?',
-    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang der Kalibrierung. Für ein individuelles Angebot kontaktieren Sie uns bitte mit Ihrer Geräteliste. Wir erstellen Ihnen ein transparentes, verbindliches Angebot. Rückversand: 15 € netto zzgl. MwSt.',
+    answer: 'Die Kosten variieren je nach Gerätetyp und Umfang der Kalibrierung. Der Mindestauftragswert beträgt 40 € netto – bei kleineren Aufträgen wird die Differenz berechnet. Rückversand: 15 € netto zzgl. MwSt. Für ein individuelles Angebot kontaktieren Sie uns mit Ihrer Geräteliste.',
+  },
+  {
+    question: 'Gibt es einen Mindestauftragswert?',
+    answer: 'Ja, der Mindestauftragswert beträgt 40 € netto. Liegt der Auftragswert darunter, wird die Differenz zu 40 € in Rechnung gestellt. Alle Preise sind Nettopreise zzgl. gesetzlicher Umsatzsteuer und Versandkosten.',
   },
   {
     question: 'Wie lange dauert eine Kalibrierung?',
