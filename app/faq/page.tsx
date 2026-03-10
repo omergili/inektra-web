@@ -43,7 +43,7 @@ const faqData = [
   },
   {
     question: 'Wie oft sollte ich meine Messgeräte kalibrieren lassen?',
-    answer: 'Empfohlen wird eine jährliche Kalibrierung. Je nach Nutzungshäufigkeit und Genauigkeitsanforderungen kann das Intervall kürzer (halbjährlich) oder länger (alle 2 Jahre) sein. Wir bieten einen Erinnerungsservice an.',
+    answer: 'Empfohlen wird eine jährliche Kalibrierung. Je nach Nutzungshäufigkeit und Genauigkeitsanforderungen kann das Intervall kürzer (halbjährlich) oder länger (alle 2 Jahre) sein. Wir beraten Sie gerne zum optimalen Intervall. Ausführliche Empfehlungen finden Sie in unserem Ratgeber zu Kalibrierintervallen.',
   },
   {
     question: 'Liefern Sie auch vor Ort?',

@@ -67,6 +67,7 @@ export const siteConfig = {
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'Ratgeber', children: [
       { name: 'FAQ', href: '/faq' },
+      { name: 'Kalibrierintervalle', href: '/kalibrierintervalle' },
     ]},
     { name: 'Über uns', href: '/ueber-uns' },
   ] satisfies NavItem[] as NavItem[],
