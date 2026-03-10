@@ -4,11 +4,16 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Kalibrierintervalle – Wie oft sollten Sie kalibrieren? | inektra',
+  title: 'Kalibrierintervalle – Wie oft sollten Sie kalibrieren?',
   description: 'Optimale Kalibrierintervalle für Messgeräte: Empfehlungen nach Gerätetyp, Einflussfaktoren und Normen. Praxisorientierter Ratgeber für Industrie und Labor.',
   keywords: ['kalibrierintervall', 'wie oft kalibrieren', 'kalibrierungshäufigkeit', 'kalibrierung intervall', 'rekalibrierung', 'kalibrierzyklus'],
   alternates: {
     canonical: 'https://inektra.de/kalibrierintervalle',
+  },
+  openGraph: {
+    title: 'Kalibrierintervalle – Wie oft sollten Sie kalibrieren? | inektra GmbH',
+    description: 'Empfohlene Kalibrierintervalle nach Gerätetyp, Einflussfaktoren und relevante Normen – praxisnah erklärt.',
+    type: 'article',
   },
 };
 
@@ -29,7 +34,7 @@ const intervalle = [
     kategorie: 'Längenmesstechnik',
     beispiele: 'Messschieber, Messschrauben, Endmaße, Messuhren',
     intervall: '12–24 Monate',
-    hinweis: 'Bei geringer Nutzung in kontrollierter Umgebung bis 24 Monate',
+    hinweis: 'Bei geringer Nutzung in kontrollierter Umgebung bis 24 Monate. Details zu Prüfverfahren und Normen: siehe Längenkalibrierung.',
   },
   {
     kategorie: 'Druckmesstechnik',
@@ -91,7 +96,7 @@ export default function KalibrierintervallePage() {
       <Breadcrumbs items={[{ name: 'Kalibrierintervalle' }]} />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-16 pb-16 min-h-[400px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10 w-full">
@@ -118,7 +123,7 @@ export default function KalibrierintervallePage() {
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Warum regelmäßig kalibrieren?</h2>
             <p className="text-lg text-slate-600 mb-6">
-              Jedes Messgerät unterliegt einer natürlichen Alterung. Mechanische Bauteile verschleißen, elektronische Komponenten driften, und Umgebungseinflüsse hinterlassen Spuren. Die Folge: Messwerte weichen schleichend vom tatsächlichen Wert ab – oft ohne dass es dem Anwender auffällt.
+              Das richtige Kalibrierintervall entscheidet darüber, ob Ihre Messgeräte zuverlässige Ergebnisse liefern. Denn jedes Messgerät unterliegt einer natürlichen Alterung: Mechanische Bauteile verschleißen, elektronische Komponenten driften, und Umgebungseinflüsse hinterlassen Spuren. Die Folge – Messwerte weichen schleichend vom tatsächlichen Wert ab, oft ohne dass es dem Anwender auffällt.
             </p>
             <p className="text-lg text-slate-600 mb-6">
               Regelmäßige Kalibrierung stellt sicher, dass Ihre Messgeräte innerhalb der geforderten Toleranzen arbeiten. Das schützt vor fehlerhaften Produkten, Reklamationen und im schlimmsten Fall vor Haftungsansprüchen. In vielen Branchen ist eine nachweisliche Kalibrierung zudem Voraussetzung für Audits und Zertifizierungen.
@@ -239,6 +244,15 @@ export default function KalibrierintervallePage() {
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
                 Kalibrierkosten nachschlagen
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/laengenkalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Längenkalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

@@ -31,7 +31,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Contact-Sidebar ist auf allen Seiten', async ({ page }) => {
-    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt'];
+    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -128,7 +128,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Alle Unterseiten haben Premium-Design', async ({ page }) => {
-    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt'];
+    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -395,6 +395,216 @@ test.describe('Cookie Consent Banner', () => {
     await page.getByRole('button', { name: 'Einstellungen', exact: true }).click();
     await expect(page.locator('text="Essenzielle Cookies"')).toBeVisible();
     await expect(page.locator('text="Marketing-Cookies (Google Ads)"')).toBeVisible();
+  });
+
+});
+
+test.describe('Kalibrierintervalle SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+
+    // Title enthaelt Keyword und Brand (Template: %s | inektra GmbH)
+    await expect(page).toHaveTitle(/Kalibrierintervalle.*kalibrieren.*inektra GmbH/);
+
+    // H1 enthaelt Keyword
+    await expect(page.locator('h1')).toContainText('Kalibrierintervalle');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+    const content = await page.content();
+
+    // BreadcrumbList JSON-LD (via Breadcrumbs-Komponente)
+    expect(content).toContain('"@type":"BreadcrumbList"');
+
+    // FAQPage JSON-LD (via PageFAQ-Komponente)
+    expect(content).toContain('"@type":"FAQPage"');
+
+    // 3 FAQ-Fragen vorhanden
+    expect(content).toContain('Kalibrierintervall überschreite');
+    expect(content).toContain('gesetzliche Vorgaben');
+    expect(content).toContain('selbst festlegen');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+
+    // Canonical URL
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/kalibrierintervalle');
+
+    // OpenGraph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Kalibrierintervalle/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+
+    // Links im Content-Bereich (nicht Header/Footer)
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/kalibrierservice"]')).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]')).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keine verbotenen Begriffe auf Kalibrierintervalle-Seite', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+    const content = await page.content();
+
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+    expect(content).not.toContain('akkreditiert');
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+
+    // Erster Absatz der Einleitung enthaelt "Kalibrierintervall"
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('Kalibrierintervall');
+  });
+
+  test('Eingehende Links von Kalibrierservice und Messgeraete', async ({ page }) => {
+    // /kalibrierservice hat Link zu /kalibrierintervalle
+    await page.goto('http://localhost:3000/kalibrierservice');
+    const main1 = page.locator('main');
+    await expect(main1.locator('a[href="/kalibrierintervalle"]')).toBeVisible();
+
+    // /messgeraete-kalibrieren erwaehnt Kalibrierintervalle in FAQ
+    await page.goto('http://localhost:3000/messgeraete-kalibrieren');
+    const content = await page.content();
+    expect(content).toContain('Kalibrierintervallen');
+  });
+
+});
+
+test.describe('Laengenkalibrierung SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+
+    // Title enthaelt Keyword und Brand (Template: %s | inektra GmbH)
+    await expect(page).toHaveTitle(/Längenkalibrierung.*inektra GmbH/);
+
+    // H1 enthaelt Keyword
+    await expect(page.locator('h1')).toContainText('Längenkalibrierung');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const content = await page.content();
+
+    // BreadcrumbList JSON-LD (via Breadcrumbs-Komponente)
+    expect(content).toContain('"@type":"BreadcrumbList"');
+
+    // FAQPage JSON-LD (via PageFAQ-Komponente)
+    expect(content).toContain('"@type":"FAQPage"');
+
+    // 3 FAQ-Fragen vorhanden
+    expect(content).toContain('Prüfumfänge');
+    expect(content).toContain('Längenkalibrierung');
+    expect(content).toContain('Bezugstemperatur');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+
+    // Canonical URL
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/laengenkalibrierung');
+
+    // OpenGraph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Längenkalibrierung/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+
+    // Links im Content-Bereich (nicht Header/Footer)
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/kalibrierservice"]')).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierintervalle"]')).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keine verbotenen Begriffe auf Laengenkalibrierung-Seite', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const content = await page.content();
+
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+    expect(content).not.toContain('akkreditiert');
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+
+    // Erster Absatz der Einleitung enthaelt "Längenkalibrierung"
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('Längenkalibrierung');
+  });
+
+  test('Eingehende Links von Messgeraete-kalibrieren und Kalibrierintervalle', async ({ page }) => {
+    // /messgeraete-kalibrieren hat Link zu /laengenkalibrierung
+    await page.goto('http://localhost:3000/messgeraete-kalibrieren');
+    const main1 = page.locator('main');
+    await expect(main1.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+
+    // /kalibrierintervalle hat Link zu /laengenkalibrierung
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+    const main2 = page.locator('main');
+    await expect(main2.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+  });
+
+  test('Technische Fachinhalte: DKD-R und VDI-Richtlinien vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const content = await page.content();
+
+    // Unique Content: Spezifische Pruefungsrichtlinien
+    expect(content).toContain('DKD-R 4-3');
+    expect(content).toContain('VDI/VDE/DGQ 2618');
+    expect(content).toContain('DIN EN ISO 14253-1');
+
+    // Geraetetypen mit Normen
+    expect(content).toContain('DIN EN ISO 3650');
+    expect(content).toContain('DIN 862');
+    expect(content).toContain('DIN 863');
+    expect(content).toContain('DIN 878');
+  });
+
+});
+
+test.describe('Layout & Spacing', () => {
+
+  test('Unterseiten haben kompaktes Hero-Layout ohne ueberfluessigen Weissraum', async ({ page }) => {
+    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung'];
+
+    for (const url of subpages) {
+      await page.goto(`http://localhost:3000${url}`);
+
+      // Breadcrumbs: kein pt-24 mehr (war 96px Weissraum)
+      const breadcrumbNav = page.locator('nav[aria-label="Breadcrumb"]');
+      await expect(breadcrumbNav).toBeVisible();
+
+      // Hero-Section: kein pt-32/min-h-[500px] mehr
+      const content = await page.content();
+      expect(content).not.toContain('pt-32');
+      expect(content).not.toContain('min-h-[500px]');
+
+      // Hero-Section existiert und ist sichtbar
+      const hero = page.locator('section').first();
+      await expect(hero).toBeVisible();
+    }
   });
 
 });

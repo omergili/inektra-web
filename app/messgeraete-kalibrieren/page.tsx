@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     question: 'Wie oft sollte ich kalibrieren lassen?',
-    answer: 'Empfohlen wird eine jährliche Kalibrierung. Je nach Nutzungshäufigkeit und Genauigkeitsanforderungen kann das Intervall kürzer (halbjährlich) oder länger (alle 2 Jahre) sein.',
+    answer: 'Empfohlen wird eine jährliche Kalibrierung. Je nach Nutzungshäufigkeit und Genauigkeitsanforderungen kann das Intervall kürzer (halbjährlich) oder länger (alle 2 Jahre) sein. Ausführliche Empfehlungen nach Gerätetyp finden Sie in unserem Ratgeber zu Kalibrierintervallen.',
   },
 ];
 
@@ -72,7 +72,7 @@ export default function MessgeraetePage() {
       <Breadcrumbs items={[{ name: 'Messgeräte kalibrieren' }]} />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-16 pb-16 min-h-[400px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10 w-full">
@@ -117,6 +117,13 @@ export default function MessgeraetePage() {
                 <p className="text-slate-600 text-sm leading-relaxed">{cat.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-10 bg-white p-6 rounded-xl border border-slate-200">
+            <p className="text-slate-600">
+              <strong className="text-slate-900">Tipp:</strong> Detaillierte Informationen zu Prüfverfahren, Normen und Preisen für dimensionale Messtechnik finden Sie auf unserer Seite zur{' '}
+              <Link href="/laengenkalibrierung" className="text-accent-600 font-semibold hover:underline">Längenkalibrierung</Link>.
+            </p>
           </div>
         </div>
       </section>

@@ -42,7 +42,7 @@ app/                       # Next.js App Router Seiten
 ├── page.tsx               # Homepage (Hero, USPs, 3 Services, FAQ-Teaser, CTA)
 ├── globals.css            # Tailwind + Custom CSS (Accessibility)
 ├── robots.ts              # SEO robots.txt (Allow /, Disallow /api/)
-├── sitemap.ts             # Dynamische XML-Sitemap (7 Seiten)
+├── sitemap.ts             # Dynamische XML-Sitemap (9 Seiten)
 ├── opengraph-image.tsx    # Dynamischer OG-Image Generator (1200×630, Edge Runtime)
 ├── api/
 │   ├── contact/route.ts   # POST: Kontaktformular → Resend E-Mail
@@ -50,6 +50,7 @@ app/                       # Next.js App Router Seiten
 ├── kalibrierservice/      # Leistungsseite (Prozess, Vorteile, FAQs, Service JSON-LD)
 ├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Gerätekategorien)
 ├── kalibrierkosten/       # Preisübersicht mit Suche (Client Component, 300ms Debounce)
+├── laengenkalibrierung/   # Messverfahren: Dimensionale Messtechnik (67+ Gerätetypen, DKD-R/VDI)
 ├── kontakt/               # Kontaktseite
 ├── ueber-uns/             # Über uns (Geschichte, Werte)
 ├── faq/                   # FAQ-Seite (10 FAQs, JSON-LD Schema)
@@ -79,7 +80,7 @@ scripts/
 └── generate-favicons.py   # Generiert Favicon-Set (Pillow, alle Groessen + SVG + ICO)
 
 tests/
-└── features.test.ts       # 35 Regression-Tests (Playwright)
+└── features.test.ts       # 51 Regression-Tests (Playwright)
 
 docs/
 ├── google-ads-kampagne.md # Google Ads Kampagnen-Dokumentation + Aenderungshistorie
@@ -232,6 +233,9 @@ data/
 
 ### Layout-Muster
 - Hero-Sections: `bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900` mit Grid-Overlay
+- **Hero-Spacing Unterseiten:** `pt-16 pb-16 min-h-[400px]` (kompakt, kein verschwendeter Platz)
+- **Hero-Spacing Homepage:** `pt-32 pb-20 min-h-[500px]` (groesser, da kein Breadcrumbs darueber)
+- **Breadcrumbs:** `pt-4 pb-0` (minimaler Abstand zwischen Header und Breadcrumb-Text)
 - Content-Sections: Wechsel zwischen `bg-white` und `bg-slate-50`
 - CTAs: Orange (`bg-accent-500`) mit Hover-Effekt und Shadow
 - Max-Breite: `max-w-7xl` mit `px-4 sm:px-6 lg:px-8 lg:pr-96`
@@ -274,16 +278,16 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Indexierung:** Aktiv (index: true, follow: true) seit 07.03.2026
 - **Canonical URLs:** inektra.de – pro Seite gesetzt
 - **robots.txt:** Allow: /, Disallow: /api/, Sitemap: https://inektra.de/sitemap.xml
-- **Sitemap:** Dynamisch generiert via `app/sitemap.ts` (7 Seiten, Prioritäten 1.0–0.6)
+- **Sitemap:** Dynamisch generiert via `app/sitemap.ts` (9 Seiten, Prioritäten 1.0–0.6)
 - **Meta-Tags:** OpenGraph (de_DE), Twitter Card pro Seite
 - **OG-Image:** Dynamisch generiert via `app/opengraph-image.tsx` (1200×630 PNG, Edge Runtime)
 - **Googlebot:** index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1
-- **Breadcrumbs:** Sichtbar + BreadcrumbList JSON-LD auf allen 6 Unterseiten (nicht Homepage)
+- **Breadcrumbs:** Sichtbar + BreadcrumbList JSON-LD auf allen 7 Unterseiten (nicht Homepage)
 - **Structured Data (JSON-LD):**
   - `LocalBusiness` – Root Layout (jede Seite): Firmenname, Adresse Nordhorn, Telefon, E-Mail, Öffnungszeiten, Geo-Koordinaten
   - `Service` + `OfferCatalog` – /kalibrierservice: 5 Kategorien (Elektrische Messtechnik, Temperatur, Druck, Dimension, Waagen)
-  - `FAQPage` – Automatisch auf 5 Seiten via PageFAQ-Komponente (kalibrierservice, messgeraete, faq, kontakt, ueber-uns)
-  - `BreadcrumbList` – Automatisch auf allen 6 Unterseiten via Breadcrumbs-Komponente
+  - `FAQPage` – Automatisch auf 6 Seiten via PageFAQ-Komponente (kalibrierservice, messgeraete, faq, kontakt, ueber-uns, laengenkalibrierung)
+  - `BreadcrumbList` – Automatisch auf allen 7 Unterseiten via Breadcrumbs-Komponente
 - **Interne Verlinkung:** Homepage → 3 Service-Karten + FAQ-Teaser, Footer → 6 Links (Leistungen + Unternehmen)
 - **Skip-to-Content:** Tastaturnavigation-Link im Root Layout
 - **Keywords:** kalibrierservice, werkskalibrierung, messgeräte kalibrieren, kalibrierung dienstleister, kalibrierlabor, messmittel kalibrierung, iso kalibrierung, kalibrierung nordhorn
@@ -306,14 +310,14 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 
 ## Tests
 
-35 Playwright E2E-Regressionstests in `tests/features.test.ts`:
+51 Playwright E2E-Regressionstests in `tests/features.test.ts`:
 
 **Critical Features Check (12 Tests):**
-- Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten
+- Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten (inkl. /kalibrierintervalle, /laengenkalibrierung)
 - Kontaktformular-Pflichtfelder und Datenschutz-Checkbox
 - Keine verbotenen Akkreditierungs-Claims, korrekte Terminologie
 - Nordhorn-Adresse, keine Markennamen auf Homepage, Logo-Groesse
-- Submit-Button enabled/disabled, Premium-Design auf Unterseiten
+- Submit-Button enabled/disabled, Premium-Design auf Unterseiten (inkl. /kalibrierintervalle, /laengenkalibrierung)
 
 **Kalibrierkosten-Seite (5 Tests):**
 - Hero + Suchfeld, Kategorie-Filter, Suche liefert Ergebnisse
@@ -332,11 +336,44 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - Datenschutz-Link im Banner, Cookie-Einstellungen im Footer
 - Einstellungen-Panel oeffnet sich mit granularen Optionen
 
+**Kalibrierintervalle SEO (7 Tests):**
+- Title + H1 mit Keyword „Kalibrierintervalle" + Brand
+- Structured Data: BreadcrumbList + FAQPage JSON-LD (3 Fragen)
+- Canonical URL + OpenGraph (og:title, og:type=article)
+- Interne Links ausgehend: /kalibrierservice, /kalibrierkosten, /kontakt
+- Keine verbotenen Begriffe (ISO 17025, akkreditiert)
+- Keyword „Kalibrierintervall" im ersten Absatz
+- Eingehende Links von /kalibrierservice + /messgeraete-kalibrieren
+
+**Laengenkalibrierung SEO (8 Tests):**
+- Title + H1 mit Keyword "Längenkalibrierung" + Brand
+- Structured Data: BreadcrumbList + FAQPage JSON-LD (3 Fragen)
+- Canonical URL + OpenGraph (og:title, og:type=article)
+- Interne Links ausgehend: /kalibrierservice, /kalibrierkosten, /kalibrierintervalle, /kontakt
+- Keine verbotenen Begriffe (ISO 17025, akkreditiert)
+- Keyword "Längenkalibrierung" im ersten Absatz
+- Eingehende Links von /messgeraete-kalibrieren + /kalibrierintervalle
+- Technische Fachinhalte: DKD-R 4-3, VDI/VDE/DGQ 2618, DIN-Normen vorhanden
+
+**Layout & Spacing (1 Test):**
+- Alle 7 Unterseiten: Kompaktes Hero-Layout (kein pt-32/min-h-[500px]), Breadcrumbs sichtbar
+
 **Performance & Accessibility (2 Tests):**
 - Keine kritischen Console-Errors auf Homepage
 - Alle internen Links sind erreichbar
 
 Tests laufen gegen `http://localhost:3000` (Dev-Server wird automatisch gestartet).
+
+### SEO-Test-Pflicht fuer neue Seiten
+**REGEL:** Jede neue Seite bekommt einen eigenen SEO-Testblock mit mindestens:
+1. Title + H1 (Keyword + Brand)
+2. Structured Data (BreadcrumbList + FAQPage JSON-LD falls FAQs vorhanden)
+3. Canonical URL + OpenGraph
+4. Interne Links ausgehend (mindestens /kontakt + 1 thematisch passende Seite)
+5. Keine verbotenen Begriffe (ISO 17025, ISO 9001, akkreditiert)
+6. Keyword im ersten Absatz
+7. Eingehende Links von mindestens 1 bestehenden Seite
+8. Seite in bestehende Tests aufnehmen: Contact-Sidebar + Premium-Design
 
 ## Vercel Deployment
 
@@ -403,8 +440,8 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] Canonical-URLs korrigiert
 - [x] Supabase/PostgreSQL komplett entfernt
 - [x] Vercel Auto-Deployment konfiguriert
-- [x] XML-Sitemap (dynamisch, 7 Seiten)
-- [x] Structured Data: LocalBusiness, Service, FAQPage (5 Seiten), BreadcrumbList (6 Seiten)
+- [x] XML-Sitemap (dynamisch, 9 Seiten)
+- [x] Structured Data: LocalBusiness, Service, FAQPage (6 Seiten), BreadcrumbList (7 Seiten)
 - [x] OG-Image Generator (dynamisch, Edge Runtime)
 - [x] Breadcrumbs auf allen Unterseiten (sichtbar + JSON-LD)
 - [x] Interne Verlinkung optimiert (Homepage 3 Service-Karten + FAQ-Teaser, Footer ergänzt)
@@ -419,9 +456,15 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] SISTRIX-Keyword-Tracking eingerichtet: 50 Keywords, 9 Kategorien (09.03.2026)
 - [x] Google Ads Kampagne "Kalibrierservice – Hochintent" angelegt: 3 Anzeigengruppen, Exact+Phrase Match, 15 EUR/Tag (09.03.2026)
 - [x] Vercel Web Analytics + Speed Insights eingerichtet (09.03.2026)
+- [x] /kalibrierintervalle Ratgeber-Seite + SEO-Optimierung + 7 SEO-Tests (10.03.2026)
+- [x] 42 Playwright E2E-Tests (7 neue Kalibrierintervalle-SEO-Tests, 10.03.2026)
 - [x] /kalibrierkosten Ratgeber-Content + Preistabelle + 2 FAQs integriert (09.03.2026)
 - [x] Content-Strategie: Messverfahren-Seiten + Onlinebeauftragung-Konzept dokumentiert (09.03.2026)
 - [x] Header-Navigation: Dropdown-Menues fuer Messverfahren + Ratgeber (Desktop Click-Toggle + Mobile aufklappbar, 09.03.2026)
+- [x] /laengenkalibrierung Messverfahren-Seite: 67+ Geraetetypen, DKD-R/VDI-Richtlinien, 6 Geraetekarten mit Preisen, 3 FAQs + 8 SEO-Tests (10.03.2026)
+- [x] 50 Playwright E2E-Tests (8 neue Laengenkalibrierung-SEO-Tests, 10.03.2026)
+- [x] Kompaktes Hero-Layout: Breadcrumbs pt-4, Hero pt-16/pb-16/min-h-400px auf allen 7 Unterseiten (10.03.2026)
+- [x] 51 Playwright E2E-Tests (1 neuer Layout-&-Spacing-Test, 10.03.2026)
 
 ## Content-Ausbauplan
 
@@ -615,8 +658,8 @@ Falls kd.de-Domain wegfaellt: Gleicher Plan, Rankings bauen sich langsamer auf (
 
 ### Content-Ausbau
 - [ ] Phase 1: `/werkskalibrierung-vs-dakks` (Ratgeber)
-- [ ] Phase 1: `/kalibrierintervalle` (Ratgeber)
-- [ ] Phase 2a: `/laengenkalibrierung` (Messverfahren, inektras USP)
+- [x] Phase 1: `/kalibrierintervalle` (Ratgeber, 10.03.2026)
+- [x] Phase 2a: `/laengenkalibrierung` (Messverfahren, inektras USP, 10.03.2026)
 - [ ] Phase 2b: `/druckkalibrierung` + `/elektrische-messtechnik-kalibrierung`
 - [ ] Phase 2c: `/temperaturkalibrierung` + `/drehmoment-kalibrierung`
 - [ ] Phase 3: `/kalibrierauftrag` (Onlinebeauftragung)

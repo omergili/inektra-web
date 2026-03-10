@@ -32,7 +32,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       />
       <nav
         aria-label="Breadcrumb"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 pt-24 pb-0"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 pt-4 pb-0"
       >
         <ol className="flex items-center space-x-1 text-sm text-slate-500">
           {allItems.map((item, index) => (

@@ -80,7 +80,7 @@ export default function KalibrierservicePage() {
       <Breadcrumbs items={[{ name: 'Kalibrierservice' }]} />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-32 pb-20 min-h-[500px] flex items-center">
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-16 pb-16 min-h-[400px] flex items-center">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10 w-full">
@@ -155,6 +155,15 @@ export default function KalibrierservicePage() {
                   className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
                 >
                   Preisübersicht
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/kalibrierintervalle"
+                  className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+                >
+                  Kalibrierintervalle
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

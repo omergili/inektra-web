@@ -63,6 +63,7 @@ export const siteConfig = {
     { name: 'Kalibrierservice', href: '/kalibrierservice' },
     { name: 'Messverfahren', children: [
       { name: 'Alle Messgeräte', href: '/messgeraete-kalibrieren' },
+      { name: 'Längenkalibrierung', href: '/laengenkalibrierung' },
     ]},
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'Ratgeber', children: [
