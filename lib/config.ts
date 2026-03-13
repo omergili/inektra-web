@@ -64,6 +64,7 @@ export const siteConfig = {
     { name: 'Messverfahren', children: [
       { name: 'Alle Messgeräte', href: '/messgeraete-kalibrieren' },
       { name: 'Längenkalibrierung', href: '/laengenkalibrierung' },
+      { name: 'Druckkalibrierung', href: '/druckkalibrierung' },
     ]},
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'Ratgeber', children: [

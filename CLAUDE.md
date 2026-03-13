@@ -48,12 +48,12 @@ app/                       # Next.js App Router Seiten
 │   ├── contact/route.ts   # POST: Kontaktformular → Resend E-Mail
 │   └── toolboxx/items/route.ts  # GET: Kalibrier-Katalog (Suche, Filter, Kategorien)
 ├── kalibrierservice/      # Leistungsseite (Prozess, Vorteile, FAQs, Service JSON-LD)
-├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Gerätekategorien)
+├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Kategorien, Preisanker, Ablauf, 5 FAQs, ~1.000 Woerter)
 ├── kalibrierkosten/       # Preisübersicht mit Suche (Client Component, 300ms Debounce)
 ├── laengenkalibrierung/   # Messverfahren: Dimensionale Messtechnik (67+ Gerätetypen, DKD-R/VDI)
 ├── kontakt/               # Kontaktseite
 ├── ueber-uns/             # Über uns (Geschichte, Werte)
-├── faq/                   # FAQ-Seite (10 FAQs, JSON-LD Schema)
+├── faq/                   # FAQ-Seite (11 FAQs, JSON-LD Schema)
 ├── impressum/             # Impressum (noindex, follow)
 └── datenschutz/           # Datenschutzerklärung (noindex, follow)
 
@@ -404,6 +404,10 @@ git push origin main
 ## Git-Historie (relevante Commits)
 
 ```
+b5c8a31 SEO: /messgeraete-kalibrieren Content-Ausbau fuer Ranking-Verbesserung (11.03.2026)
+fb1163f FAQ: Mindestauftragswert 40 EUR netto ergaenzen (11.03.2026)
+1f7db7a Laengenkalibrierung: Messverfahren-Seite mit 67+ Geraetetypen (10.03.2026)
+61247d6 Ratgeber: /kalibrierintervalle – Empfohlene Kalibrierzyklen (10.03.2026)
 24b2525 Header-Navigation: Dropdown-Menues fuer Messverfahren + Ratgeber (09.03.2026)
 99613e7 Dokumentation: Messverfahren-Strategie + Onlinebeauftragung-Konzept (09.03.2026)
 5cddddd Fix: Kalibrierkosten-Preistabelle mit echten Katalogpreisen (09.03.2026)
@@ -465,6 +469,9 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] 50 Playwright E2E-Tests (8 neue Laengenkalibrierung-SEO-Tests, 10.03.2026)
 - [x] Kompaktes Hero-Layout: Breadcrumbs pt-4, Hero pt-16/pb-16/min-h-400px auf allen 7 Unterseiten (10.03.2026)
 - [x] 51 Playwright E2E-Tests (1 neuer Layout-&-Spacing-Test, 10.03.2026)
+- [x] FAQ-Seite: Mindestauftragswert 40 EUR netto ergaenzt (neues FAQ + bestehendes aktualisiert, 11.03.2026)
+- [x] /messgeraete-kalibrieren SEO-Ausbau: ~450→~1.000 Woerter, Intro-Section, Preisanker (aus Preisliste 2026), Ablauf-Section, FAQs 3→5, Norm-Referenzen, interne Links verbessert (11.03.2026)
+- [x] Google Ads RSAs: "Sehr gut" Anzeigeneffektivitaet erreicht – 15 Headlines (3 DKI), 4 Keyword-Descriptions, Display Paths, Sitelinks (11.03.2026)
 
 ## Content-Ausbauplan
 
