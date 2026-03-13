@@ -66,6 +66,7 @@ export const siteConfig = {
       { name: 'Elektrische Kalibrierung', href: '/elektrische-messtechnik-kalibrierung' },
       { name: 'Längenkalibrierung', href: '/laengenkalibrierung' },
       { name: 'Druckkalibrierung', href: '/druckkalibrierung' },
+      { name: 'Drehmomentkalibrierung', href: '/drehmoment-kalibrierung' },
     ]},
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'Ratgeber', children: [

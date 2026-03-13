@@ -229,7 +229,7 @@ export default function KalibrierintervallePage() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
               <Link
                 href="/kalibrierservice"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
@@ -240,19 +240,46 @@ export default function KalibrierintervallePage() {
                 </svg>
               </Link>
               <Link
-                href="/kalibrierkosten"
+                href="/laengenkalibrierung"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
-                Kalibrierkosten nachschlagen
+                Längenkalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
               <Link
-                href="/laengenkalibrierung"
+                href="/druckkalibrierung"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
-                Längenkalibrierung
+                Druckkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/elektrische-messtechnik-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Elektrische Kalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/drehmoment-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Drehmomentkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/kalibrierkosten"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Kalibrierkosten nachschlagen
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

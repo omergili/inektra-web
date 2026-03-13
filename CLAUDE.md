@@ -42,7 +42,7 @@ app/                       # Next.js App Router Seiten
 ├── page.tsx               # Homepage (Hero, USPs, 3 Services, FAQ-Teaser, CTA)
 ├── globals.css            # Tailwind + Custom CSS (Accessibility)
 ├── robots.ts              # SEO robots.txt (Allow /, Disallow /api/)
-├── sitemap.ts             # Dynamische XML-Sitemap (9 Seiten)
+├── sitemap.ts             # Dynamische XML-Sitemap (12 Seiten)
 ├── opengraph-image.tsx    # Dynamischer OG-Image Generator (1200×630, Edge Runtime)
 ├── api/
 │   ├── contact/route.ts   # POST: Kontaktformular → Resend E-Mail
@@ -52,6 +52,7 @@ app/                       # Next.js App Router Seiten
 ├── kalibrierkosten/       # Preisübersicht mit Suche (Client Component, 300ms Debounce)
 ├── laengenkalibrierung/   # Messverfahren: Dimensionale Messtechnik (67+ Gerätetypen, DKD-R/VDI)
 ├── elektrische-messtechnik-kalibrierung/ # Messverfahren: Elektrische Messtechnik (1.200+ Gerätetypen, VDE 0701/0702/0100)
+├── drehmoment-kalibrierung/ # Messverfahren: Drehmoment (Schlüssel, Prüfgeräte, Schrauber, DIN EN ISO 6789)
 ├── kontakt/               # Kontaktseite
 ├── ueber-uns/             # Über uns (Geschichte, Werte)
 ├── faq/                   # FAQ-Seite (11 FAQs, JSON-LD Schema)
@@ -81,7 +82,7 @@ scripts/
 └── generate-favicons.py   # Generiert Favicon-Set (Pillow, alle Groessen + SVG + ICO)
 
 tests/
-└── features.test.ts       # 51 Regression-Tests (Playwright)
+└── features.test.ts       # 75 Regression-Tests (Playwright)
 
 docs/
 ├── google-ads-kampagne.md # Google Ads Kampagnen-Dokumentation + Aenderungshistorie
@@ -122,7 +123,7 @@ data/
 - **Mobile:** Hamburger-Menue mit aufklappbaren Untergruppen (Border-Einrueckung `ml-3 border-l-2`)
 - **State:** `openDropdown` (Desktop), `openMobileSubmenu` (Mobile), `mobileMenuOpen` (Hamburger)
 - **Erweiterung:** Neue Seiten werden durch Hinzufuegen eines Eintrags in `siteConfig.navigation` → `children`-Array verlinkt
-- **5 Top-Level-Items:** Kalibrierservice, Messverfahren ▼ (4 Unterseiten), Kalibrierkosten, Ratgeber ▼, Ueber uns
+- **5 Top-Level-Items:** Kalibrierservice, Messverfahren ▼ (5 Unterseiten), Kalibrierkosten, Ratgeber ▼, Ueber uns
 - **Kontakt:** Nicht in Navigation, sondern als CTA-Button "Angebot anfragen" (Desktop + Mobile)
 
 ### Datenfluss Kalibrierkosten
@@ -279,7 +280,7 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Indexierung:** Aktiv (index: true, follow: true) seit 07.03.2026
 - **Canonical URLs:** inektra.de – pro Seite gesetzt
 - **robots.txt:** Allow: /, Disallow: /api/, Sitemap: https://inektra.de/sitemap.xml
-- **Sitemap:** Dynamisch generiert via `app/sitemap.ts` (11 Seiten, Prioritäten 1.0–0.6)
+- **Sitemap:** Dynamisch generiert via `app/sitemap.ts` (12 Seiten, Prioritäten 1.0–0.6)
 - **Meta-Tags:** OpenGraph (de_DE), Twitter Card pro Seite
 - **OG-Image:** Dynamisch generiert via `app/opengraph-image.tsx` (1200×630 PNG, Edge Runtime)
 - **Googlebot:** index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1
@@ -287,7 +288,7 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - **Structured Data (JSON-LD):**
   - `LocalBusiness` – Root Layout (jede Seite): Firmenname, Adresse Nordhorn, Telefon, E-Mail, Öffnungszeiten, Geo-Koordinaten
   - `Service` + `OfferCatalog` – /kalibrierservice: 5 Kategorien (Elektrische Messtechnik, Temperatur, Druck, Dimension, Waagen)
-  - `FAQPage` – Automatisch auf 8 Seiten via PageFAQ-Komponente (kalibrierservice, messgeraete, faq, kontakt, ueber-uns, laengenkalibrierung, druckkalibrierung, elektrische-messtechnik-kalibrierung)
+  - `FAQPage` – Automatisch auf 9 Seiten via PageFAQ-Komponente (kalibrierservice, messgeraete, faq, kontakt, ueber-uns, laengenkalibrierung, druckkalibrierung, elektrische-messtechnik-kalibrierung, drehmoment-kalibrierung)
   - `BreadcrumbList` – Automatisch auf allen 7 Unterseiten via Breadcrumbs-Komponente
 - **Interne Verlinkung:** Homepage → 3 Service-Karten + FAQ-Teaser, Footer → 6 Links (Leistungen + Unternehmen)
 - **Skip-to-Content:** Tastaturnavigation-Link im Root Layout
@@ -311,14 +312,14 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 
 ## Tests
 
-67 Playwright E2E-Regressionstests in `tests/features.test.ts`:
+75 Playwright E2E-Regressionstests in `tests/features.test.ts`:
 
 **Critical Features Check (12 Tests):**
-- Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten (inkl. /kalibrierintervalle, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung)
+- Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten (inkl. /kalibrierintervalle, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung, /drehmoment-kalibrierung)
 - Kontaktformular-Pflichtfelder und Datenschutz-Checkbox
 - Keine verbotenen Akkreditierungs-Claims, korrekte Terminologie
 - Nordhorn-Adresse, keine Markennamen auf Homepage, Logo-Groesse
-- Submit-Button enabled/disabled, Premium-Design auf Unterseiten (inkl. /kalibrierintervalle, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung)
+- Submit-Button enabled/disabled, Premium-Design auf Unterseiten (inkl. /kalibrierintervalle, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung, /drehmoment-kalibrierung)
 
 **Kalibrierkosten-Seite (5 Tests):**
 - Hero + Suchfeld, Kategorie-Filter, Suche liefert Ergebnisse
@@ -376,8 +377,18 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - Eingehende Links von /messgeraete-kalibrieren
 - Technische Fachinhalte: DIN VDE 0701-0702, DIN VDE 0100, IEC 61010, Preisanker vorhanden
 
+**Drehmomentkalibrierung SEO (8 Tests):**
+- Title + H1 mit Keyword "Drehmomentkalibrierung" + Brand
+- Structured Data: BreadcrumbList + FAQPage JSON-LD (3 Fragen)
+- Canonical URL + OpenGraph (og:title, og:type=article)
+- Interne Links ausgehend: /messgeraete-kalibrieren, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung, /kalibrierkosten, /kalibrierintervalle, /kontakt
+- Keine verbotenen Begriffe (ISO 17025, akkreditiert)
+- Keyword "Drehmoment" im ersten Absatz
+- Eingehende Links von /messgeraete-kalibrieren + allen Messverfahren-Seiten
+- Technische Fachinhalte: DIN EN ISO 6789, VDI/VDE 2645, DIN 51309, Preisanker vorhanden
+
 **Layout & Spacing (1 Test):**
-- Alle 7 Unterseiten: Kompaktes Hero-Layout (kein pt-32/min-h-[500px]), Breadcrumbs sichtbar
+- Alle 8 Unterseiten: Kompaktes Hero-Layout (kein pt-32/min-h-[500px]), Breadcrumbs sichtbar
 
 **Performance & Accessibility (2 Tests):**
 - Keine kritischen Console-Errors auf Homepage
@@ -493,6 +504,8 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] /druckkalibrierung Messverfahren-Seite: Manometer, Drucksensoren, Transmitter, DKD-R 6-1, 6 Geraetekarten + 8 SEO-Tests (12.03.2026)
 - [x] /elektrische-messtechnik-kalibrierung Messverfahren-Seite: 1.200+ Geraetetypen, VDE 0701/0702, VDE 0100, 7 Geraetekarten + 8 SEO-Tests (13.03.2026)
 - [x] 67 Playwright E2E-Tests (8 neue Elektrische-Messtechnik-SEO-Tests, 13.03.2026)
+- [x] /drehmoment-kalibrierung Messverfahren-Seite: Drehmomentschluessel, Pruefgeraete, Schrauber, DIN EN ISO 6789, 6 Geraetekarten + 8 SEO-Tests (13.03.2026)
+- [x] 75 Playwright E2E-Tests (8 neue Drehmomentkalibrierung-SEO-Tests, 13.03.2026)
 - [x] FAQ-Seite: Mindestauftragswert 40 EUR netto ergaenzt (neues FAQ + bestehendes aktualisiert, 11.03.2026)
 - [x] /messgeraete-kalibrieren SEO-Ausbau: ~450→~1.000 Woerter, Intro-Section, Preisanker (aus Preisliste 2026), Ablauf-Section, FAQs 3→5, Norm-Referenzen, interne Links verbessert (11.03.2026)
 - [x] Google Ads RSAs: "Sehr gut" Anzeigeneffektivitaet erreicht – 15 Headlines (3 DKI), 4 Keyword-Descriptions, Display Paths, Sitelinks (11.03.2026)
@@ -692,7 +705,8 @@ Falls kd.de-Domain wegfaellt: Gleicher Plan, Rankings bauen sich langsamer auf (
 - [x] Phase 1: `/kalibrierintervalle` (Ratgeber, 10.03.2026)
 - [x] Phase 2a: `/laengenkalibrierung` (Messverfahren, inektras USP, 10.03.2026)
 - [x] Phase 2b: `/druckkalibrierung` + `/elektrische-messtechnik-kalibrierung` (12–13.03.2026)
-- [ ] Phase 2c: `/temperaturkalibrierung` + `/drehmoment-kalibrierung`
+- [x] Phase 2c: `/drehmoment-kalibrierung` (13.03.2026)
+- [ ] Phase 2c: `/temperaturkalibrierung`
 - [ ] Phase 3: `/kalibrierauftrag` (Onlinebeauftragung)
 - [ ] Phase 4: Marken-Landingpages (nach kd.de-Klaerung)
 - [x] `/kalibrierkosten` Ratgeber-Content + FAQ integriert (09.03.2026)

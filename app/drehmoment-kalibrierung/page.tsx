@@ -4,123 +4,123 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Druckkalibrierung – Manometer & Druckmessgeräte kalibrieren',
-  description: 'Druckkalibrierung für Manometer, Drucksensoren, Transmitter und Prüfpumpen. Prüfung nach DKD-R 6-1 mit steigenden und fallenden Druckpunkten. Eigenes Labor in Nordhorn. Ab 20,85 € netto.',
-  keywords: ['druckkalibrierung', 'manometer kalibrieren', 'drucksensor kalibrierung', 'druckmessgerät kalibrieren', 'manometer prüfen', 'drucktransmitter kalibrierung'],
+  title: 'Drehmomentkalibrierung – Drehmomentschlüssel & Prüfgeräte kalibrieren',
+  description: 'Drehmomentschlüssel kalibrieren lassen nach DIN EN ISO 6789. Rechts-/Linksauslösung, elektronische Schlüssel, Prüfgeräte. Eigenes Labor in Nordhorn. Ab 24,76 € netto.',
+  keywords: ['drehmomentkalibrierung', 'drehmomentschlüssel kalibrieren', 'drehmomentschlüssel kalibrieren lassen', 'drehmomentschlüssel kalibrierung kosten', 'drehmoment kalibrierung', 'drehmomentschlüssel prüfen'],
   alternates: {
-    canonical: 'https://inektra.de/druckkalibrierung',
+    canonical: 'https://inektra.de/drehmoment-kalibrierung',
   },
   openGraph: {
-    title: 'Druckkalibrierung – Manometer & Druckmessgeräte kalibrieren | inektra GmbH',
-    description: 'Druckmessgeräte kalibrieren: Manometer, Sensoren, Transmitter. Prüfung nach DKD-R 6-1, eigenes Labor in Nordhorn.',
+    title: 'Drehmomentkalibrierung – Drehmomentschlüssel & Prüfgeräte kalibrieren | inektra GmbH',
+    description: 'Drehmomentschlüssel und Prüfgeräte kalibrieren: Rechts-/Linksauslösung, elektronisch, Prüfstände. Prüfung nach DIN EN ISO 6789, eigenes Labor in Nordhorn.',
     type: 'article',
   },
 };
 
 const geraetetypen = [
   {
-    name: 'Manometer',
-    norm: 'DIN EN 837',
-    richtlinie: 'DKD-R 6-1',
-    preisAb: '20,85',
-    beispiele: 'Rohrfedermanometer (±2,5%), Manometer (±1,0%/±1,6%), Feinmessmanometer (±0,6%)',
-    detail: 'Jeweils 5 Prüfpunkte bei steigendem und fallendem Druck. Druckbereiche von 1 bis 1.200 bar je nach Genauigkeitsklasse. Unterdruck-Messung zusätzlich 13,02 €.',
+    name: 'Drehmomentschlüssel (rechtsauslösend)',
+    norm: 'DIN EN ISO 6789',
+    richtlinie: 'Typ I/II, Klasse A–E',
+    preisAb: '24,76',
+    beispiele: 'Klick-Drehmomentschlüssel, Knick-Schlüssel, einstellbare und voreingestellte Drehmomentschlüssel',
+    detail: 'Rechtsauslösend, 5 Prüfpunkte bei 20/60/100 % des Messbereichs. Messbereiche von 2 bis 1.000 Nm. Feinmoment-Schlüssel (≤ 5 Nm) ab 32,56 €.',
   },
   {
-    name: 'Feinmess-Manometer',
-    norm: 'DIN EN 837',
-    richtlinie: 'DKD-R 6-1',
-    preisAb: '28,66',
-    beispiele: 'Feinmessmanometer (±0,1%), Präzisionsmanometer (±0,3%), hochgenaue Referenzmanometer',
-    detail: 'Je nach Genauigkeitsklasse 5 oder 10 Prüfpunkte bei steigendem und fallendem Druck. Druckbereiche von 1 bis 700 bar.',
-  },
-  {
-    name: 'Geringdruck-Manometer',
-    norm: 'DIN EN 837',
-    richtlinie: '—',
-    preisAb: '36,47',
-    beispiele: 'Kapselfedermanometer, Plattenfedermanometer, Membranmanometer für niedrige Drücke',
-    detail: 'Genauigkeitsklasse 0,5 bis 2,5. Messbereiche im Millibar-Bereich: 10 bis 1.000 mbar. Geeignet für Lüftungs- und Klimatechnik.',
-  },
-  {
-    name: 'Drucksensoren & Transmitter',
-    norm: '—',
-    richtlinie: 'DKD-R 6-1',
-    preisAb: '46,90',
-    beispiele: 'Piezoresistive Sensoren, kapazitive Transmitter, Druckmessumformer (4–20 mA / 0–10 V)',
-    detail: 'Genauigkeit ±0,05% bis ±0,5%. Jeweils 5 Prüfpunkte steigend und fallend. Kalibrierung der Anzeigeeinheit zusätzlich 27,36 €. Druckbereiche von 1 bis 700 bar.',
-  },
-  {
-    name: 'Drucktrommelschreiber',
-    norm: '—',
-    richtlinie: 'DKD-R 6-1',
-    preisAb: '49,51',
-    beispiele: 'Registrierende Druckmessgeräte, Kreisblattschreiber, Langzeitschreiber',
-    detail: 'Genauigkeit ±0,5% bis ±2,5%. Jeweils 5 Prüfpunkte bei steigendem und fallendem Druck. Druckbereiche von 1 bis 700 bar.',
-  },
-  {
-    name: 'Prüfpumpen & Reifendruckprüfer',
-    norm: '—',
-    richtlinie: '—',
+    name: 'Drehmomentschlüssel (rechts- u. linksauslösend)',
+    norm: 'DIN EN ISO 6789',
+    richtlinie: 'Typ I/II',
     preisAb: '32,56',
-    beispiele: 'Handbetriebene Prüfpumpen (16–160 bar), Reifendruckprüfer (bis 20 bar, ±2,5%)',
-    detail: 'Prüfpumpen werden nach hauseigenem Verfahren geprüft. Reifendruckprüfer bis 20 bar Messbereich. Abmontage vom Anschlussstück bei Bedarf: 6,51 €.',
+    beispiele: 'Bidirektionale Schlüssel für Montage und Demontage, Schlüssel mit Umschaltknarre',
+    detail: 'Prüfung in beide Drehrichtungen. 5 Prüfpunkte je Richtung = 10 Messpunkte gesamt. Messbereiche bis 1.000 Nm.',
+  },
+  {
+    name: 'Elektronische Drehmomentschlüssel',
+    norm: 'DIN EN ISO 6789',
+    richtlinie: 'Typ II',
+    preisAb: '52,12',
+    beispiele: 'Digitale Drehmomentschlüssel mit Display, Drehmomentschlüssel mit Datenlogger, Funkschlüssel',
+    detail: 'Elektronische Auslösung mit digitaler Anzeige. Höhere Genauigkeit als mechanische Schlüssel. Messbereiche von 5 bis 1.000 Nm.',
+  },
+  {
+    name: 'Drehmomentprüfgeräte (rechtsauslösend)',
+    norm: 'DIN EN ISO 6789',
+    richtlinie: '—',
+    preisAb: '110,74',
+    beispiele: 'Drehmoment-Prüfstände, Referenz-Messaufnehmer, Drehmomentmesszellen',
+    detail: 'Prüfung der Kalibriereinrichtung selbst. Rückverfolgbarkeit auf nationale Normale. Messbereiche bis 1.000 Nm.',
+  },
+  {
+    name: 'Drehmomentprüfgeräte (bidirektional)',
+    norm: 'DIN EN ISO 6789',
+    richtlinie: '—',
+    preisAb: '179,82',
+    beispiele: 'Bidirektionale Prüfstände, Referenzmesseinrichtungen für Rechts- und Linksanzug',
+    detail: 'Prüfung in beiden Drehrichtungen. Für Kalibrierlabore und Qualitätssicherung. Messbereiche bis 1.000 Nm.',
+  },
+  {
+    name: 'Drehmomentschrauber',
+    norm: '—',
+    richtlinie: 'herstellerspez.',
+    preisAb: '72,96',
+    beispiele: 'Elektrische Drehmomentschrauber, pneumatische Schrauber, Akkuschrauber mit Drehmomentbegrenzung',
+    detail: 'Kalibrierung nach Herstellervorgaben. Dokumentierte Sollwertprüfung an definierten Messpunkten.',
   },
 ];
 
 const pruefschritte = [
   {
-    schritt: 'Sichtprüfung & Vorbereitung',
-    text: 'Jedes Druckmessgerät wird bei Wareneingang auf äußere Beschädigungen, Undichtigkeiten und korrekte Funktion geprüft. Das Gerät wird gereinigt und an den Prüfstand angeschlossen.',
+    schritt: 'Sichtprüfung & Identifikation',
+    text: 'Jeder Drehmomentschlüssel wird bei Wareneingang auf äußere Beschädigungen, Korrosion und mechanische Funktion geprüft. Typenschild, Nennmoment und Seriennummer werden dokumentiert.',
   },
   {
-    schritt: 'Steigende Druckpunkte',
-    text: 'Der Druck wird stufenweise von Null bis zum Messbereichsendwert erhöht. An jedem Prüfpunkt (in der Regel 5 gleichmäßig verteilte Punkte) wird der angezeigte Wert mit dem Referenznormal verglichen und dokumentiert.',
+    schritt: 'Konditionierung (Vorlast)',
+    text: 'Vor der eigentlichen Messung werden 5 Vorlastzyklen auf Nennmoment durchgeführt. Dies dient der thermischen Stabilisierung und stellt sicher, dass der Schlüssel unter realistischen Bedingungen geprüft wird.',
   },
   {
-    schritt: 'Fallende Druckpunkte',
-    text: 'Anschließend wird der Druck schrittweise abgesenkt. Die gleichen Prüfpunkte werden erneut gemessen. Aus der Differenz zwischen steigenden und fallenden Werten ergibt sich die Hysterese – ein wichtiges Qualitätsmerkmal jedes Druckmessgeräts.',
+    schritt: 'Prüfung in definierten Messpunkten',
+    text: '5 Messpunkte bei 20, 60 und 100 % des Messbereichsendwerts – an jedem Punkt werden 5 Messwerte aufgenommen. Aus den Ergebnissen werden Abweichung und Wiederholpräzision berechnet.',
   },
   {
     schritt: 'Dokumentation & Kalibrierschein',
-    text: 'Alle Messwerte, Abweichungen und die berechnete Messunsicherheit werden dokumentiert. Sie erhalten einen rückverfolgbaren Kalibrierschein mit Angabe der verwendeten Referenznormale und der Umgebungsbedingungen.',
+    text: 'Alle Messwerte, Abweichungen und die berechnete Messunsicherheit werden dokumentiert. Sie erhalten einen rückverfolgbaren Kalibrierschein mit Angabe der Referenznormale und Umgebungsbedingungen.',
   },
 ];
 
 const normen = [
   {
-    name: 'DKD-R 6-1',
-    text: 'Die zentrale Kalibrierrichtlinie für Druckmessgeräte. Sie definiert die Prüfverfahren, die Anzahl der Messpunkte (steigend und fallend), die Berechnung der Messunsicherheit und die Anforderungen an die Dokumentation. Gilt für Manometer, Drucksensoren und Transmitter.',
+    name: 'DIN EN ISO 6789 (Teil 1 + 2)',
+    text: 'Die zentrale Norm für Drehmoment-Schraubwerkzeuge. Teil 1 definiert Anforderungen und Prüfverfahren für handbetätigte Drehmomentwerkzeuge, Teil 2 beschreibt die Kalibrierung. Unterscheidet Typ I (anzeigend) und Typ II (auslösend) sowie die Genauigkeitsklassen A bis E.',
   },
   {
-    name: 'DIN EN 837',
-    text: 'Die europäische Norm für mechanische Druckmessgeräte mit Rohrfeder (Teil 1: Manometer, Teil 2: Auswahl und Einbau, Teil 3: Druckmessgeräte mit Plattenfeder). Definiert Genauigkeitsklassen von 0,1 bis 4,0 und die zugehörigen Fehlergrenzen.',
+    name: 'VDI/VDE 2645 Blatt 2',
+    text: 'Richtlinie für die rückverfolgbare Kalibrierung von Drehmoment-Messeinrichtungen. Beschreibt Messverfahren, Anforderungen an Referenznormale und die Berechnung der Messunsicherheit bei statischer Drehmomentmessung.',
   },
   {
-    name: 'DIN EN ISO 6529 / VDI/VDE 2617',
-    text: 'Ergänzende Normen für spezielle Druckmessaufgaben und die Rückführung auf nationale Normale. Die Messunsicherheitsberechnung erfolgt nach GUM (Guide to the Expression of Uncertainty in Measurement).',
+    name: 'DIN 51309',
+    text: 'Norm für die Kalibrierung von Drehmoment-Messgeräten. Definiert statische Kalibrierverfahren für Drehmomentaufnehmer und Referenzmesseinrichtungen. Ergänzt DIN EN ISO 6789 um Anforderungen an höherwertige Kalibriereinrichtungen.',
   },
 ];
 
 const faqs = [
   {
-    question: 'Warum werden steigende UND fallende Druckpunkte gemessen?',
-    answer: 'Durch die Messung in beiden Richtungen wird die Hysterese des Messgeräts ermittelt – also die Differenz zwischen den Messwerten bei steigendem und fallendem Druck am gleichen Prüfpunkt. Die Hysterese ist ein wichtiges Qualitätsmerkmal: Sie zeigt, wie reproduzierbar ein Gerät misst. Hohe Hysterese deutet auf mechanischen Verschleiß hin und kann bedeuten, dass das Gerät ausgetauscht werden muss.',
+    question: 'Wie oft muss ein Drehmomentschlüssel kalibriert werden?',
+    answer: 'Die DIN EN ISO 6789 empfiehlt eine Kalibrierung alle 12 Monate oder nach 5.000 Betätigungen – je nachdem, was zuerst eintritt. Bei sicherheitskritischen Verschraubungen (Automotive, Luftfahrt, Medizintechnik) können kürzere Intervalle sinnvoll sein. Ausführliche Empfehlungen finden Sie in unserem Ratgeber zu Kalibrierintervallen.',
   },
   {
-    question: 'Welche Genauigkeitsklassen gibt es bei Manometern?',
-    answer: 'Manometer werden nach DIN EN 837 in Genauigkeitsklassen eingeteilt: Klasse 0,1 und 0,3 (Feinmessmanometer für Labore und Referenzmessungen), Klasse 0,6 (gehobene Industrieanwendungen), Klasse 1,0 und 1,6 (Standard-Industriemanometer) sowie Klasse 2,5 (einfache Überwachungsaufgaben). Die Klasse gibt die zulässige Abweichung in Prozent der Messspanne an.',
+    question: 'Was wird bei einer Drehmomentschlüssel-Kalibrierung geprüft?',
+    answer: 'Nach 5 Vorlastzyklen auf Nennmoment werden 5 Messpunkte bei 20, 60 und 100 % des Messbereichsendwerts geprüft. An jedem Punkt werden 5 Messwerte aufgenommen. Aus den Ergebnissen werden die Abweichung vom Sollwert, die Wiederholpräzision und die Messunsicherheit berechnet – alles dokumentiert im Kalibrierschein.',
   },
   {
-    question: 'Was kostet eine Manometer-Kalibrierung?',
-    answer: 'Die Kosten hängen von der Genauigkeitsklasse und dem Druckbereich ab. Manometer der Klasse 2,5 starten ab 20,85 € netto, Klasse 1,0/1,6 ab 23,45 €, Feinmessmanometer ab 28,66 € und Präzisionsmanometer (Klasse 0,1/0,3) ab 36,47 €. Drucksensoren und Transmitter ab 46,90 €. Der Mindestauftragswert beträgt 40 € netto. Eine vollständige Preisübersicht finden Sie auf unserer Kalibrierkosten-Seite.',
+    question: 'Was kostet eine Drehmomentschlüssel-Kalibrierung?',
+    answer: 'Die Kosten hängen vom Schlüsseltyp und Messbereich ab. Rechtsauslösende Drehmomentschlüssel starten ab 24,76 € netto, bidirektionale ab 32,56 €, elektronische ab 52,12 €. Drehmomentprüfgeräte kosten ab 110,74 € (rechts) bis 280,15 € (bidirektional). Der Mindestauftragswert beträgt 40 € netto. Eine vollständige Preisübersicht finden Sie auf unserer Kalibrierkosten-Seite.',
   },
 ];
 
-export default function DruckkalibrierungPage() {
+export default function DrehmomentkalibrierungPage() {
   return (
     <>
-      <Breadcrumbs items={[{ name: 'Druckkalibrierung' }]} />
+      <Breadcrumbs items={[{ name: 'Drehmomentkalibrierung' }]} />
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-16 pb-16 min-h-[400px] flex items-center">
@@ -129,10 +129,10 @@ export default function DruckkalibrierungPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10 w-full">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">Druckkalibrierung</span> – Manometer & Druckmessgeräte
+              <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">Drehmomentkalibrierung</span> – Drehmomentschlüssel & Prüfgeräte
             </h1>
             <p className="text-xl text-slate-300 mb-8">
-              Kalibrierung nach DKD-R 6-1 mit steigenden und fallenden Druckpunkten. Prüfbereiche von Millibar bis 1.200 bar.
+              Kalibrierung nach DIN EN ISO 6789 mit 5 Vorlastzyklen und definierten Messpunkten. Messbereiche von 2 bis 1.000 Nm.
             </p>
             <Link
               href="/kontakt"
@@ -148,12 +148,12 @@ export default function DruckkalibrierungPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="max-w-3xl">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Druckkalibrierung aus eigenem Labor</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Drehmomentkalibrierung aus eigenem Labor</h2>
             <p className="text-lg text-slate-600 mb-6">
-              Die Druckkalibrierung stellt sicher, dass Ihre Manometer, Drucksensoren und Transmitter innerhalb der zulässigen Fehlergrenzen arbeiten. In Industrie, Verfahrenstechnik und Gebäudetechnik sind zuverlässige Druckmessungen unverzichtbar – fehlerhafte Messgeräte können zu Prozessstörungen, Qualitätsmängeln oder Sicherheitsrisiken führen.
+              Wer Drehmomentschlüssel kalibrieren lassen möchte, sorgt für sichere und normgerechte Verschraubungen in Produktion, Instandhaltung und Qualitätssicherung. Ein falsch eingestellter oder verschlissener Drehmomentschlüssel kann zu Unter- oder Überanzug führen – mit Folgen von gelösten Schraubverbindungen bis hin zu Materialschäden. Die regelmäßige Kalibrierung nach DIN EN ISO 6789 stellt sicher, dass Ihre Werkzeuge innerhalb der zulässigen Abweichungsgrenzen arbeiten.
             </p>
             <p className="text-lg text-slate-600 mb-6">
-              In unserem Kalibrierlabor in Nordhorn prüfen wir Druckmessgeräte aller Genauigkeitsklassen nach der Kalibrierrichtlinie DKD-R 6-1. Jede Kalibrierung umfasst Messungen bei steigendem und fallendem Druck, um neben der Genauigkeit auch die Hysterese des Geräts zu dokumentieren. Informationen zu den empfohlenen{' '}
+              In unserem Kalibrierlabor in Nordhorn prüfen wir Drehmomentschlüssel, Drehmomentschrauber und Drehmomentprüfgeräte nach dem genormten Verfahren mit Vorlastzyklen und definierten Messpunkten. Die DIN EN ISO 6789 empfiehlt eine Kalibrierung alle 12 Monate oder nach 5.000 Betätigungen. Informationen zu den empfohlenen{' '}
               <Link href="/kalibrierintervalle" className="text-accent-600 font-semibold hover:underline">Kalibrierintervallen</Link> und den{' '}
               <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Kalibrierkosten</Link>{' '}
               finden Sie auf unseren Ratgeber-Seiten.
@@ -166,8 +166,8 @@ export default function DruckkalibrierungPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Kalibrierbare Druckmessgeräte</h2>
-            <p className="text-xl text-slate-600">Prüfungsrichtlinien, Genauigkeitsklassen und Preise auf einen Blick</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Kalibrierbare Drehmomentwerkzeuge</h2>
+            <p className="text-xl text-slate-600">Gerätetypen, Normen und Preise auf einen Blick</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -191,7 +191,7 @@ export default function DruckkalibrierungPage() {
 
           <div className="mt-10 bg-white p-6 rounded-xl border border-slate-200">
             <p className="text-slate-600">
-              <strong className="text-slate-900">Ihr Druckmessgerät nicht dabei?</strong> Neben den hier aufgeführten Gerätetypen kalibrieren wir auch Differenzdruckmessgeräte, Druckschalter und spezielle Prozessmesstechnik. <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Alle Geräte und Preise nachschlagen →</Link>
+              <strong className="text-slate-900">Ihr Drehmomentwerkzeug nicht dabei?</strong> Neben den hier aufgeführten Gerätetypen kalibrieren wir auch Drehmomentmultiplikatoren, Drehwinkelmessgeräte und Sonderwerkzeuge. <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Alle Geräte und Preise nachschlagen →</Link>
             </p>
           </div>
         </div>
@@ -201,8 +201,8 @@ export default function DruckkalibrierungPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">So läuft eine Druckkalibrierung ab</h2>
-            <p className="text-xl text-slate-600">Vom Wareneingang bis zum Kalibrierschein – vier Schritte im Überblick</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">So läuft eine Drehmomentkalibrierung ab</h2>
+            <p className="text-xl text-slate-600">Von der Sichtprüfung bis zum Kalibrierschein – vier Schritte im Überblick</p>
           </div>
 
           <div className="space-y-8">
@@ -227,7 +227,7 @@ export default function DruckkalibrierungPage() {
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Normen und Prüfungsrichtlinien</h2>
             <p className="text-lg text-slate-600 mb-6">
-              Unsere Druckkalibrierungen basieren auf anerkannten nationalen und internationalen Richtlinien:
+              Unsere Drehmomentkalibrierungen basieren auf anerkannten nationalen und internationalen Normen:
             </p>
 
             <div className="space-y-6">
@@ -259,19 +259,19 @@ export default function DruckkalibrierungPage() {
                 </svg>
               </Link>
               <Link
-                href="/elektrische-messtechnik-kalibrierung"
+                href="/druckkalibrierung"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
-                Elektrische Kalibrierung
+                Druckkalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
               <Link
-                href="/drehmoment-kalibrierung"
+                href="/elektrische-messtechnik-kalibrierung"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
-                Drehmomentkalibrierung
+                Elektrische Kalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -300,12 +300,12 @@ export default function DruckkalibrierungPage() {
       </section>
 
       {/* FAQs */}
-      <PageFAQ faqs={faqs} title="Häufige Fragen zur Druckkalibrierung" />
+      <PageFAQ faqs={faqs} title="Häufige Fragen zur Drehmomentkalibrierung" />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 text-center">
-          <h2 className="text-4xl font-bold mb-6">Druckkalibrierung beauftragen</h2>
+          <h2 className="text-4xl font-bold mb-6">Drehmomentkalibrierung beauftragen</h2>
           <p className="text-xl text-slate-300 mb-8">
             Senden Sie uns Ihre Geräteliste – wir erstellen Ihnen ein transparentes Angebot mit konkreten Preisen und Bearbeitungszeiten.
           </p>

@@ -241,12 +241,39 @@ export default function LaengenkalibrierungPage() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
               <Link
-                href="/kalibrierservice"
+                href="/messgeraete-kalibrieren"
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
-                Unser Kalibrierservice
+                Alle Messverfahren
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/druckkalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Druckkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/elektrische-messtechnik-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Elektrische Kalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/drehmoment-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Drehmomentkalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

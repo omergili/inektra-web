@@ -31,7 +31,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Contact-Sidebar ist auf allen Seiten', async ({ page }) => {
-    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
+    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -128,7 +128,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Alle Unterseiten haben Premium-Design', async ({ page }) => {
-    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
+    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -442,13 +442,16 @@ test.describe('Kalibrierintervalle SEO', () => {
     await expect(ogType).toHaveAttribute('content', 'article');
   });
 
-  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Kontakt', async ({ page }) => {
+  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Messverfahren, Kontakt', async ({ page }) => {
     await page.goto('http://localhost:3000/kalibrierintervalle');
 
     // Links im Content-Bereich (nicht Header/Footer)
     const main = page.locator('main');
     await expect(main.locator('a[href="/kalibrierservice"]')).toBeVisible();
     await expect(main.locator('a[href="/kalibrierkosten"]')).toBeVisible();
+    await expect(main.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
     await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
   });
 
@@ -469,7 +472,7 @@ test.describe('Kalibrierintervalle SEO', () => {
     await expect(firstParagraph).toContainText('Kalibrierintervall');
   });
 
-  test('Eingehende Links von Kalibrierservice und Messgeraete', async ({ page }) => {
+  test('Eingehende Links von Kalibrierservice, Messgeraete und Messverfahren-Seiten', async ({ page }) => {
     // /kalibrierservice hat Link zu /kalibrierintervalle
     await page.goto('http://localhost:3000/kalibrierservice');
     const main1 = page.locator('main');
@@ -479,6 +482,13 @@ test.describe('Kalibrierintervalle SEO', () => {
     await page.goto('http://localhost:3000/messgeraete-kalibrieren');
     const content = await page.content();
     expect(content).toContain('Kalibrierintervallen');
+
+    // Alle 4 Messverfahren-Seiten haben Link zu /kalibrierintervalle
+    for (const url of ['/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung']) {
+      await page.goto(`http://localhost:3000${url}`);
+      const main = page.locator('main');
+      await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
+    }
   });
 
 });
@@ -526,12 +536,14 @@ test.describe('Laengenkalibrierung SEO', () => {
     await expect(ogType).toHaveAttribute('content', 'article');
   });
 
-  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+  test('Interne Verlinkung: Links zu Messverfahren, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
     await page.goto('http://localhost:3000/laengenkalibrierung');
 
     // Links im Content-Bereich (nicht Header/Footer)
     const main = page.locator('main');
-    await expect(main.locator('a[href="/kalibrierservice"]')).toBeVisible();
+    await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
     await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
     await expect(main.locator('a[href="/kalibrierintervalle"]')).toBeVisible();
     await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
@@ -554,7 +566,7 @@ test.describe('Laengenkalibrierung SEO', () => {
     await expect(firstParagraph).toContainText('Längenkalibrierung');
   });
 
-  test('Eingehende Links von Messgeraete-kalibrieren und Kalibrierintervalle', async ({ page }) => {
+  test('Eingehende Links von Messgeraete-kalibrieren, Kalibrierintervalle und Messverfahren-Seiten', async ({ page }) => {
     // /messgeraete-kalibrieren hat Link zu /laengenkalibrierung
     await page.goto('http://localhost:3000/messgeraete-kalibrieren');
     const main1 = page.locator('main');
@@ -564,6 +576,21 @@ test.describe('Laengenkalibrierung SEO', () => {
     await page.goto('http://localhost:3000/kalibrierintervalle');
     const main2 = page.locator('main');
     await expect(main2.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+
+    // /druckkalibrierung hat Cross-Link zu /laengenkalibrierung
+    await page.goto('http://localhost:3000/druckkalibrierung');
+    const main3 = page.locator('main');
+    await expect(main3.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+
+    // /elektrische-messtechnik-kalibrierung hat Cross-Link zu /laengenkalibrierung
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const main4 = page.locator('main');
+    await expect(main4.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+
+    // /drehmoment-kalibrierung hat Cross-Link zu /laengenkalibrierung
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const main5 = page.locator('main');
+    await expect(main5.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
   });
 
   test('Technische Fachinhalte: DKD-R und VDI-Richtlinien vorhanden', async ({ page }) => {
@@ -627,12 +654,14 @@ test.describe('Druckkalibrierung SEO', () => {
     await expect(ogType).toHaveAttribute('content', 'article');
   });
 
-  test('Interne Verlinkung: Links zu Messgeraete, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+  test('Interne Verlinkung: Links zu Messverfahren, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
     await page.goto('http://localhost:3000/druckkalibrierung');
 
     // Links im Content-Bereich (nicht Header/Footer)
     const main = page.locator('main');
     await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
     await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
     await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
     await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
@@ -655,11 +684,26 @@ test.describe('Druckkalibrierung SEO', () => {
     await expect(firstParagraph).toContainText('Druckkalibrierung');
   });
 
-  test('Eingehende Links von Messgeraete-kalibrieren', async ({ page }) => {
+  test('Eingehende Links von Messgeraete-kalibrieren und Messverfahren-Seiten', async ({ page }) => {
     // /messgeraete-kalibrieren hat Link zu /druckkalibrierung
     await page.goto('http://localhost:3000/messgeraete-kalibrieren');
-    const main = page.locator('main');
-    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+    const main1 = page.locator('main');
+    await expect(main1.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+
+    // /laengenkalibrierung hat Cross-Link zu /druckkalibrierung
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const main2 = page.locator('main');
+    await expect(main2.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+
+    // /elektrische-messtechnik-kalibrierung hat Cross-Link zu /druckkalibrierung
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const main3 = page.locator('main');
+    await expect(main3.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+
+    // /drehmoment-kalibrierung hat Cross-Link zu /druckkalibrierung
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const main4 = page.locator('main');
+    await expect(main4.locator('a[href="/druckkalibrierung"]')).toBeVisible();
   });
 
   test('Technische Fachinhalte: DKD-R 6-1 und DIN EN 837 vorhanden', async ({ page }) => {
@@ -720,12 +764,14 @@ test.describe('Elektrische Messtechnik Kalibrierung SEO', () => {
     await expect(ogType).toHaveAttribute('content', 'article');
   });
 
-  test('Interne Verlinkung: Links zu Messgeraete, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+  test('Interne Verlinkung: Links zu Messverfahren, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
     await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
 
     // Links im Content-Bereich (nicht Header/Footer)
     const main = page.locator('main');
     await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
     await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
     await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
     await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
@@ -748,11 +794,26 @@ test.describe('Elektrische Messtechnik Kalibrierung SEO', () => {
     await expect(firstParagraph).toContainText('elektrischer Messgeräte');
   });
 
-  test('Eingehende Links von Messgeraete-kalibrieren', async ({ page }) => {
+  test('Eingehende Links von Messgeraete-kalibrieren und Messverfahren-Seiten', async ({ page }) => {
     // /messgeraete-kalibrieren hat Link zu /elektrische-messtechnik-kalibrierung
     await page.goto('http://localhost:3000/messgeraete-kalibrieren');
-    const main = page.locator('main');
-    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+    const main1 = page.locator('main');
+    await expect(main1.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+
+    // /laengenkalibrierung hat Cross-Link zu /elektrische-messtechnik-kalibrierung
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const main2 = page.locator('main');
+    await expect(main2.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+
+    // /druckkalibrierung hat Cross-Link zu /elektrische-messtechnik-kalibrierung
+    await page.goto('http://localhost:3000/druckkalibrierung');
+    const main3 = page.locator('main');
+    await expect(main3.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+
+    // /drehmoment-kalibrierung hat Cross-Link zu /elektrische-messtechnik-kalibrierung
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const main4 = page.locator('main');
+    await expect(main4.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
   });
 
   test('Technische Fachinhalte: VDE-Normen und Preisanker vorhanden', async ({ page }) => {
@@ -772,10 +833,122 @@ test.describe('Elektrische Messtechnik Kalibrierung SEO', () => {
 
 });
 
+test.describe('Drehmomentkalibrierung SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+
+    // Title enthaelt Keyword und Brand (Template: %s | inektra GmbH)
+    await expect(page).toHaveTitle(/Drehmomentkalibrierung.*inektra GmbH/);
+
+    // H1 enthaelt Keyword
+    await expect(page.locator('h1')).toContainText('Drehmomentkalibrierung');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const content = await page.content();
+
+    // BreadcrumbList JSON-LD (via Breadcrumbs-Komponente)
+    expect(content).toContain('"@type":"BreadcrumbList"');
+
+    // FAQPage JSON-LD (via PageFAQ-Komponente)
+    expect(content).toContain('"@type":"FAQPage"');
+
+    // 3 FAQ-Fragen vorhanden
+    expect(content).toContain('Drehmomentschlüssel kalibriert werden');
+    expect(content).toContain('Drehmomentschlüssel-Kalibrierung geprüft');
+    expect(content).toContain('Drehmomentschlüssel-Kalibrierung?');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+
+    // Canonical URL
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/drehmoment-kalibrierung');
+
+    // OpenGraph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Drehmomentkalibrierung/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Messverfahren, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+
+    // Links im Content-Bereich (nicht Header/Footer)
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keine verbotenen Begriffe auf Drehmomentkalibrierung-Seite', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const content = await page.content();
+
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+    expect(content).not.toContain('akkreditiert');
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+
+    // Erster Absatz der Einleitung enthaelt "Drehmoment"
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('Drehmoment');
+  });
+
+  test('Eingehende Links von Messgeraete-kalibrieren und Messverfahren-Seiten', async ({ page }) => {
+    // /messgeraete-kalibrieren hat Link zu /drehmoment-kalibrierung
+    await page.goto('http://localhost:3000/messgeraete-kalibrieren');
+    const main1 = page.locator('main');
+    await expect(main1.locator('a[href="/drehmoment-kalibrierung"]')).toBeVisible();
+
+    // /laengenkalibrierung hat Cross-Link zu /drehmoment-kalibrierung
+    await page.goto('http://localhost:3000/laengenkalibrierung');
+    const main2 = page.locator('main');
+    await expect(main2.locator('a[href="/drehmoment-kalibrierung"]')).toBeVisible();
+
+    // /druckkalibrierung hat Cross-Link zu /drehmoment-kalibrierung
+    await page.goto('http://localhost:3000/druckkalibrierung');
+    const main3 = page.locator('main');
+    await expect(main3.locator('a[href="/drehmoment-kalibrierung"]')).toBeVisible();
+
+    // /elektrische-messtechnik-kalibrierung hat Cross-Link zu /drehmoment-kalibrierung
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const main4 = page.locator('main');
+    await expect(main4.locator('a[href="/drehmoment-kalibrierung"]')).toBeVisible();
+  });
+
+  test('Technische Fachinhalte: DIN EN ISO 6789 und Preisanker vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/drehmoment-kalibrierung');
+    const content = await page.content();
+
+    // Spezifische Normen
+    expect(content).toContain('DIN EN ISO 6789');
+    expect(content).toContain('VDI/VDE 2645');
+    expect(content).toContain('DIN 51309');
+
+    // Preisanker
+    expect(content).toContain('24,76');
+    expect(content).toContain('110,74');
+  });
+
+});
+
 test.describe('Layout & Spacing', () => {
 
   test('Unterseiten haben kompaktes Hero-Layout ohne ueberfluessigen Weissraum', async ({ page }) => {
-    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
+    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung'];
 
     for (const url of subpages) {
       await page.goto(`http://localhost:3000${url}`);
