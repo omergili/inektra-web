@@ -193,7 +193,8 @@ export default function MessgeraetePage() {
             <p className="text-slate-600">
               <strong className="text-slate-900">Tipp:</strong> Detaillierte Informationen zu Prüfverfahren, Normen und Preisen für dimensionale Messtechnik finden Sie auf unserer Seite zur{' '}
               <Link href="/laengenkalibrierung" className="text-accent-600 font-semibold hover:underline">Längenkalibrierung</Link>. Manometer, Drucksensoren und Transmitter behandeln wir ausführlich auf unserer Seite zur{' '}
-              <Link href="/druckkalibrierung" className="text-accent-600 font-semibold hover:underline">Druckkalibrierung</Link>. Eine vollständige Preisübersicht aller Gerätetypen bietet unsere{' '}
+              <Link href="/druckkalibrierung" className="text-accent-600 font-semibold hover:underline">Druckkalibrierung</Link>. Multimeter, Oszilloskope, Stromzangen und VDE-Prüfgeräte finden Sie auf unserer Seite zur{' '}
+              <Link href="/elektrische-messtechnik-kalibrierung" className="text-accent-600 font-semibold hover:underline">elektrischen Messtechnik-Kalibrierung</Link>. Eine vollständige Preisübersicht aller Gerätetypen bietet unsere{' '}
               <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Kalibrierkosten-Seite</Link>.
             </p>
           </div>

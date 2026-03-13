@@ -31,7 +31,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Contact-Sidebar ist auf allen Seiten', async ({ page }) => {
-    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung'];
+    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -128,7 +128,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Alle Unterseiten haben Premium-Design', async ({ page }) => {
-    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung'];
+    const pages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -677,10 +677,105 @@ test.describe('Druckkalibrierung SEO', () => {
 
 });
 
+test.describe('Elektrische Messtechnik Kalibrierung SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+
+    // Title enthaelt Keyword und Brand (Template: %s | inektra GmbH)
+    await expect(page).toHaveTitle(/Elektrische Messtechnik.*inektra GmbH/);
+
+    // H1 enthaelt Keyword
+    await expect(page.locator('h1')).toContainText('Elektrische Messtechnik');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const content = await page.content();
+
+    // BreadcrumbList JSON-LD (via Breadcrumbs-Komponente)
+    expect(content).toContain('"@type":"BreadcrumbList"');
+
+    // FAQPage JSON-LD (via PageFAQ-Komponente)
+    expect(content).toContain('"@type":"FAQPage"');
+
+    // 3 FAQ-Fragen vorhanden
+    expect(content).toContain('Messfunktionen');
+    expect(content).toContain('Multimeter-Kalibrierung');
+    expect(content).toContain('elektrischer Messgeräte');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+
+    // Canonical URL
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/elektrische-messtechnik-kalibrierung');
+
+    // OpenGraph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Elektrische Messtechnik/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Messgeraete, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+
+    // Links im Content-Bereich (nicht Header/Footer)
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keine verbotenen Begriffe auf Elektrische-Messtechnik-Seite', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const content = await page.content();
+
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+    expect(content).not.toContain('akkreditiert');
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+
+    // Erster Absatz der Einleitung enthaelt "elektrische" oder "Messtechnik"
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('elektrischer Messgeräte');
+  });
+
+  test('Eingehende Links von Messgeraete-kalibrieren', async ({ page }) => {
+    // /messgeraete-kalibrieren hat Link zu /elektrische-messtechnik-kalibrierung
+    await page.goto('http://localhost:3000/messgeraete-kalibrieren');
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+  });
+
+  test('Technische Fachinhalte: VDE-Normen und Preisanker vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/elektrische-messtechnik-kalibrierung');
+    const content = await page.content();
+
+    // Spezifische Normen
+    expect(content).toContain('DIN VDE 0701-0702');
+    expect(content).toContain('DIN VDE 0100');
+    expect(content).toContain('IEC 61010');
+
+    // Preisanker
+    expect(content).toContain('29,97');
+    expect(content).toContain('80,79');
+    expect(content).toContain('99,36');
+  });
+
+});
+
 test.describe('Layout & Spacing', () => {
 
   test('Unterseiten haben kompaktes Hero-Layout ohne ueberfluessigen Weissraum', async ({ page }) => {
-    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung'];
+    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung'];
 
     for (const url of subpages) {
       await page.goto(`http://localhost:3000${url}`);
