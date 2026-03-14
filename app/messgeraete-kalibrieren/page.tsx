@@ -5,15 +5,15 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen',
-  description: 'Messgeräte kalibrieren lassen: Multimeter, Oszilloskope, Stromzangen, Temperatur-, Druck- und Dimensionsmesstechnik. ISO-konforme Werkskalibrierung. Jetzt Angebot anfordern!',
-  keywords: ['messgeräte kalibrieren', 'kalibrierung messgeräte', 'multimeter kalibrieren', 'multimeter kalibrieren lassen', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'messmittel kalibrierung', 'prüfmittel kalibrieren', 'elektrische messtechnik', 'temperatur kalibrierung', 'druck kalibrierung', 'messmittelkalibrierung', 'kalibrieren messgeräte'],
+  description: 'Messgeräte und Prüfmittel kalibrieren lassen: Multimeter, Oszilloskope, Stromzangen, Manometer, Messschieber und mehr. Messmittel kalibrieren mit rückverfolgbarem Kalibrierschein. Jetzt Angebot anfordern!',
+  keywords: ['messgeräte kalibrieren', 'kalibrierung messgeräte', 'multimeter kalibrieren', 'multimeter kalibrieren lassen', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'messmittel kalibrierung', 'prüfmittel kalibrieren', 'elektrische messtechnik', 'temperatur kalibrierung', 'druck kalibrierung', 'messmittelkalibrierung', 'kalibrieren messgeräte', 'kalibrieren von messgeräten', 'messgeräte kalibrieren lassen'],
   alternates: {
     canonical: 'https://inektra.de/messgeraete-kalibrieren',
   },
   openGraph: {
     title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen | inektra GmbH',
-    description: 'Über 3.200 kalibrierbare Gerätetypen: Elektrische Messtechnik, Temperatur, Druck, Dimensionsmesstechnik und mehr. ISO-konforme Werkskalibrierung mit rückverfolgbarem Kalibrierschein.',
-    type: 'website',
+    description: 'Messgeräte und Prüfmittel kalibrieren lassen: Elektrische Messtechnik, Temperatur, Druck, Dimensionsmesstechnik und mehr. Werkskalibrierung mit rückverfolgbarem Kalibrierschein.',
+    type: 'article',
   },
 };
 
@@ -68,6 +68,64 @@ const categories = [
   },
 ];
 
+const messgeraeteKategorien = [
+  {
+    icon: '⚡',
+    title: 'Elektrische Messtechnik',
+    geraete: 'Multimeter, Oszilloskope, Stromzangen, Isolationsmessgeräte, VDE-Prüfgeräte',
+    href: '/elektrische-messtechnik-kalibrierung',
+  },
+  {
+    icon: '🔬',
+    title: 'Druckmesstechnik',
+    geraete: 'Manometer, Drucktransmitter, Differenzdruckmessgeräte, Drucksensoren',
+    href: '/druckkalibrierung',
+  },
+  {
+    icon: '📐',
+    title: 'Dimensionsmesstechnik',
+    geraete: 'Messschieber, Messschrauben, Endmaße, Messuhren, Lehrdorne',
+    href: '/laengenkalibrierung',
+  },
+  {
+    icon: '🔧',
+    title: 'Drehmoment',
+    geraete: 'Drehmomentschlüssel, Drehmomentprüfgeräte, Drehmomentschrauber',
+    href: '/drehmoment-kalibrierung',
+  },
+  {
+    icon: '🌡️',
+    title: 'Temperatur & Feuchte',
+    geraete: 'Thermometer, IR-Thermometer, Hygrometer, Datalogger, Thermoelemente',
+    href: null,
+  },
+  {
+    icon: '⚖️',
+    title: 'Waagen & Kraft',
+    geraete: 'Analysenwaagen, Präzisionswaagen, Industriewaagen, Kraftmessgeräte',
+    href: null,
+  },
+];
+
+const normen = [
+  {
+    name: 'DKD-R Richtlinien',
+    text: 'Die Richtlinien des Deutschen Kalibrierdienstes (DKD) beschreiben Prüfverfahren für verschiedene Messgrößen. Relevante Richtlinien sind unter anderem DKD-R 4-3 für dimensionale Messgeräte und DKD-R 6-1 für Druckmesstechnik. Herausgegeben von der Physikalisch-Technischen Bundesanstalt (PTB).',
+  },
+  {
+    name: 'VDI/VDE/DGQ 2618',
+    text: 'Die Richtlinienreihe zur Prüfmittelüberwachung definiert Prüfverfahren für diverse Messmittel. Sie legt fest, welche Prüfpunkte, Messbereiche und Genauigkeitsanforderungen bei der Kalibrierung anzuwenden sind – von Messschiebern über Messuhren bis hin zu Endmaßen.',
+  },
+  {
+    name: 'DIN-Normen',
+    text: 'Gerätespezifische Normen definieren Genauigkeitsklassen und Prüfanforderungen: DIN 862 (Messschieber), DIN 863 (Messschrauben), DIN EN ISO 3650 (Endmaße) und DIN EN ISO 6789 (Drehmomentschlüssel). Diese Normen sind die Grundlage für die Bewertung der Kalibrierergebnisse.',
+  },
+  {
+    name: 'IEC/VDE-Normen',
+    text: 'Für die Kalibrierung elektrischer Messgeräte gelten DIN VDE 0701-0702 (elektrische Geräteprüfung), DIN VDE 0100 (Anlagenprüfung) und IEC 61010 (Sicherheitsanforderungen an Mess- und Prüfgeräte). Diese Normen bestimmen die Prüfpunkte und Messbereiche bei der elektrischen Kalibrierung.',
+  },
+];
+
 const steps = [
   {
     number: '1',
@@ -112,6 +170,18 @@ const faqs = [
     question: 'Welche Normen gelten für die Kalibrierung von Messgeräten?',
     answer: 'Unsere Werkskalibrierung orientiert sich an anerkannten Prüfungsrichtlinien: DKD-R 4-3 für dimensionale Messgeräte, DKD-R 6-1 für Druckmesstechnik, VDI/VDE/DGQ 2618 für verschiedene Messmittel sowie DIN-Normen wie DIN 862 (Messschieber), DIN 863 (Messschrauben) und DIN EN ISO 6789 (Drehmomentschlüssel). Alle Kalibrierungen erfolgen mit rückverfolgbaren Referenznormalen.',
   },
+  {
+    question: 'Was ist der Unterschied zwischen Kalibrierung, Justierung und Eichung?',
+    answer: 'Kalibrierung ist die dokumentierte Feststellung der Abweichung eines Messgeräts gegenüber einem Referenznormal – es erfolgt kein Eingriff ins Gerät. Justierung bedeutet, dass das Gerät so eingestellt wird, dass die Abweichung minimiert wird – also ein aktiver Eingriff. Eichung ist eine behördliche Prüfung durch das Eichamt, die nur für eichpflichtige Geräte vorgeschrieben ist (z. B. Waagen im Handel oder geeichte Zapfsäulen). Unsere Werkskalibrierung umfasst die dokumentierte Feststellung der Abweichung mit rückverfolgbarem Kalibrierschein.',
+  },
+  {
+    question: 'Was steht auf einem Kalibrierschein?',
+    answer: 'Ein Kalibrierschein dokumentiert die Geräteidentifikation (Hersteller, Modell, Seriennummer), die verwendeten Referenznormale, die geprüften Messpunkte mit Ist- und Sollwerten, die festgestellten Abweichungen, die Messunsicherheit sowie Datum und Prüfer. Der Kalibrierschein dient als Nachweis der messtechnischen Rückverfolgbarkeit Ihrer Messgeräte.',
+  },
+  {
+    question: 'Bieten Sie Express-Kalibrierung an?',
+    answer: 'Die Standardbearbeitung beträgt 5–10 Werktage ab Wareneingang. Wenn Sie Ihre Messgeräte schneller benötigen, ist eine Expresskalibrierung auf Anfrage möglich – sprechen Sie uns einfach an. Kontaktieren Sie uns über unser Kontaktformular oder telefonisch.',
+  },
 ];
 
 export default function MessgeraetePage() {
@@ -126,7 +196,7 @@ export default function MessgeraetePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96 relative z-10 w-full">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Über <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">3.200 kalibrierbare</span> Gerätetypen
+              Messgeräte <span className="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">kalibrieren lassen</span> – über 3.200 Gerätetypen
             </h1>
             <p className="text-xl text-slate-300 mb-8">
               Von elektrischer Messtechnik bis Dimensionsmesstechnik – wir kalibrieren Ihre komplette Messausstattung nach ISO-Normen.
@@ -155,12 +225,39 @@ export default function MessgeraetePage() {
               <Link href="/kalibrierintervalle" className="text-accent-600 font-semibold hover:underline">Kalibrierintervallen</Link>{' '}
               finden Sie auf unseren Ratgeber-Seiten.
             </p>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              Die Werkskalibrierung ist eine wirtschaftliche Alternative, wenn Sie Messmittel kalibrieren oder Prüfmittel kalibrieren lassen möchten. Unsere Kalibrierungen basieren auf anerkannten Prüfungsrichtlinien und rückverfolgbaren Referenznormalen – Sie erhalten einen vollständigen Kalibrierschein mit allen Messwerten und Abweichungen. Details zu unserem Ablauf und den Vorteilen der Werkskalibrierung finden Sie auf unserer{' '}
+              <Link href="/kalibrierservice" className="text-accent-600 font-semibold hover:underline">Kalibrierservice-Seite</Link>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Was bedeutet Kalibrierung? */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Was bedeutet Kalibrierung von Messgeräten?</h2>
+            <p className="text-lg text-slate-600 mb-6">
+              Unter Kalibrierung versteht man den dokumentierten Vergleich der Messwerte eines Prüflings (Ihres Messgeräts) mit den Werten eines Referenznormals bekannter Genauigkeit. Das Ergebnis der Messmittelkalibrierung ist die festgestellte Abweichung zwischen Ist-Wert und Sollwert an definierten Messpunkten. Diese Abweichung wird zusammen mit der zugehörigen Messunsicherheit im Kalibrierschein dokumentiert. Die Kalibrierung selbst verändert das Gerät nicht – sie stellt lediglich den aktuellen Zustand fest.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Kalibrierung, Justierung und Eichung – die Unterschiede</h3>
+            <p className="text-lg text-slate-600 mb-6">
+              Drei Begriffe, die häufig verwechselt werden: Bei der <strong>Kalibrierung</strong> wird die Abweichung eines Messgeräts festgestellt und dokumentiert – ohne Eingriff ins Gerät. Die <strong>Justierung</strong> geht einen Schritt weiter: Hier wird das Messgerät so eingestellt, dass die Abweichung minimiert wird, etwa durch Trimmer, Software-Korrektur oder mechanische Nachstellung. Eine Justierung setzt in der Regel eine vorherige Kalibrierung voraus. Die <strong>Eichung</strong> ist eine behördliche Prüfung durch das Eichamt und nur für eichpflichtige Geräte vorgeschrieben – beispielsweise Waagen im Handel, Tankstellen-Zapfsäulen oder Geschwindigkeitsmessgeräte.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Warum ist Rückverfolgbarkeit wichtig?</h3>
+            <p className="text-lg text-slate-600 mb-6">
+              Rückverfolgbarkeit bedeutet, dass die Messergebnisse einer Kalibrierung über eine lückenlose Kette von Vergleichsmessungen auf nationale oder internationale Normale zurückgeführt werden können. In Deutschland wird diese Kette durch die Physikalisch-Technische Bundesanstalt (PTB) sichergestellt. Unser Kalibrierlabor verwendet rückverfolgbare Referenznormale, sodass Ihr Kalibrierschein als belastbarer Nachweis gegenüber Kunden, Auditoren und Qualitätsmanagementsystemen dient. Weitere Details zu unserem Kalibrierverfahren finden Sie auf unserer{' '}
+              <Link href="/kalibrierservice" className="text-accent-600 font-semibold hover:underline">Kalibrierservice-Seite</Link>.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Unsere Kategorien</h2>
@@ -202,6 +299,42 @@ export default function MessgeraetePage() {
         </div>
       </section>
 
+      {/* Welche Messgeräte sollten kalibriert werden? */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">Welche Messgeräte sollten regelmäßig kalibriert werden?</h2>
+          <p className="text-lg text-slate-600 mb-8">
+            Grundsätzlich sollten alle Messgeräte kalibriert werden, die für qualitätsrelevante Messungen eingesetzt werden. Das Kalibrieren von Messgeräten stellt sicher, dass Ihre Messergebnisse vergleichbar und nachweisbar korrekt sind. Die folgende Übersicht zeigt die wichtigsten Gerätekategorien:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {messgeraeteKategorien.map((kat) => (
+              <div key={kat.title} className="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl flex-shrink-0">{kat.icon}</span>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">{kat.title}</h3>
+                    <p className="text-sm text-slate-600 mb-2">{kat.geraete}</p>
+                    {kat.href && (
+                      <Link href={kat.href} className="text-accent-600 text-sm font-semibold hover:underline">
+                        Zum Messverfahren →
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-slate-600 mt-6">
+            Detaillierte Empfehlungen zu{' '}
+            <Link href="/kalibrierintervalle" className="text-accent-600 font-semibold hover:underline">Kalibrierintervallen</Link>{' '}
+            nach Gerätetyp und eine vollständige Preisübersicht finden Sie auf unserer{' '}
+            <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Kalibrierkosten-Seite</Link>.
+          </p>
+        </div>
+      </section>
+
       {/* Ablauf */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
@@ -233,8 +366,86 @@ export default function MessgeraetePage() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Normen und Richtlinien */}
       <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Normen und Richtlinien für die Messgeräte-Kalibrierung</h2>
+            <p className="text-lg text-slate-600 mb-6">
+              Die Kalibrierung von Messgeräten basiert auf anerkannten nationalen und internationalen Normen und Richtlinien. Diese definieren Prüfverfahren, Messpunkte und Genauigkeitsanforderungen für verschiedene Gerätetypen:
+            </p>
+
+            <div className="space-y-6">
+              {normen.map((norm) => (
+                <div key={norm.name} className="bg-white p-6 rounded-xl border border-slate-200">
+                  <h3 className="font-bold text-slate-900 text-lg mb-2">{norm.name}</h3>
+                  <p className="text-slate-600">{norm.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
+              <Link
+                href="/laengenkalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Längenkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/druckkalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Druckkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/elektrische-messtechnik-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Elektrische Kalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/drehmoment-kalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Drehmomentkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/kalibrierkosten"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Kalibrierkosten nachschlagen
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/kalibrierintervalle"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Kalibrierintervalle
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pr-96">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Warum inektra?</h2>

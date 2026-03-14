@@ -48,7 +48,7 @@ app/                       # Next.js App Router Seiten
 │   ├── contact/route.ts   # POST: Kontaktformular → Resend E-Mail
 │   └── toolboxx/items/route.ts  # GET: Kalibrier-Katalog (Suche, Filter, Kategorien)
 ├── kalibrierservice/      # Leistungsseite (Prozess, Vorteile, FAQs, Service JSON-LD)
-├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Kategorien, Preisanker, Ablauf, 5 FAQs, ~1.000 Woerter)
+├── messgeraete-kalibrieren/ # Messgeräte-Kalibrierung (6 Kategorien, Preisanker, Ablauf, 8 FAQs, ~2.000 Woerter, Normen-Section, Geräte-Checkliste)
 ├── kalibrierkosten/       # Preisübersicht mit Suche (Client Component, 300ms Debounce)
 ├── laengenkalibrierung/   # Messverfahren: Dimensionale Messtechnik (67+ Gerätetypen, DKD-R/VDI)
 ├── elektrische-messtechnik-kalibrierung/ # Messverfahren: Elektrische Messtechnik (1.200+ Gerätetypen, VDE 0701/0702/0100)
@@ -306,13 +306,14 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
     - "kalibrierlabor nordhorn" Position **19** → /kontakt
     - "messgeraete kalibrieren lassen" Position **37** → /messgeraete-kalibrieren
     - "was kostet kalibrierung" Position **60** → /kalibrierkosten
-  - **Groesstes Potenzial:** "messgeraete kalibrieren" Position 97 (SV **750**) → /messgeraete-kalibrieren
-  - **/messgeraete-kalibrieren** rankt fuer 8+ Keywords (Pos. 37–97): messgeraete kalibrierung (71, SV 30), kalibrieren messgeraete (85, SV 60), kalibrieren von messgeraeten (95, SV 40), multimeter kalibrierung (81, SV 20), manometer kalibrieren kosten (64, SV 10)
+  - **Groesstes Potenzial:** "messgeraete kalibrieren" Position 67 (SV **750**) → /messgeraete-kalibrieren
+  - **/messgeraete-kalibrieren** rankt fuer 10+ Keywords (Pos. 37–88): kalibrierung messgeraete (88, SV 350), messgeraete kalibrierung (71, SV 30), kalibrieren messgeraete (85, SV 60), kalibrieren von messgeraeten (81, SV 40), multimeter kalibrierung (81, SV 20), manometer kalibrieren kosten (64, SV 10)
+  - **SEO-Ausbau 14.03.2026:** ~1.000→~2.000 Woerter, H1 mit Keyword, 3 neue Sections, FAQs 5→8 (Ziel: Pos. 67 → Top 30)
   - **Kannibalisierung beobachten:** "kalibrierkosten" rankt auch auf /messgeraete-kalibrieren (Pos. 32) neben /kalibrierkosten (Pos. 1) – Primaerseite dominiert, kein Handlungsbedarf
 
 ## Tests
 
-75 Playwright E2E-Regressionstests in `tests/features.test.ts`:
+81 Playwright E2E-Regressionstests in `tests/features.test.ts`:
 
 **Critical Features Check (12 Tests):**
 - Homepage-Rendering, Navigation, Contact-Sidebar auf allen Seiten (inkl. /kalibrierintervalle, /laengenkalibrierung, /druckkalibrierung, /elektrische-messtechnik-kalibrierung, /drehmoment-kalibrierung)
@@ -386,6 +387,14 @@ TOOLBOXX_API_KEY            # Erforderlich für Produktdaten-Fetch (prebuild)
 - Keyword "Drehmoment" im ersten Absatz
 - Eingehende Links von /messgeraete-kalibrieren + allen Messverfahren-Seiten
 - Technische Fachinhalte: DIN EN ISO 6789, VDI/VDE 2645, DIN 51309, Preisanker vorhanden
+
+**Messgeraete-Kalibrieren SEO (6 Tests):**
+- H1 enthält Haupt-Keyword "Messgeräte" + "kalibrieren"
+- FAQPage JSON-LD mit 8 Fragen (inkl. Kalibrierung vs Justierung, Kalibrierschein, Express)
+- OpenGraph type = article
+- Keine verbotenen Begriffe (ISO 17025, ISO 9001, akkreditiert, DAkkS)
+- Neue Sections vorhanden (Kalibrierung-Definition, Messgeräte-Checkliste, Normen)
+- Interne Verlinkung zu allen Messverfahren-Seiten + Ratgeber
 
 **Layout & Spacing (1 Test):**
 - Alle 8 Unterseiten: Kompaktes Hero-Layout (kein pt-32/min-h-[500px]), Breadcrumbs sichtbar
@@ -508,6 +517,7 @@ fe0fefc Update regression tests: 27 tests covering all critical features
 - [x] 75 Playwright E2E-Tests (8 neue Drehmomentkalibrierung-SEO-Tests, 13.03.2026)
 - [x] FAQ-Seite: Mindestauftragswert 40 EUR netto ergaenzt (neues FAQ + bestehendes aktualisiert, 11.03.2026)
 - [x] /messgeraete-kalibrieren SEO-Ausbau: ~450→~1.000 Woerter, Intro-Section, Preisanker (aus Preisliste 2026), Ablauf-Section, FAQs 3→5, Norm-Referenzen, interne Links verbessert (11.03.2026)
+- [x] /messgeraete-kalibrieren SEO-Ausbau Phase 2: ~1.000→~2.000 Woerter, H1 mit Keyword, 3 neue Sections (Kalibrierung-Definition, Geraete-Checkliste, Normen+Cross-Links), FAQs 5→8, OG type article, 6 neue SEO-Tests (14.03.2026)
 - [x] Google Ads RSAs: "Sehr gut" Anzeigeneffektivitaet erreicht – 15 Headlines (3 DKI), 4 Keyword-Descriptions, Display Paths, Sitelinks (11.03.2026)
 
 ## Content-Ausbauplan
