@@ -97,7 +97,7 @@ const messgeraeteKategorien = [
     icon: '🌡️',
     title: 'Temperatur & Feuchte',
     geraete: 'Thermometer, IR-Thermometer, Hygrometer, Datalogger, Thermoelemente',
-    href: null,
+    href: '/temperaturkalibrierung',
   },
   {
     icon: '⚖️',
@@ -292,7 +292,8 @@ export default function MessgeraetePage() {
               <Link href="/laengenkalibrierung" className="text-accent-600 font-semibold hover:underline">Längenkalibrierung</Link>. Manometer, Drucksensoren und Transmitter behandeln wir ausführlich auf unserer Seite zur{' '}
               <Link href="/druckkalibrierung" className="text-accent-600 font-semibold hover:underline">Druckkalibrierung</Link>. Multimeter, Oszilloskope, Stromzangen und VDE-Prüfgeräte finden Sie auf unserer Seite zur{' '}
               <Link href="/elektrische-messtechnik-kalibrierung" className="text-accent-600 font-semibold hover:underline">elektrischen Messtechnik-Kalibrierung</Link>. Drehmomentschlüssel und Drehmomentprüfgeräte nach DIN EN ISO 6789 finden Sie auf unserer Seite zur{' '}
-              <Link href="/drehmoment-kalibrierung" className="text-accent-600 font-semibold hover:underline">Drehmomentkalibrierung</Link>. Eine vollständige Preisübersicht aller Gerätetypen bietet unsere{' '}
+              <Link href="/drehmoment-kalibrierung" className="text-accent-600 font-semibold hover:underline">Drehmomentkalibrierung</Link>. Thermometer, Pt100-Fühler, Thermoelemente und IR-Thermometer finden Sie auf unserer Seite zur{' '}
+              <Link href="/temperaturkalibrierung" className="text-accent-600 font-semibold hover:underline">Temperaturkalibrierung</Link>. Eine vollständige Preisübersicht aller Gerätetypen bietet unsere{' '}
               <Link href="/kalibrierkosten" className="text-accent-600 font-semibold hover:underline">Kalibrierkosten-Seite</Link>.
             </p>
           </div>
@@ -417,6 +418,15 @@ export default function MessgeraetePage() {
                 className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
               >
                 Drehmomentkalibrierung
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/temperaturkalibrierung"
+                className="inline-flex items-center text-accent-600 font-semibold hover:translate-x-2 transition-transform"
+              >
+                Temperaturkalibrierung
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

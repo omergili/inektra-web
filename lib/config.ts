@@ -67,6 +67,7 @@ export const siteConfig = {
       { name: 'Längenkalibrierung', href: '/laengenkalibrierung' },
       { name: 'Druckkalibrierung', href: '/druckkalibrierung' },
       { name: 'Drehmomentkalibrierung', href: '/drehmoment-kalibrierung' },
+      { name: 'Temperaturkalibrierung', href: '/temperaturkalibrierung' },
     ]},
     { name: 'Kalibrierkosten', href: '/kalibrierkosten' },
     { name: 'Ratgeber', children: [

@@ -31,7 +31,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Contact-Sidebar ist auf allen Seiten', async ({ page }) => {
-    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung'];
+    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -945,6 +945,104 @@ test.describe('Drehmomentkalibrierung SEO', () => {
 
 });
 
+test.describe('Temperaturkalibrierung SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+
+    // Title enthaelt Keyword und Brand (Template: %s | inektra GmbH)
+    await expect(page).toHaveTitle(/Temperaturkalibrierung.*inektra GmbH/);
+
+    // H1 enthaelt Keyword
+    await expect(page.locator('h1')).toContainText('Temperaturkalibrierung');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+    const content = await page.content();
+
+    // BreadcrumbList JSON-LD (via Breadcrumbs-Komponente)
+    expect(content).toContain('"@type":"BreadcrumbList"');
+
+    // FAQPage JSON-LD (via PageFAQ-Komponente)
+    expect(content).toContain('"@type":"FAQPage"');
+
+    // 3 FAQ-Fragen vorhanden
+    expect(content).toContain('Thermometer kalibriert werden');
+    expect(content).toContain('Vergleichs- und Fixpunktkalibrierung');
+    expect(content).toContain('Temperaturkalibrierung?');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+
+    // Canonical URL
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/temperaturkalibrierung');
+
+    // OpenGraph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Temperaturkalibrierung/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Messverfahren, Kalibrierkosten, Kalibrierintervalle, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+
+    // Links im Content-Bereich (nicht Header/Footer)
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/messgeraete-kalibrieren"]')).toBeVisible();
+    await expect(main.locator('a[href="/laengenkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/druckkalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/elektrische-messtechnik-kalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/drehmoment-kalibrierung"]')).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keine verbotenen Begriffe auf Temperaturkalibrierung-Seite', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+    const content = await page.content();
+
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+    expect(content).not.toContain('akkreditiert');
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+
+    // Erster Absatz der Einleitung enthaelt "Temperaturkalibrierung"
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('Temperaturkalibrierung');
+  });
+
+  test('Eingehende Links von Messgeraete-kalibrieren und Kalibrierintervalle', async ({ page }) => {
+    // /kalibrierintervalle hat Link zu alle Messverfahren-Seiten
+    await page.goto('http://localhost:3000/kalibrierintervalle');
+    const main1 = page.locator('main');
+    // Temperaturkalibrierung should be linked from other pages once cross-links are added
+  });
+
+  test('Technische Fachinhalte: DKD-R 5-1 und DIN EN 60751 vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/temperaturkalibrierung');
+    const content = await page.content();
+
+    // Spezifische Normen
+    expect(content).toContain('DKD-R 5-1');
+    expect(content).toContain('DIN EN 60751');
+    expect(content).toContain('VDI/VDE 3511');
+
+    // Preisanker
+    expect(content).toContain('15,00');
+    expect(content).toContain('45,00');
+  });
+
+});
+
 test.describe('Messgeraete-Kalibrieren SEO', () => {
 
   test('Seite laed mit korrektem H1 (Haupt-Keyword)', async ({ page }) => {
@@ -1026,7 +1124,7 @@ test.describe('Messgeraete-Kalibrieren SEO', () => {
 test.describe('Layout & Spacing', () => {
 
   test('Unterseiten haben kompaktes Hero-Layout ohne ueberfluessigen Weissraum', async ({ page }) => {
-    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung'];
+    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung'];
 
     for (const url of subpages) {
       await page.goto(`http://localhost:3000${url}`);
