@@ -167,11 +167,11 @@ export default function MessgeraetePage() {
             <p className="text-xl text-slate-600">Umfassende Kalibrierung für alle Messgerätebereiche</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {categories.map((cat) => (
               <div
                 key={cat.name}
-                className="relative p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300"
+                className="relative p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
                 {/* Count Badge - oben rechts */}
                 <span className="absolute top-4 right-4 px-3 py-1 bg-accent-100 text-accent-700 text-xs font-bold rounded-full">
@@ -179,7 +179,7 @@ export default function MessgeraetePage() {
                 </span>
 
                 <div className="text-5xl mb-4">{cat.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 pr-16">{cat.name}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{cat.name}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-3">{cat.description}</p>
                 <p className="text-slate-500 text-sm leading-relaxed mb-4">{cat.details}</p>
                 <span className="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-sm font-semibold rounded-lg">
