@@ -31,7 +31,7 @@ test.describe('Critical Features Check', () => {
   });
 
   test('Contact-Sidebar ist auf allen Seiten', async ({ page }) => {
-    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung'];
+    const pages = ['/', '/kalibrierservice', '/messgeraete-kalibrieren', '/kalibrierkosten', '/ueber-uns', '/kontakt', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung', '/werkskalibrierung-vs-dakks'];
 
     for (const url of pages) {
       await page.goto(`http://localhost:3000${url}`);
@@ -1121,10 +1121,80 @@ test.describe('Messgeraete-Kalibrieren SEO', () => {
 
 });
 
+test.describe('Werkskalibrierung vs DAkkS SEO', () => {
+
+  test('Seite laed mit korrektem Title und H1', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+
+    await expect(page).toHaveTitle(/Werkskalibrierung.*DAkkS.*inektra GmbH/);
+    await expect(page.locator('h1')).toContainText('Werkskalibrierung');
+  });
+
+  test('Structured Data: BreadcrumbList + FAQPage JSON-LD', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+    const content = await page.content();
+
+    expect(content).toContain('"@type":"BreadcrumbList"');
+    expect(content).toContain('"@type":"FAQPage"');
+    expect(content).toContain('rückverfolgbar');
+    expect(content).toContain('ISO-9001-Audits');
+  });
+
+  test('Canonical URL und OpenGraph vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://inektra.de/werkskalibrierung-vs-dakks');
+
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Werkskalibrierung/);
+
+    const ogType = page.locator('meta[property="og:type"]');
+    await expect(ogType).toHaveAttribute('content', 'article');
+  });
+
+  test('Interne Verlinkung: Links zu Kalibrierservice, Kalibrierkosten, Kontakt', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+
+    const main = page.locator('main');
+    await expect(main.locator('a[href="/kalibrierservice"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierkosten"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kalibrierintervalle"]').first()).toBeVisible();
+    await expect(main.locator('a[href="/kontakt"]').first()).toBeVisible();
+  });
+
+  test('Keyword im ersten Absatz', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+
+    const firstParagraph = page.locator('section:nth-of-type(2) p').first();
+    await expect(firstParagraph).toContainText('Werkskalibrierung');
+  });
+
+  test('Vergleichstabelle vorhanden', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+    const content = await page.content();
+
+    expect(content).toContain('Rückverfolgbarkeit');
+    expect(content).toContain('Bearbeitungszeit');
+    expect(content).toContain('Kosten');
+  });
+
+  test('Keine falschen Akkreditierungs-Claims fuer inektra', async ({ page }) => {
+    await page.goto('http://localhost:3000/werkskalibrierung-vs-dakks');
+    const content = await page.content();
+
+    // Seite darf DAkkS erwaehnen (ist ja der Vergleich), aber nicht behaupten inektra sei akkreditiert
+    expect(content).not.toContain('inektra ist akkreditiert');
+    expect(content).not.toContain('DIN EN ISO/IEC 17025');
+    expect(content).not.toContain('ISO 9001');
+  });
+
+});
+
 test.describe('Layout & Spacing', () => {
 
   test('Unterseiten haben kompaktes Hero-Layout ohne ueberfluessigen Weissraum', async ({ page }) => {
-    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung'];
+    const subpages = ['/kalibrierservice', '/messgeraete-kalibrieren', '/ueber-uns', '/kontakt', '/faq', '/kalibrierintervalle', '/laengenkalibrierung', '/druckkalibrierung', '/elektrische-messtechnik-kalibrierung', '/drehmoment-kalibrierung', '/temperaturkalibrierung', '/werkskalibrierung-vs-dakks'];
 
     for (const url of subpages) {
       await page.goto(`http://localhost:3000${url}`);

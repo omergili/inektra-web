@@ -73,6 +73,7 @@ export const siteConfig = {
     { name: 'Ratgeber', children: [
       { name: 'FAQ', href: '/faq' },
       { name: 'Kalibrierintervalle', href: '/kalibrierintervalle' },
+      { name: 'Werkskalibrierung vs. DAkkS', href: '/werkskalibrierung-vs-dakks' },
     ]},
     { name: 'Über uns', href: '/ueber-uns' },
   ] satisfies NavItem[] as NavItem[],
