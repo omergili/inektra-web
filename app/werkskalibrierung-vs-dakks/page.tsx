@@ -4,14 +4,14 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Werkskalibrierung vs. DAkkS – Unterschiede, Kosten & wann Sie was brauchen',
-  description: 'Werkskalibrierung oder DAkkS-Kalibrierung? Vergleich der Unterschiede bei Kosten, Bearbeitungszeit, Rückverfolgbarkeit und Audit-Akzeptanz. Praxisorientierter Ratgeber für Industrie und Labor.',
+  title: 'Werkskalibrierung vs. DAkkS – Unterschiede',
+  description: 'Werkskalibrierung oder DAkkS-Kalibrierung? Vergleich bei Kosten, Bearbeitungszeit und Audit-Akzeptanz. Ratgeber für Industrie und Labor.',
   keywords: ['werkskalibrierung', 'akkreditierte kalibrierung', 'dakks unterschied', 'werkskalibrierung vs dakks', 'kalibrierung unterschied'],
   alternates: {
     canonical: 'https://inektra.de/werkskalibrierung-vs-dakks',
   },
   openGraph: {
-    title: 'Werkskalibrierung vs. DAkkS – Unterschiede, Kosten & wann Sie was brauchen | inektra GmbH',
+    title: 'Werkskalibrierung vs. DAkkS – Unterschiede | inektra GmbH',
     description: 'Werkskalibrierung oder akkreditierte Kalibrierung? Objektiver Vergleich mit Entscheidungshilfe für Industrie und Qualitätssicherung.',
     type: 'article',
   },

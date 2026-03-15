@@ -4,15 +4,15 @@ import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Kalibrierservice – Präzise Werkskalibrierung für Industrie & Labor | inektra GmbH',
+    absolute: 'Kalibrierservice & Werkskalibrierung | inektra GmbH',
   },
-  description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnelle Bearbeitung, faire Preise. Jetzt Angebot anfordern!',
+  description: 'Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnelle Bearbeitung, faire Preise.',
   keywords: ['werkskalibrierung', 'kalibrierservice', 'messgeräte kalibrieren', 'kalibrierlabor', 'iso kalibrierung', 'kalibrierung dienstleister', 'nordhorn'],
   alternates: {
     canonical: siteConfig.siteUrl,
   },
   openGraph: {
-    title: 'Kalibrierservice – Präzise Werkskalibrierung | inektra GmbH',
+    title: 'Kalibrierservice & Werkskalibrierung | inektra GmbH',
     description: 'Professionelle Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn.',
     url: siteConfig.siteUrl,
     type: 'website',

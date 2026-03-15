@@ -4,14 +4,14 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Kalibrierintervalle – Wie oft sollten Sie kalibrieren?',
-  description: 'Optimale Kalibrierintervalle für Messgeräte: Empfehlungen nach Gerätetyp, Einflussfaktoren und Normen. Praxisorientierter Ratgeber für Industrie und Labor.',
+  title: 'Kalibrierintervalle – Wie oft kalibrieren?',
+  description: 'Kalibrierintervalle für Messgeräte: Empfehlungen nach Gerätetyp, Einflussfaktoren und Normen. Ratgeber für Industrie und Labor.',
   keywords: ['kalibrierintervall', 'wie oft kalibrieren', 'kalibrierungshäufigkeit', 'kalibrierung intervall', 'rekalibrierung', 'kalibrierzyklus'],
   alternates: {
     canonical: 'https://inektra.de/kalibrierintervalle',
   },
   openGraph: {
-    title: 'Kalibrierintervalle – Wie oft sollten Sie kalibrieren? | inektra GmbH',
+    title: 'Kalibrierintervalle – Wie oft kalibrieren? | inektra GmbH',
     description: 'Empfohlene Kalibrierintervalle nach Gerätetyp, Einflussfaktoren und relevante Normen – praxisnah erklärt.',
     type: 'article',
   },

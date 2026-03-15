@@ -4,8 +4,8 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Kalibrierservice – Werkskalibrierung für Industrie & Labor',
-  description: 'Professioneller Kalibrierservice nach ISO-Normen. Schnelle Bearbeitung, transparente Preise, über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Jetzt Kalibrierung beauftragen!',
+  title: 'Kalibrierservice – Werkskalibrierung',
+  description: 'Kalibrierservice nach ISO-Normen. Schnelle Bearbeitung, transparente Preise, über 3.200 Gerätetypen. Labor in Nordhorn.',
   keywords: ['kalibrierservice', 'werkskalibrierung', 'iso kalibrierung', 'kalibrierlabor', 'messgeräte kalibrieren', 'kalibrierung beauftragen'],
   alternates: {
     canonical: 'https://inektra.de/kalibrierservice',

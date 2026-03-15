@@ -4,15 +4,15 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen',
-  description: 'Messgeräte und Prüfmittel kalibrieren lassen: Multimeter, Oszilloskope, Stromzangen, Manometer, Messschieber und mehr. Messmittel kalibrieren mit rückverfolgbarem Kalibrierschein. Jetzt Angebot anfordern!',
+  title: 'Messgeräte kalibrieren lassen',
+  description: 'Messgeräte kalibrieren lassen: Multimeter, Oszilloskope, Manometer, Messschieber u.v.m. Über 3.200 Gerätetypen mit Kalibrierschein.',
   keywords: ['messgeräte kalibrieren', 'kalibrierung messgeräte', 'multimeter kalibrieren', 'multimeter kalibrieren lassen', 'oszilloskop kalibrieren', 'messgeräte kalibrierung', 'messmittel kalibrierung', 'prüfmittel kalibrieren', 'elektrische messtechnik', 'temperatur kalibrierung', 'druck kalibrierung', 'messmittelkalibrierung', 'kalibrieren messgeräte', 'kalibrieren von messgeräten', 'messgeräte kalibrieren lassen'],
   alternates: {
     canonical: 'https://inektra.de/messgeraete-kalibrieren',
   },
   openGraph: {
-    title: 'Messgeräte kalibrieren lassen – Über 3.200 Gerätetypen | inektra GmbH',
-    description: 'Messgeräte und Prüfmittel kalibrieren lassen: Elektrische Messtechnik, Temperatur, Druck, Dimensionsmesstechnik und mehr. Werkskalibrierung mit rückverfolgbarem Kalibrierschein.',
+    title: 'Messgeräte kalibrieren lassen | inektra GmbH',
+    description: 'Messgeräte kalibrieren lassen: Multimeter, Oszilloskope, Manometer, Messschieber u.v.m. Über 3.200 Gerätetypen mit Kalibrierschein.',
     type: 'article',
   },
 };

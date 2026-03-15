@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kontakt – Kalibrierung anfragen',
-  description: `Kontaktieren Sie ${siteConfig.brandName} für Werkskalibrierung. Per Telefon, E-Mail oder Kontaktformular. Antwort innerhalb von 24 Stunden. Jetzt unverbindliches Angebot anfordern!`,
+  description: `Kontaktieren Sie ${siteConfig.brandName} für Werkskalibrierung. Per Telefon, E-Mail oder Formular. Antwort innerhalb von 24 Stunden.`,
   keywords: ['kalibrierung anfragen', 'angebot kalibrierung', 'kontakt kalibrierlabor', 'kalibrierung nordhorn', 'messmittel kalibrieren lassen'],
   alternates: {
     canonical: 'https://inektra.de/kontakt',

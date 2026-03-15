@@ -4,15 +4,15 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Drehmomentkalibrierung – Drehmomentschlüssel & Prüfgeräte kalibrieren',
-  description: 'Drehmomentschlüssel kalibrieren lassen nach DIN EN ISO 6789. Rechts-/Linksauslösung, elektronische Schlüssel, Prüfgeräte. Eigenes Labor in Nordhorn. Ab 24,76 € netto.',
+  title: 'Drehmomentkalibrierung – Schlüssel',
+  description: 'Drehmomentschlüssel kalibrieren nach DIN EN ISO 6789. Rechts-/Linksauslösung, elektronische Schlüssel. Labor in Nordhorn. Ab 24,76 €.',
   keywords: ['drehmomentkalibrierung', 'drehmomentschlüssel kalibrieren', 'drehmomentschlüssel kalibrieren lassen', 'drehmomentschlüssel kalibrierung kosten', 'drehmoment kalibrierung', 'drehmomentschlüssel prüfen'],
   alternates: {
     canonical: 'https://inektra.de/drehmoment-kalibrierung',
   },
   openGraph: {
-    title: 'Drehmomentkalibrierung – Drehmomentschlüssel & Prüfgeräte kalibrieren | inektra GmbH',
-    description: 'Drehmomentschlüssel und Prüfgeräte kalibrieren: Rechts-/Linksauslösung, elektronisch, Prüfstände. Prüfung nach DIN EN ISO 6789, eigenes Labor in Nordhorn.',
+    title: 'Drehmomentkalibrierung – Schlüssel | inektra GmbH',
+    description: 'Drehmomentschlüssel und Prüfgeräte kalibrieren: Rechts-/Linksauslösung, elektronisch. Prüfung nach DIN EN ISO 6789, Labor in Nordhorn.',
     type: 'article',
   },
 };

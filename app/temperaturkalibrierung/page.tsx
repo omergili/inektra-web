@@ -4,15 +4,15 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Temperaturkalibrierung – Thermometer & Temperaturfühler kalibrieren',
-  description: 'Temperaturkalibrierung für Thermometer, IR-Thermometer, Pt100/Pt1000-Fühler, Thermoelemente, Hygrometer und Datenlogger. Werkskalibrierung nach DKD-R 5-1. Messbereich -200 °C bis +1200 °C. Ab 15,00 € netto.',
+  title: 'Temperaturkalibrierung – Thermometer',
+  description: 'Temperaturkalibrierung: Thermometer, IR-Thermometer, Pt100-Fühler, Thermoelemente, Hygrometer. Nach DKD-R 5-1. Ab 15,00 € netto.',
   keywords: ['temperaturkalibrierung', 'thermometer kalibrieren', 'temperaturfühler kalibrieren', 'pt100 kalibrierung', 'ir-thermometer kalibrierung', 'hygrometer kalibrierung'],
   alternates: {
     canonical: 'https://inektra.de/temperaturkalibrierung',
   },
   openGraph: {
-    title: 'Temperaturkalibrierung – Thermometer & Temperaturfühler kalibrieren | inektra GmbH',
-    description: 'Thermometer und Temperaturfühler kalibrieren: Pt100, Thermoelemente, IR-Thermometer, Hygrometer, Datenlogger. Werkskalibrierung nach DKD-R 5-1, eigenes Labor in Nordhorn.',
+    title: 'Temperaturkalibrierung – Thermometer | inektra GmbH',
+    description: 'Thermometer und Temperaturfühler kalibrieren: Pt100, Thermoelemente, IR-Thermometer, Hygrometer. Nach DKD-R 5-1, Labor in Nordhorn.',
     type: 'article',
   },
 };

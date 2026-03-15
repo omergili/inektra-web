@@ -4,15 +4,15 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Elektrische Messtechnik kalibrieren – Multimeter, Oszilloskope & Prüfgeräte',
-  description: 'Kalibrierung elektrischer Messgeräte: Multimeter, Oszilloskope, Stromzangen, VDE-Prüfgeräte, Netzgeräte. Über 1.200 Gerätetypen. Labor in Nordhorn. Ab 29,97 € netto.',
+  title: 'Elektrische Messtechnik kalibrieren',
+  description: 'Kalibrierung elektrischer Messgeräte: Multimeter, Oszilloskope, Stromzangen, VDE-Prüfgeräte. 1.200+ Gerätetypen. Ab 29,97 € netto.',
   keywords: ['elektrische messtechnik kalibrierung', 'multimeter kalibrieren', 'oszilloskop kalibrierung', 'VDE prüfgerät kalibrieren', 'stromzange kalibrierung', 'netzgerät kalibrierung'],
   alternates: {
     canonical: 'https://inektra.de/elektrische-messtechnik-kalibrierung',
   },
   openGraph: {
-    title: 'Elektrische Messtechnik kalibrieren – Multimeter, Oszilloskope & Prüfgeräte | inektra GmbH',
-    description: 'Elektrische Messgeräte kalibrieren: 1.200+ Gerätetypen, Gerätetester, Installationstester, Multimeter, Oszilloskope. Eigenes Labor in Nordhorn.',
+    title: 'Elektrische Messtechnik kalibrieren | inektra GmbH',
+    description: 'Elektrische Messgeräte kalibrieren: 1.200+ Gerätetypen, Multimeter, Oszilloskope, VDE-Prüfgeräte. Labor in Nordhorn.',
     type: 'article',
   },
 };

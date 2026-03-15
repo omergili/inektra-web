@@ -4,15 +4,15 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Längenkalibrierung – Messschieber, Endmaße & Lehren kalibrieren',
-  description: 'Längenkalibrierung für über 67 Gerätetypen: Messschieber, Endmaße, Messschrauben, Lehrdorne, Messuhren. Eigenes Längenlabor in Nordhorn. Ab 3,90 € netto.',
+  title: 'Längenkalibrierung – Messschieber & Endmaße',
+  description: 'Längenkalibrierung für 67+ Gerätetypen: Messschieber, Endmaße, Messschrauben, Lehrdorne, Messuhren. Labor in Nordhorn. Ab 3,90 €.',
   keywords: ['längenkalibrierung', 'messschieber kalibrieren', 'endmaße kalibrieren', 'lehrdorn kalibrierung', 'messschrauben kalibrierung', 'dimensionale messtechnik'],
   alternates: {
     canonical: 'https://inektra.de/laengenkalibrierung',
   },
   openGraph: {
-    title: 'Längenkalibrierung – Messschieber, Endmaße & Lehren kalibrieren | inektra GmbH',
-    description: 'Dimensionale Messtechnik kalibrieren: 67+ Gerätetypen, eigenes Längenlabor in Nordhorn, Prüfung nach DKD-R und VDI/VDE/DGQ 2618.',
+    title: 'Längenkalibrierung – Messschieber & Endmaße | inektra GmbH',
+    description: 'Dimensionale Messtechnik kalibrieren: 67+ Gerätetypen, Längenlabor in Nordhorn, Prüfung nach DKD-R und VDI/VDE/DGQ 2618.',
     type: 'article',
   },
 };

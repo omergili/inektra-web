@@ -4,14 +4,14 @@ import PageFAQ from '@/components/PageFAQ';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Druckkalibrierung – Manometer & Druckmessgeräte kalibrieren',
-  description: 'Druckkalibrierung für Manometer, Drucksensoren, Transmitter und Prüfpumpen. Prüfung nach DKD-R 6-1 mit steigenden und fallenden Druckpunkten. Eigenes Labor in Nordhorn. Ab 20,85 € netto.',
+  title: 'Druckkalibrierung – Manometer kalibrieren',
+  description: 'Druckkalibrierung für Manometer, Drucksensoren und Transmitter. Prüfung nach DKD-R 6-1. Labor in Nordhorn. Ab 20,85 € netto.',
   keywords: ['druckkalibrierung', 'manometer kalibrieren', 'drucksensor kalibrierung', 'druckmessgerät kalibrieren', 'manometer prüfen', 'drucktransmitter kalibrierung'],
   alternates: {
     canonical: 'https://inektra.de/druckkalibrierung',
   },
   openGraph: {
-    title: 'Druckkalibrierung – Manometer & Druckmessgeräte kalibrieren | inektra GmbH',
+    title: 'Druckkalibrierung – Manometer kalibrieren | inektra GmbH',
     description: 'Druckmessgeräte kalibrieren: Manometer, Sensoren, Transmitter. Prüfung nach DKD-R 6-1, eigenes Labor in Nordhorn.',
     type: 'article',
   },

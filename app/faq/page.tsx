@@ -4,13 +4,13 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Häufige Fragen zur Kalibrierung (FAQ)',
-  description: 'Antworten auf häufige Fragen zur Werkskalibrierung: Was kostet eine Kalibrierung? Wie lange dauert es? Welche Normen gelten? Alles zu Ablauf, Kosten und ISO-Standards.',
+  description: 'Häufige Fragen zur Werkskalibrierung: Was kostet eine Kalibrierung? Wie lange dauert es? Welche Normen gelten? Ablauf, Kosten und mehr.',
   keywords: ['kalibrierung faq', 'kalibrierung kosten', 'kalibrierung dauer', 'was kostet kalibrierung', 'iso kalibrierung', 'werkskalibrierung ablauf'],
   alternates: {
     canonical: 'https://inektra.de/faq',
   },
   openGraph: {
-    title: 'Häufige Fragen zur Kalibrierung (FAQ) | inektra GmbH',
+    title: 'Häufige Fragen zur Kalibrierung (FAQ)',
     description: 'Antworten auf häufige Fragen zur Werkskalibrierung: Kosten, Dauer, Ablauf und ISO-Normen.',
     type: 'website',
   },
