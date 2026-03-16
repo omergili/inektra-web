@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
+import PhoneLink from '@/components/PhoneLink';
 
 export const metadata: Metadata = {
   title: {
@@ -185,12 +186,9 @@ export default function Home() {
             >
               Jetzt Kontakt aufnehmen
             </Link>
-            <a 
-              href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+            <PhoneLink
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white/20 rounded-xl hover:bg-white/10 backdrop-blur transition-all"
-            >
-              {siteConfig.contact.phone}
-            </a>
+            />
           </div>
         </div>
       </section>

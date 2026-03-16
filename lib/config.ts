@@ -82,6 +82,7 @@ export const siteConfig = {
   googleAds: {
     conversionId: 'AW-18003383640',
     conversionLabel: 'cadjCIy0pIUcENiq14hD',
+    phoneConversionLabel: 'DOhACNH87YkcENiq14hD', // Conversion-Aktion "Telefonanruf_Website" (Kategorie: Kontakt, Wert: 25 EUR, Zählung: Eine)
   },
 
   // SEO (OG-Image wird via app/opengraph-image.tsx generiert)

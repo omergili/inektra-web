@@ -99,3 +99,29 @@ export function trackConversion() {
     console.log('[Google Ads] Conversion getrackt');
   }
 }
+
+/**
+ * Click-to-Call Conversion-Event an Google Ads senden.
+ * Prueft Marketing-Consent vor dem Feuern.
+ * Aufruf bei Klick auf tel:-Links.
+ */
+export function trackPhoneConversion() {
+  const { conversionId, phoneConversionLabel } = siteConfig.googleAds;
+
+  if (!conversionId || !phoneConversionLabel) {
+    console.log('[Google Ads] Phone-Conversion-Label nicht konfiguriert');
+    return;
+  }
+
+  if (!hasMarketingConsent()) {
+    console.log('[Google Ads] Marketing-Consent nicht erteilt, Phone-Conversion nicht getrackt');
+    return;
+  }
+
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {
+      send_to: `${conversionId}/${phoneConversionLabel}`,
+    });
+    console.log('[Google Ads] Phone-Conversion getrackt');
+  }
+}

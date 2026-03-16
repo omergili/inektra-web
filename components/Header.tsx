@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig, type NavItem } from '@/lib/config';
+import { trackPhoneConversion } from './GoogleAdsTag';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -120,6 +121,7 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <a
               href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+              onClick={() => trackPhoneConversion()}
               className="hidden sm:flex items-center text-sm text-gray-700 hover:text-accent-600"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
-import { trackConversion } from '@/components/GoogleAdsTag';
+import { trackConversion, trackPhoneConversion } from '@/components/GoogleAdsTag';
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -234,6 +234,7 @@ export default function ContactSidebar() {
             <div className="space-y-2">
               <a
                 href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+                onClick={() => trackPhoneConversion()}
                 className="flex items-center text-sm text-neutral-600 hover:text-primary-600 transition-colors"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

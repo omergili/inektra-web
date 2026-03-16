@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
+import PhoneLink from '@/components/PhoneLink';
 import { CookieSettingsButton } from '@/components/CookieConsent';
 
 export default function Footer() {
@@ -25,9 +26,9 @@ export default function Footer() {
               <p>{siteConfig.contact.address.street}</p>
               <p>{siteConfig.contact.address.city}</p>
               <p className="pt-2">
-                <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`} className="hover:text-white">
+                <PhoneLink className="hover:text-white">
                   Tel: {siteConfig.contact.phone}
-                </a>
+                </PhoneLink>
               </p>
               <p>
                 <EmailLink email={siteConfig.contact.email} className="hover:text-white cursor-pointer" />

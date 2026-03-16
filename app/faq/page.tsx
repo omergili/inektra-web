@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { siteConfig } from '@/lib/config';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import PhoneLink from '@/components/PhoneLink';
 
 export const metadata: Metadata = {
   title: 'Häufige Fragen zur Kalibrierung (FAQ)',
@@ -133,12 +134,9 @@ export default function FAQPage() {
               >
                 Kontaktformular
               </a>
-              <a
-                href={`tel:${siteConfig.contact.phone.replace(/\s/g, '')}`}
+              <PhoneLink
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-accent-500 text-accent-700 font-semibold rounded-xl hover:bg-accent-50 transition-colors"
-              >
-                {siteConfig.contact.phone}
-              </a>
+              />
             </div>
           </div>
         </div>
