@@ -9,6 +9,7 @@ export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
     email: '',
     phone: '',
     message: '',
@@ -27,6 +28,7 @@ export default function ContactSidebar() {
     try {
       const body = new FormData();
       body.append('name', formData.name);
+      body.append('company', formData.company);
       body.append('email', formData.email);
       body.append('phone', formData.phone);
       body.append('message', formData.message);
@@ -44,7 +46,7 @@ export default function ContactSidebar() {
       if (data.success) {
         setSubmitStatus('success');
         trackConversion();
-        setFormData({ name: '', email: '', phone: '', message: '', dataPrivacy: false });
+        setFormData({ name: '', company: '', email: '', phone: '', message: '', dataPrivacy: false });
         setFile(null);
         setTimeout(() => setIsOpen(false), 2000);
       } else {
@@ -86,75 +88,90 @@ export default function ContactSidebar() {
             Senden Sie uns Ihre Anfrage oder laden Sie Ihre Messmittelliste hoch.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {/* Name */}
             <div>
-              <label htmlFor="quick-name" className="block text-sm font-medium text-neutral-700 mb-1">
-                Name / Firma *
-              </label>
               <input
                 type="text"
                 id="quick-name"
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
-                placeholder="Ihr Name oder Firma"
+                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-500"
+                placeholder="Name*"
+              />
+            </div>
+
+            {/* Firma */}
+            <div>
+              <input
+                type="text"
+                id="quick-company"
+                required
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-500"
+                placeholder="Firma*"
+              />
+            </div>
+
+            {/* Phone */}
+            <div>
+              <input
+                type="tel"
+                id="quick-phone"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-500"
+                placeholder="Telefon"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="quick-email" className="block text-sm font-medium text-neutral-700 mb-1">
-                E-Mail *
-              </label>
               <input
                 type="email"
                 id="quick-email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
-                placeholder="ihre@email.de"
-              />
-            </div>
-
-            {/* Phone */}
-            <div>
-              <label htmlFor="quick-phone" className="block text-sm font-medium text-neutral-700 mb-1">
-                Telefon
-              </label>
-              <input
-                type="tel"
-                id="quick-phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
-                placeholder="+49 ..."
+                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-500"
+                placeholder="E-Mail*"
               />
             </div>
 
             {/* Message */}
             <div>
-              <label htmlFor="quick-message" className="block text-sm font-medium text-neutral-700 mb-1">
-                Nachricht
-              </label>
               <textarea
                 id="quick-message"
-                rows={3}
+                rows={5}
+                required
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-400"
-                placeholder="Welche Geräte sollen kalibriert werden?"
+                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm text-slate-900 placeholder:text-slate-500 resize-y"
+                placeholder="Nachricht*"
               ></textarea>
+            </div>
+
+            {/* Privacy Checkbox */}
+            <div className="flex items-start gap-2">
+              <input
+                type="checkbox"
+                id="quick-privacy"
+                required
+                checked={formData.dataPrivacy}
+                onChange={(e) => setFormData({ ...formData, dataPrivacy: e.target.checked })}
+                className="mt-0.5 w-4 h-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500 shrink-0"
+              />
+              <label htmlFor="quick-privacy" className="text-sm text-neutral-700 leading-snug">
+                Ich habe die <a href="/datenschutz" target="_blank" className="text-primary-600 underline hover:text-primary-800 font-medium">Datenschutzerklärung</a> zur Kenntnis genommen.
+              </label>
             </div>
 
             {/* File Upload */}
             <div>
-              <label className="block text-sm font-medium text-neutral-700 mb-2">
-                Messmittelliste hochladen <span className="text-neutral-500 font-normal">(optional)</span>
-              </label>
-              <div className="border-2 border-dashed border-neutral-300 rounded-lg p-4 hover:border-primary-400 transition-colors">
+              <p className="text-sm text-accent-600 font-medium mb-1.5">Optional: Messmittel-Liste hochladen</p>
+              <div className="flex items-center gap-3">
                 <input
                   type="file"
                   id="file-upload"
@@ -164,52 +181,24 @@ export default function ContactSidebar() {
                 />
                 <label
                   htmlFor="file-upload"
-                  className="flex flex-col items-center cursor-pointer"
+                  className="inline-flex items-center px-4 py-2 bg-neutral-100 border border-neutral-300 rounded-lg text-sm text-neutral-700 font-medium cursor-pointer hover:bg-neutral-200 transition-colors"
                 >
-                  <svg className="w-10 h-10 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                  </svg>
-                  {file ? (
-                    <span className="text-sm text-primary-600 font-medium">{file.name}</span>
-                  ) : (
-                    <>
-                      <span className="text-sm text-neutral-600 font-medium">Datei auswählen</span>
-                      <span className="text-xs text-neutral-500 mt-1">Excel, PDF, CSV</span>
-                    </>
-                  )}
+                  Datei auswählen
                 </label>
+                <span className="text-sm text-neutral-500 truncate">
+                  {file ? file.name : 'Keine ausgewählt'}
+                </span>
               </div>
             </div>
 
-            {/* Privacy Checkbox */}
-            <div className="flex items-start">
-              <input
-                type="checkbox"
-                id="quick-privacy"
-                required
-                checked={formData.dataPrivacy}
-                onChange={(e) => setFormData({ ...formData, dataPrivacy: e.target.checked })}
-                className="mt-1 mr-2 w-4 h-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
-              />
-              <label htmlFor="quick-privacy" className="text-xs text-neutral-600">
-                Ich habe die <a href="/datenschutz" target="_blank" className="text-accent-600 hover:underline font-medium">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zu. *
-              </label>
-            </div>
-
-            {/* Submit Button - PROMINENT & ORANGE */}
+            {/* Submit Button - RED like screenshot */}
             <button
               type="submit"
               disabled={isSubmitting || !formData.dataPrivacy}
-              className="w-full bg-accent-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:bg-accent-600 transition-all shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:scale-100"
+              className="w-full bg-red-600 text-white px-6 py-3.5 rounded-lg font-bold text-lg hover:bg-red-700 transition-all shadow-md hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? '⏳ Wird gesendet...' : '✉️ Anfrage senden'}
+              {isSubmitting ? 'Wird gesendet...' : 'Senden'}
             </button>
-            
-            {!formData.dataPrivacy && (
-              <p className="text-xs text-red-600 -mt-2">
-                ⚠️ Bitte Datenschutzerklärung akzeptieren
-              </p>
-            )}
 
             {submitStatus === 'success' && (
               <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">
@@ -223,8 +212,8 @@ export default function ContactSidebar() {
               </div>
             )}
 
-            <p className="text-xs text-neutral-500">
-              * Pflichtfelder. Wir antworten innerhalb von 24 Stunden.
+            <p className="text-sm text-accent-600 font-medium">
+              Wir melden uns in der Regel innerhalb eines Werktages.
             </p>
           </form>
 

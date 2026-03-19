@@ -5,6 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const name = formData.get('name') as string;
+    const company = formData.get('company') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
     const message = formData.get('message') as string;
@@ -22,6 +23,7 @@ export async function POST(request: NextRequest) {
     const lead = {
       timestamp: new Date().toISOString(),
       name,
+      company: company || '',
       email,
       phone: phone || '',
       message: message || '',
@@ -57,7 +59,8 @@ export async function POST(request: NextRequest) {
 
       const htmlContent = `
         <h2>Neue Kontaktanfrage über inektra.de</h2>
-        <p><strong>Name/Firma:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        ${company ? `<p><strong>Firma:</strong> ${escapeHtml(company)}</p>` : ''}
         <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
         ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
         ${message ? `<p><strong>Nachricht:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
@@ -72,7 +75,7 @@ export async function POST(request: NextRequest) {
         from: 'inektra Kontaktformular <info@inektra.de>',
         to: ['info@inektra.de'],
         replyTo: email,
-        subject: `Neue Anfrage von ${name}`,
+        subject: `Neue Anfrage von ${name}${company ? ` (${company})` : ''}`,
         html: htmlContent,
         attachments,
       });
