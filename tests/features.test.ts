@@ -54,8 +54,11 @@ test.describe('Critical Features Check', () => {
     // Datenschutz-Checkbox
     await expect(page.locator('input[id="quick-privacy"]')).toBeVisible();
 
+    // Firma
+    await expect(page.locator('input[id="quick-company"]')).toBeVisible();
+
     // Submit-Button
-    await expect(page.locator('button:has-text("Anfrage senden")')).toBeVisible();
+    await expect(page.locator('button:has-text("Senden")')).toBeVisible();
   });
 
   test('Datei-Upload ist vorhanden', async ({ page }) => {
@@ -65,7 +68,7 @@ test.describe('Critical Features Check', () => {
     await expect(page.locator('input[type="file"]')).toBeAttached();
 
     // Label
-    await expect(page.locator('text="Messmittelliste hochladen"')).toBeVisible();
+    await expect(page.locator('text="Optional: Messmittel-Liste hochladen"')).toBeVisible();
   });
 
   test('Keine ISO 17025 Claims', async ({ page }) => {
@@ -117,7 +120,7 @@ test.describe('Critical Features Check', () => {
   test('Contact-Form Submit-Button ist enabled wenn Privacy gecheckt', async ({ page }) => {
     await page.goto('http://localhost:3000');
 
-    const submitBtn = page.locator('button:has-text("Anfrage senden")');
+    const submitBtn = page.locator('button:has-text("Senden")');
 
     // Initial disabled
     await expect(submitBtn).toBeDisabled();
