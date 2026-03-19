@@ -170,7 +170,7 @@ export default function ContactSidebar() {
 
             {/* File Upload */}
             <div>
-              <p className="text-sm text-accent-600 font-medium mb-1.5">Optional: Messmittel-Liste hochladen</p>
+              <p className="text-sm text-neutral-600 font-medium mb-1.5">Optional: Messmittel-Liste hochladen</p>
               <div className="flex items-center gap-3">
                 <input
                   type="file"
@@ -195,7 +195,7 @@ export default function ContactSidebar() {
             <button
               type="submit"
               disabled={isSubmitting || !formData.dataPrivacy}
-              className="w-full bg-red-600 text-white px-6 py-3.5 rounded-lg font-bold text-lg hover:bg-red-700 transition-all shadow-md hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-full bg-accent-500 text-white px-6 py-3.5 rounded-lg font-bold text-lg hover:bg-accent-600 transition-all shadow-md hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Wird gesendet...' : 'Senden'}
             </button>
