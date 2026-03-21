@@ -331,10 +331,10 @@ export default function KalibrierKostenPage() {
               </p>
             </div>
             <div className="bg-slate-50 rounded-xl p-6">
-              <h3 className="font-semibold text-slate-900 mb-2">4. Stückzahl</h3>
+              <h3 className="font-semibold text-slate-900 mb-2">4. Art der Kalibrierung</h3>
               <p className="text-sm text-slate-600">
-                Bei größeren Stückzahlen bieten wir Mengenrabatte an. Sprechen Sie uns an —
-                ab 10 Geräten desselben Typs erstellen wir ein individuelles Angebot.
+                Eine Werkskalibrierung nach ISO-Normen ist deutlich günstiger als eine akkreditierte
+                DAkkS-Kalibrierung. Für die meisten Industrieanwendungen reicht die Werkskalibrierung.
               </p>
             </div>
           </div>
@@ -447,10 +447,6 @@ export default function KalibrierKostenPage() {
           {
             question: 'Sind Versandkosten in den Kalibrierpreisen enthalten?',
             answer: 'Die Einsendung Ihrer Geräte erfolgt auf Ihre Kosten. Der Rückversand nach der Kalibrierung beträgt pauschal 15 EUR netto zzgl. MwSt. Bei Palettenversand werden die Kosten nach Aufwand berechnet.',
-          },
-          {
-            question: 'Gibt es Mengenrabatte bei der Kalibrierung?',
-            answer: 'Ja, ab 10 Geräten desselben Typs erstellen wir Ihnen ein individuelles Angebot mit Mengenrabatt. Kontaktieren Sie uns mit Ihrer Geräteliste — wir kalkulieren innerhalb von 24 Stunden.',
           },
           {
             question: 'Was ist der Unterschied zwischen Werkskalibrierung und DAkkS-Kalibrierung?',
