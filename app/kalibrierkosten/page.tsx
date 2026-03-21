@@ -293,10 +293,137 @@ export default function KalibrierKostenPage() {
             </table>
           </div>
 
-          <p className="text-sm text-slate-500 mb-6">
+          <p className="text-sm text-slate-500 mb-8">
             Alle Preise verstehen sich netto zzgl. MwSt. Für Geräte, die nicht im Katalog
             gelistet sind, erstellen wir Ihnen gerne ein individuelles Angebot.
           </p>
+
+          <h2 className="text-2xl font-bold text-slate-900 mb-4 mt-12">
+            Welche Faktoren beeinflussen die Kalibrierkosten?
+          </h2>
+          <p className="text-slate-600 mb-6">
+            Die Kosten einer Kalibrierung hängen von mehreren Faktoren ab. Wenn Sie verstehen,
+            wie sich der Preis zusammensetzt, können Sie Ihr Budget besser planen:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-slate-50 rounded-xl p-6">
+              <h3 className="font-semibold text-slate-900 mb-2">1. Gerätetyp &amp; Komplexität</h3>
+              <p className="text-sm text-slate-600">
+                Ein einfacher Messschieber (ab 7,81 EUR) hat einen Messpunkt. Ein Multimeter mit
+                AC/DC-Spannung, Strom und Widerstand hat dutzende Messpunkte — entsprechend höher
+                ist der Aufwand und der Preis.
+              </p>
+            </div>
+            <div className="bg-slate-50 rounded-xl p-6">
+              <h3 className="font-semibold text-slate-900 mb-2">2. Anzahl der Kalibrierpunkte</h3>
+              <p className="text-sm text-slate-600">
+                Mehr Messpunkte = mehr Aufwand = höhere Kosten. Ein Manometer mit 3 Kalibrierpunkten
+                kostet weniger als eines mit 10 Punkten über den gesamten Messbereich.
+              </p>
+            </div>
+            <div className="bg-slate-50 rounded-xl p-6">
+              <h3 className="font-semibold text-slate-900 mb-2">3. Messbereich</h3>
+              <p className="text-sm text-slate-600">
+                Je größer der Messbereich, desto aufwändiger die Kalibrierung. Ein Druckmessgerät
+                bis 16 bar ist günstiger als eines bis 1.000 bar, weil unterschiedliche Referenznormale
+                benötigt werden.
+              </p>
+            </div>
+            <div className="bg-slate-50 rounded-xl p-6">
+              <h3 className="font-semibold text-slate-900 mb-2">4. Stückzahl</h3>
+              <p className="text-sm text-slate-600">
+                Bei größeren Stückzahlen bieten wir Mengenrabatte an. Sprechen Sie uns an —
+                ab 10 Geräten desselben Typs erstellen wir ein individuelles Angebot.
+              </p>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-bold text-slate-900 mb-4 mt-12">
+            Werkskalibrierung vs. DAkkS: Was kostet mehr?
+          </h2>
+          <p className="text-slate-600 mb-4">
+            inektra bietet Werkskalibrierungen nach ISO-Normen an. Diese sind deutlich
+            günstiger als akkreditierte DAkkS-Kalibrierungen, die von akkreditierten Laboren
+            durchgeführt werden:
+          </p>
+
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+            <table className="w-full">
+              <thead className="bg-slate-50 border-b border-slate-200">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Kriterium</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Werkskalibrierung</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">DAkkS-Kalibrierung</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Kosten (typisch)</td>
+                  <td className="px-6 py-3 font-semibold text-accent-600">8–200 EUR</td>
+                  <td className="px-6 py-3 text-slate-700">50–500+ EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Bearbeitungszeit</td>
+                  <td className="px-6 py-3 font-semibold text-accent-600">5–10 Werktage</td>
+                  <td className="px-6 py-3 text-slate-700">2–6 Wochen</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Rückführbarkeit</td>
+                  <td className="px-6 py-3 text-slate-700">Nationale Normale</td>
+                  <td className="px-6 py-3 text-slate-700">Nationale Normale</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Audit-tauglich</td>
+                  <td className="px-6 py-3 text-slate-700">Für die meisten Anwendungen</td>
+                  <td className="px-6 py-3 text-slate-700">Pflicht bei behördlichen Auflagen</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="bg-accent-50 border border-accent-200 rounded-xl p-6 mb-8">
+            <p className="text-sm text-accent-800">
+              <strong>Tipp:</strong> Für die meisten Unternehmen reicht eine Werkskalibrierung aus.
+              Eine DAkkS-Kalibrierung ist nur nötig, wenn behördliche Auflagen es explizit verlangen
+              (z.B. Eichpflicht, Pharma, Luftfahrt).{' '}
+              <a href="/werkskalibrierung-vs-dakks" className="text-accent-600 underline hover:text-accent-700">
+                Mehr zum Unterschied →
+              </a>
+            </p>
+          </div>
+
+          <h2 className="text-2xl font-bold text-slate-900 mb-4 mt-12">
+            Zusatzkosten im Überblick
+          </h2>
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+            <table className="w-full">
+              <thead className="bg-slate-50 border-b border-slate-200">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">Position</th>
+                  <th className="px-6 py-4 text-right text-sm font-semibold text-slate-900">Kosten (netto)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Rückversand (Paket)</td>
+                  <td className="px-6 py-3 text-right font-semibold">15,00 EUR</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Rückversand (Palette)</td>
+                  <td className="px-6 py-3 text-right font-semibold">nach Aufwand</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Einsendung</td>
+                  <td className="px-6 py-3 text-right font-semibold">auf Ihre Kosten</td>
+                </tr>
+                <tr className="hover:bg-slate-50 transition-colors">
+                  <td className="px-6 py-3 text-slate-700">Mindestauftragswert</td>
+                  <td className="px-6 py-3 text-right font-semibold">40,00 EUR</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <a
             href="/kalibrierservice"
@@ -320,6 +447,18 @@ export default function KalibrierKostenPage() {
           {
             question: 'Sind Versandkosten in den Kalibrierpreisen enthalten?',
             answer: 'Die Einsendung Ihrer Geräte erfolgt auf Ihre Kosten. Der Rückversand nach der Kalibrierung beträgt pauschal 15 EUR netto zzgl. MwSt. Bei Palettenversand werden die Kosten nach Aufwand berechnet.',
+          },
+          {
+            question: 'Gibt es Mengenrabatte bei der Kalibrierung?',
+            answer: 'Ja, ab 10 Geräten desselben Typs erstellen wir Ihnen ein individuelles Angebot mit Mengenrabatt. Kontaktieren Sie uns mit Ihrer Geräteliste — wir kalkulieren innerhalb von 24 Stunden.',
+          },
+          {
+            question: 'Was ist der Unterschied zwischen Werkskalibrierung und DAkkS-Kalibrierung?',
+            answer: 'Eine Werkskalibrierung nach ISO-Normen kostet typischerweise 8–200 EUR und dauert 5–10 Werktage. Eine akkreditierte DAkkS-Kalibrierung kostet 50–500+ EUR und dauert 2–6 Wochen. Für die meisten Industrieanwendungen reicht die Werkskalibrierung aus. Eine DAkkS-Kalibrierung ist nur bei behördlichen Auflagen (z.B. Eichpflicht, Pharma) erforderlich.',
+          },
+          {
+            question: 'Gibt es einen Mindestauftragswert?',
+            answer: 'Ja, der Mindestauftragswert beträgt 40 EUR netto. Dies entspricht z.B. der Kalibrierung eines Multimeters oder zweier Messschieber. Versandkosten werden separat berechnet.',
           },
         ]}
       />
