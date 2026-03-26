@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Script from 'next/script';
 import { siteConfig } from '@/lib/config';
 import { hasMarketingConsent } from '@/lib/consent';
@@ -8,21 +8,37 @@ import { hasMarketingConsent } from '@/lib/consent';
 /**
  * Google Ads Global Site Tag (gtag.js) mit Consent Mode v2.
  *
- * - Consent Mode v2 Default wird IMMER gesetzt (denied).
- * - gtag.js und Config werden NUR geladen wenn Marketing-Consent erteilt.
- * - Lauscht auf 'consent-updated' Event vom CookieConsent-Banner.
+ * gtag.js wird IMMER geladen (mit consent denied als Default).
+ * So kann Google Consent Mode v2 anonymisierte/modellierte Conversions
+ * erfassen — auch ohne expliziten Marketing-Consent.
+ *
+ * Bei Marketing-Consent: consent update auf granted → volle Daten.
+ * Ohne Marketing-Consent: Google modelliert Conversions aus anonymisierten Pings.
  */
 export default function GoogleAdsTag() {
   const { conversionId } = siteConfig.googleAds;
-  const [consentGranted, setConsentGranted] = useState(false);
 
   useEffect(() => {
-    // Initialen Consent-Status pruefen
-    setConsentGranted(hasMarketingConsent());
+    // Consent-Update wenn Marketing-Consent bereits erteilt
+    if (hasMarketingConsent() && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted',
+      });
+    }
 
     // Auf Consent-Aenderungen reagieren (vom CookieConsent-Banner)
     const handleConsentUpdate = () => {
-      setConsentGranted(hasMarketingConsent());
+      if (hasMarketingConsent() && typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted',
+        });
+      }
     };
     window.addEventListener('consent-updated', handleConsentUpdate);
     return () => window.removeEventListener('consent-updated', handleConsentUpdate);
@@ -32,7 +48,7 @@ export default function GoogleAdsTag() {
 
   return (
     <>
-      {/* Google Consent Mode v2 – IMMER rendern (Default: alles denied) */}
+      {/* Consent Mode v2 Default + gtag.js — IMMER laden */}
       <Script id="google-consent-default" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -47,37 +63,27 @@ export default function GoogleAdsTag() {
         `}
       </Script>
 
-      {/* gtag.js + Config NUR bei Marketing-Consent */}
-      {consentGranted && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${conversionId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-ads-config" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted',
-                'analytics_storage': 'granted'
-              });
-              gtag('js', new Date());
-              gtag('config', '${conversionId}');
-            `}
-          </Script>
-        </>
-      )}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${conversionId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-config" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${conversionId}');
+        `}
+      </Script>
     </>
   );
 }
 
 /**
  * Conversion-Event an Google Ads senden.
- * Prueft Marketing-Consent vor dem Feuern.
- * Aufruf nach erfolgreichem Kontaktformular-Submit.
+ * Feuert IMMER — Google Consent Mode v2 regelt den Datenschutz:
+ * - Mit Consent: volle Conversion-Daten
+ * - Ohne Consent: anonymisiertes Signal → Google modelliert die Conversion
  */
 export function trackConversion() {
   const { conversionId, conversionLabel } = siteConfig.googleAds;
@@ -87,23 +93,17 @@ export function trackConversion() {
     return;
   }
 
-  if (!hasMarketingConsent()) {
-    console.log('[Google Ads] Marketing-Consent nicht erteilt, Conversion nicht getrackt');
-    return;
-  }
-
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', 'conversion', {
       send_to: `${conversionId}/${conversionLabel}`,
     });
-    console.log('[Google Ads] Conversion getrackt');
+    console.log('[Google Ads] Conversion getrackt (Consent Mode v2 aktiv)');
   }
 }
 
 /**
  * Click-to-Call Conversion-Event an Google Ads senden.
- * Prueft Marketing-Consent vor dem Feuern.
- * Aufruf bei Klick auf tel:-Links.
+ * Feuert IMMER — Google Consent Mode v2 regelt den Datenschutz.
  */
 export function trackPhoneConversion() {
   const { conversionId, phoneConversionLabel } = siteConfig.googleAds;
@@ -113,15 +113,10 @@ export function trackPhoneConversion() {
     return;
   }
 
-  if (!hasMarketingConsent()) {
-    console.log('[Google Ads] Marketing-Consent nicht erteilt, Phone-Conversion nicht getrackt');
-    return;
-  }
-
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', 'conversion', {
       send_to: `${conversionId}/${phoneConversionLabel}`,
     });
-    console.log('[Google Ads] Phone-Conversion getrackt');
+    console.log('[Google Ads] Phone-Conversion getrackt (Consent Mode v2 aktiv)');
   }
 }
