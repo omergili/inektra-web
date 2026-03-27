@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import ContactSidebar from '@/components/ContactSidebar';
 import GoogleAdsTag from '@/components/GoogleAdsTag';
 import CookieConsent from '@/components/CookieConsent';
+import ServiceBanner from '@/components/ServiceBanner';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteConfig } from '@/lib/config';
@@ -123,6 +124,7 @@ export default function RootLayout({
             Zum Inhalt springen
           </a>
           <Header />
+          <ServiceBanner />
           <main id="main-content" className="flex-grow">{children}</main>
           <Footer />
           <ContactSidebar />
