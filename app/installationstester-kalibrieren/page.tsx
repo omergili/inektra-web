@@ -90,10 +90,6 @@ const faqs = [
     answer: 'Die Kosten hängen vom Gerätetyp und Funktionsumfang ab. Prüfen Sie in unserer Kalibrierkosten-Suche, ob Ihr Modell gelistet ist – dort finden Sie den konkreten Preis. Für nicht gelistete Modelle erstellen wir gerne ein individuelles Angebot.',
   },
   {
-    question: 'Werden alle RCD-Typen kalibriert?',
-    answer: 'Wir kalibrieren die RCD-Prüffunktion für alle Typen die Ihr Installationstester unterstützt: Typ A (pulsierender Gleichstrom), Typ B (glatter Gleichstrom) und Typ F (Frequenzumrichter). Für jeden Typ werden mehrere Fehlerstromstufen geprüft.',
-  },
-  {
     question: 'Warum ist die Kalibrierung eines Installationstester besonders wichtig?',
     answer: 'Ein Installationstester entscheidet, ob eine elektrische Anlage sicher in Betrieb genommen werden darf. Wenn die Schleifenimpedanzmessung falsch niedrige Werte anzeigt, wird eine unzureichend abgesicherte Anlage fälschlicherweise freigegeben. Im Schadensfall haftet die prüfende Fachkraft – und der Kalibrierstatus des Prüfgeräts wird als erstes geprüft.',
   },
