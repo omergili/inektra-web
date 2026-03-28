@@ -64,6 +64,8 @@ export const siteConfig = {
     { name: 'Messverfahren', children: [
       { name: 'Alle Messgeräte', href: '/messgeraete-kalibrieren' },
       { name: 'Elektrische Kalibrierung', href: '/elektrische-messtechnik-kalibrierung' },
+      { name: 'Gerätetester kalibrieren', href: '/geraetetester-kalibrieren' },
+      { name: 'Installationstester kalibrieren', href: '/installationstester-kalibrieren' },
       { name: 'Längenkalibrierung', href: '/laengenkalibrierung' },
       { name: 'Druckkalibrierung', href: '/druckkalibrierung' },
       { name: 'Drehmomentkalibrierung', href: '/drehmoment-kalibrierung' },
