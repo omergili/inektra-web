@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: 'Kalibrierservice & Werkskalibrierung | inektra GmbH',
   },
   description: 'Werkskalibrierung nach ISO-Normen. Über 3.200 kalibrierbare Gerätetypen. Labor in Nordhorn. Schnelle Bearbeitung, faire Preise.',
-  keywords: ['werkskalibrierung', 'kalibrierservice', 'messgeräte kalibrieren', 'kalibrierlabor', 'iso kalibrierung', 'kalibrierung dienstleister', 'nordhorn'],
+  keywords: ['werkskalibrierung', 'kalibrierservice', 'messgeräte kalibrieren', 'kalibrierlabor', 'iso kalibrierung', 'kalibrierung dienstleister', 'messmittelkalibrierung', 'nordhorn'],
   alternates: {
     canonical: siteConfig.siteUrl,
   },
@@ -104,9 +104,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/messgeraete-kalibrieren" className="group block p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Messgeräte-Kalibrierung</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Messmittelkalibrierung</h3>
               <p className="text-slate-600 mb-4">
-                Kalibrierung elektrischer Messgeräte: Multimeter, Oszilloskope, Stromzangen, Leistungsanalysatoren und mehr.
+                Professionelle Messmittelkalibrierung für über 3.200 Gerätetypen: Multimeter, Oszilloskope, Stromzangen, Manometer und mehr.
               </p>
               <span className="inline-flex items-center text-accent-600 font-semibold group-hover:translate-x-2 transition-transform">
                 Mehr erfahren
