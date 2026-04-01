@@ -104,7 +104,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/messgeraete-kalibrieren" className="group block p-8 rounded-xl bg-white border border-slate-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Messmittelkalibrierung</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">Messmittel&shy;kalibrierung</h3>
               <p className="text-slate-600 mb-4">
                 Professionelle Messmittelkalibrierung für über 3.200 Gerätetypen: Multimeter, Oszilloskope, Stromzangen, Manometer und mehr.
               </p>
