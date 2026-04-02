@@ -100,6 +100,34 @@ export async function POST(request: NextRequest) {
       });
 
       console.log('[EMAIL SENT via Resend]');
+
+      // Lead an Webhook senden (fire-and-forget, Fehler nicht blockierend)
+      try {
+        const webhookUrl = process.env.LEAD_WEBHOOK_URL || 'http://91.249.180.159:8890/webhook/lead';
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            domain: 'inektra.de',
+            name,
+            company: company || '',
+            email,
+            phone: phone || '',
+            message: message || '',
+            source: attrib?.utm_source || 'unknown',
+            medium: attrib?.utm_medium || 'none',
+            campaign: attrib?.utm_campaign || '',
+            gclid: attrib?.gclid || '',
+            landing_page: attrib?.landing_page || '',
+            referrer: attrib?.referrer || '',
+          }),
+          signal: AbortSignal.timeout(5000),
+        });
+        console.log('[WEBHOOK SENT]');
+      } catch (webhookError: any) {
+        console.error('[WEBHOOK FAILED]', webhookError.message);
+        // Nicht blockierend — Lead ist per E-Mail schon raus
+      }
     } catch (emailError: any) {
       console.error('[EMAIL FAILED]', emailError.message);
       return NextResponse.json({
