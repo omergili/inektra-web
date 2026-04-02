@@ -19,6 +19,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Attribution-Daten aus Formular
+    const attribRaw = formData.get('_attrib') as string | null;
+    let attrib: Record<string, string> | null = null;
+    try {
+      if (attribRaw) attrib = JSON.parse(attribRaw);
+    } catch { /* ignore */ }
+
     // Lead-Objekt für Logging
     const lead = {
       timestamp: new Date().toISOString(),
@@ -29,6 +36,7 @@ export async function POST(request: NextRequest) {
       message: message || '',
       hasFile: !!file,
       fileName: file?.name || '',
+      attribution: attrib,
     };
 
     console.log('[NEW CONTACT FORM SUBMISSION]', JSON.stringify(lead, null, 2));
@@ -65,6 +73,17 @@ export async function POST(request: NextRequest) {
         ${phone ? `<p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>` : ''}
         ${message ? `<p><strong>Nachricht:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>` : ''}
         ${file ? `<p><strong>Datei im Anhang:</strong> ${escapeHtml(file.name)}</p>` : ''}
+        ${attrib ? `
+        <hr/>
+        <table style="font-size: 12px; color: #666; border-collapse: collapse;">
+          <tr><td colspan="2" style="font-weight: bold; padding: 4px 0;">Lead-Quelle:</td></tr>
+          ${attrib.utm_source ? `<tr><td style="padding: 2px 8px 2px 0;">Quelle:</td><td>${escapeHtml(attrib.utm_source)}${attrib.utm_medium ? ' / ' + escapeHtml(attrib.utm_medium) : ''}</td></tr>` : ''}
+          ${attrib.utm_campaign ? `<tr><td style="padding: 2px 8px 2px 0;">Kampagne:</td><td>${escapeHtml(attrib.utm_campaign)}</td></tr>` : ''}
+          ${attrib.gclid ? `<tr><td style="padding: 2px 8px 2px 0;">GCLID:</td><td>${escapeHtml(attrib.gclid)}</td></tr>` : ''}
+          ${attrib.landing_page ? `<tr><td style="padding: 2px 8px 2px 0;">Landing Page:</td><td>${escapeHtml(attrib.landing_page)}</td></tr>` : ''}
+          ${attrib.referrer ? `<tr><td style="padding: 2px 8px 2px 0;">Referrer:</td><td>${escapeHtml(attrib.referrer)}</td></tr>` : ''}
+        </table>
+        ` : ''}
         <hr/>
         <p style="color: #666; font-size: 12px;">
           Gesendet am ${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin' })}

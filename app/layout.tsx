@@ -11,6 +11,7 @@ import ServiceBanner from '@/components/ServiceBanner';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteConfig } from '@/lib/config';
+import AttributionTracker from '@/components/AttributionTracker';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -130,6 +131,7 @@ export default function RootLayout({
           <ContactSidebar />
         </div>
         <CookieConsent />
+        <AttributionTracker />
         <Analytics />
         <SpeedInsights />
       </body>

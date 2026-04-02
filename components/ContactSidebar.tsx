@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
 import { trackConversion, trackPhoneConversion } from '@/components/GoogleAdsTag';
+import { getAttribution } from '@/lib/tracking';
 
 export default function ContactSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,12 @@ export default function ContactSidebar() {
       body.append('message', formData.message);
       if (file) {
         body.append('file', file);
+      }
+
+      // Attribution-Daten aus Cookie anhängen
+      const attrib = getAttribution();
+      if (attrib) {
+        body.append('_attrib', JSON.stringify(attrib));
       }
 
       const response = await fetch('/api/contact', {
