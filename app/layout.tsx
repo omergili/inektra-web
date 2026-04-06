@@ -125,7 +125,7 @@ export default function RootLayout({
             Zum Inhalt springen
           </a>
           <Header />
-          <ServiceBanner />
+          {/* <ServiceBanner /> */}
           <main id="main-content" className="flex-grow">{children}</main>
           <Footer />
           <ContactSidebar />
