@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { siteConfig } from '@/lib/config';
 import EmailLink from '@/components/EmailLink';
-import { trackConversion, trackPhoneConversion } from '@/components/GoogleAdsTag';
+import { trackConversion, trackPhoneConversion, trackLead } from '@/components/GoogleAdsTag';
 import { getAttribution } from '@/lib/tracking';
 
 export default function ContactSidebar() {
@@ -53,6 +53,7 @@ export default function ContactSidebar() {
       if (data.success) {
         setSubmitStatus('success');
         trackConversion();
+        trackLead();
         setFormData({ name: '', company: '', email: '', phone: '', message: '', dataPrivacy: false });
         setFile(null);
         setTimeout(() => setIsOpen(false), 2000);

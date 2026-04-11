@@ -120,3 +120,24 @@ export function trackPhoneConversion() {
     console.log('[Google Ads] Phone-Conversion getrackt (Consent Mode v2 aktiv)');
   }
 }
+
+/**
+ * GA4 Schlüsselereignis `generate_lead` senden.
+ *
+ * Feuert ohne `send_to`, dadurch wird das Event automatisch an ALLE konfigurierten
+ * Destinations des Google-Tag-Containers geroutet — insbesondere die GA4-Property
+ * (G-XRMJRMSEJ4), die via Google-Tag-Autosetup an AW-18003383640 angehängt wurde.
+ *
+ * Consent Mode v2 regelt den Datenschutz:
+ * - Mit Consent: volle Event-Daten in GA4
+ * - Ohne Consent: anonymisiertes Signal → Google modelliert die Konversion
+ */
+export function trackLead() {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', 'generate_lead', {
+      value: 50,
+      currency: 'EUR',
+    });
+    console.log('[GA4] generate_lead getrackt (Consent Mode v2 aktiv)');
+  }
+}
