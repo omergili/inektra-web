@@ -21,6 +21,41 @@ if (!API_KEY) {
   process.exit(0);
 }
 
+/**
+ * Normalize priceNet to an integer in cents.
+ *
+ * Observed toolboxx.biz formats:
+ *   - String mit deutschem Komma (aktuell):   "61,24"   -> 6124
+ *   - String mit Tausenderpunkt + Komma:      "1.234,56" -> 123456
+ *   - Zahl in Euro (Float):                    61.24     -> 6124
+ *   - Zahl in Cent (Legacy-Fallback):          6124      -> 6124
+ *   - null / undefined / empty:                          -> null
+ *
+ * Heuristik fuer reine Zahlen: Floats (mit Dezimalstellen) sind Euro.
+ * Integer >= 1000 wird als Legacy-Cent interpretiert, kleinere Integer als Euro.
+ */
+function parsePriceToCents(value) {
+  if (value === null || value === undefined || value === '') return null;
+
+  if (typeof value === 'string') {
+    // Deutsches Format: Punkt = Tausendertrenner, Komma = Dezimal
+    const normalized = value.trim().replace(/\./g, '').replace(',', '.');
+    const euros = parseFloat(normalized);
+    if (isNaN(euros)) return null;
+    return Math.round(euros * 100);
+  }
+
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) return null;
+    if (!Number.isInteger(value) || value < 1000) {
+      return Math.round(value * 100);
+    }
+    return value;
+  }
+
+  return null;
+}
+
 async function fetchPage(page) {
   const res = await fetch(`${API_URL}?page=${page}`, {
     headers: { Authorization: `Bearer ${API_KEY}` },
@@ -71,7 +106,7 @@ async function main() {
       articleNumber: item.article_number,
       name: item.name,
       description: item.description,
-      priceNet: item.unit_net, // cents
+      priceNet: parsePriceToCents(item.unit_net), // always cents (integer)
       vat: item.vat,
       category: item.category?.name || null,
       manufacturer: item.manufacturer?.name || null,
